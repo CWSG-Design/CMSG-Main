@@ -7,6 +7,7 @@ import ProductsSection from "../components/Products";
 import GallerySection from "../components/Gallery";
 import TestimonialsSection from "../components/Testimonials";
 import ProductionCTA from "../components/ProductionCTA";
+import ShippingInstallSection from "../components/ShippingInstallSection";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <ValuesSection />
       <ProductsSection />
+      <ShippingInstallSection />
       <ResourcesSection />
       <GallerySection />
       <TestimonialsSection />
