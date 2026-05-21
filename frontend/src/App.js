@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import QuotePage from "./pages/QuotePage";
 import ShippingPage from "./pages/ShippingPage";
 import InstallationPage from "./pages/InstallationPage";
+import InstallerSignUpPage from "./pages/InstallerSignUpPage";
 import { Toaster } from "./components/ui/toaster";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/quote" element={<QuotePage />} />
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/installation" element={<InstallationPage />} />
+          <Route path="/installer-sign-up" element={<InstallerSignUpPage />} />
         </Routes>
         <Toaster />
       </BrowserRouter>
