@@ -3,7 +3,7 @@ export const brand = {
   name: "CWS",
   fullName: "Canadian Wholesale Sign Group",
   tagline: "Crafted In Canada For Sign Professionals",
-  phone: "1-800-555-0142",
+  phone: "519.498.5825",
   email: "sales@canadianwholesalesigns.ca",
   address: "6 Nicholas Beaver Rd, Guelph, ON N1H 6H9",
 };
