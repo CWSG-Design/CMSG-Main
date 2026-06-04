@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { CheckCircle2, ChevronRight, ChevronLeft } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, ZoomIn, X } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -155,6 +156,9 @@ export default function QuotePage() {
   const [trimCapColor, setTrimCapColor] = useState("");
   const [returnColor, setReturnColor] = useState("");
   const [racewayColor, setRacewayColor] = useState("");
+
+  // Color chart lightbox
+  const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
 
   // Step 4 — Extras
   const [hangerBar, setHangerBar] = useState("");
@@ -497,8 +501,44 @@ export default function QuotePage() {
           {/* ── Step 3: Colors ── */}
           {step === 3 && (
             <div className="space-y-6">
+              {/* Color Chart Reference */}
+              <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                <SectionTitle>Color Chart Reference</SectionTitle>
+                <p className="text-sm text-stone-500 mb-5">
+                  Click either chart to view it full size. Use these as a reference when filling in the color fields below.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { src: "/manus-storage/vinyl-color-chart_008fc642.png", title: "3M 3630 Vinyl Colors" },
+                    { src: "/manus-storage/acrylic-color-chart_9faadfdf.png", title: "Acrylic / Trim Cap / Return Colors" },
+                  ].map(chart => (
+                    <button
+                      key={chart.title}
+                      type="button"
+                      onClick={() => setLightboxImg(chart)}
+                      className="group relative overflow-hidden rounded-xl border border-stone-200 bg-stone-50 hover:border-sage transition-colors text-left"
+                    >
+                      <img
+                        src={chart.src}
+                        alt={chart.title}
+                        className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 bg-forest/0 group-hover:bg-forest/10 transition-colors flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full px-4 py-2 flex items-center gap-2 text-sm font-medium text-forest shadow">
+                          <ZoomIn className="h-4 w-4" /> View Full Size
+                        </div>
+                      </div>
+                      <div className="px-4 py-3 border-t border-stone-100">
+                        <p className="text-sm font-medium text-forest">{chart.title}</p>
+                        <p className="text-xs text-stone-400 mt-0.5">Click to enlarge</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <p className="text-sm text-stone-500 bg-sage/10 border border-sage/20 rounded-xl p-4">
-                Fill out only what applies. Please refer to the CWS color charts for reference. You can also specify custom colors in the text fields.
+                Fill out only what applies. You can also specify custom colors in the text fields below.
               </p>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Acrylic Color</SectionTitle>
@@ -622,6 +662,25 @@ export default function QuotePage() {
           </div>
         </div>
       </form>
+
+      {/* Lightbox modal */}
+      <Dialog open={!!lightboxImg} onOpenChange={open => !open && setLightboxImg(null)}>
+        <DialogContent className="max-w-3xl w-full p-0 overflow-hidden bg-white rounded-2xl">
+          {lightboxImg && (
+            <>
+              <div className="flex items-center justify-between px-5 py-3 border-b border-stone-100">
+                <p className="font-medium text-forest text-sm">{lightboxImg.title}</p>
+                <button type="button" onClick={() => setLightboxImg(null)} className="text-stone-400 hover:text-stone-700 transition-colors">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="overflow-auto max-h-[80vh]">
+                <img src={lightboxImg.src} alt={lightboxImg.title} className="w-full h-auto" />
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
