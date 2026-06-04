@@ -13,6 +13,7 @@ export const navLinks = [
   { label: "Gallery", href: "/#gallery" },
   { label: "Shipping", href: "/shipping" },
   { label: "Installation", href: "/installation" },
+  { label: "Installer Directory", href: "/installation-directory" },
   { label: "Resources", href: "/#resources" },
   { label: "Contact", href: "/contact" },
 ];

@@ -9,6 +9,7 @@ import ShippingPage from "./pages/ShippingPage";
 import InstallationPage from "./pages/InstallationPage";
 import InstallerSignUpPage from "./pages/InstallerSignUpPage";
 import ContactPage from "./pages/ContactPage";
+import InstallationDirectoryPage from "./pages/InstallationDirectoryPage";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/installation" component={InstallationPage} />
       <Route path="/installer-sign-up" component={InstallerSignUpPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/installation-directory" component={InstallationDirectoryPage} />
       <Route component={NotFound} />
     </Switch>
   );
