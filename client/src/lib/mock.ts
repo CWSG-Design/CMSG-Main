@@ -55,70 +55,87 @@ export const products = [
   {
     slug: "front-lit-channel-letters",
     title: "Front Lit Channel Letters",
-    image: "https://picsum.photos/seed/cws-frontlit/900/650",
+    image: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg",
     blurb: "Classic illuminated faces with crisp daytime and nighttime presence.",
   },
   {
     slug: "trimless-channel-letters",
     title: "Trimless Channel Letters",
-    image: "https://picsum.photos/seed/cws-trimless/900/650",
+    image: "/manus-storage/product_mountain_warehouse_2183dd12.jpg",
     blurb: "Seamless premium look — no visible trim cap, pure architectural finish.",
   },
   {
     slug: "push-through-faux-neon",
     title: "Push-Through & Faux Neon",
-    image: "https://picsum.photos/seed/cws-neon/900/650",
+    image: "/manus-storage/hero_longos_night_4755c444.jpg",
     blurb: "Modern LED neon and acrylic push-throughs that glow like the real thing.",
   },
   {
     slug: "open-face-channel-letters",
     title: "Open Face Channel Letters",
-    image: "https://picsum.photos/seed/cws-openface/900/650",
+    image: "/manus-storage/product_subway_snow_0f5cf8db.jpg",
     blurb: "Exposed neon-style LEDs framed in painted aluminum returns.",
   },
   {
     slug: "flat-cut-out-letters",
     title: "Flat Cut Out Letters",
-    image: "https://picsum.photos/seed/cws-flatcut/900/650",
+    image: "/manus-storage/product_olsen_closeup_0e12003a.jpg",
     blurb: "Dimensional non-illuminated letters routed from premium materials.",
   },
   {
     slug: "tenant-panels",
     title: "Tenant Panels",
-    image: "https://picsum.photos/seed/cws-tenant/900/650",
+    image: "/manus-storage/gallery_smurfit_westrock_ebe60129.jpg",
     blurb: "Durable pylon and monument panels built for harsh Canadian winters.",
   },
   {
     slug: "reverse-lit-channel-letters",
     title: "Reverse Lit Channel Letters",
-    image: "https://picsum.photos/seed/cws-reverse/900/650",
+    image: "/manus-storage/product_maple_leaf_letter_466caeec.jpg",
     blurb: "Halo-lit elegance that washes light against the wall behind the letter.",
   },
   {
     slug: "front-halo-lit",
     title: "Front / Halo Lit Letters",
-    image: "https://picsum.photos/seed/cws-halo/900/650",
+    image: "/manus-storage/gallery_hudsons_bay_night_b6c356e0.jpg",
     blurb: "Dual illumination — face-lit by day, halo-glow by night.",
   },
   {
     slug: "contour-logos",
     title: "Contour Logos & Logo Boxes",
-    image: "https://picsum.photos/seed/cws-contour/900/650",
+    image: "/manus-storage/install_action_ladders_d567f9bd.jpg",
     blurb: "Custom-shaped illuminated logos and clean modern logo boxes.",
   },
   {
     slug: "in-store-display",
     title: "In-Store Display Signs",
-    image: "https://picsum.photos/seed/cws-display/900/650",
+    image: "/manus-storage/install_delivery_truck_50851248.jpg",
     blurb: "Interior signage that brings your brand inside the showroom.",
   },
 ];
 
-export const gallery = Array.from({ length: 24 }).map((_, i) => ({
-  id: i + 1,
-  src: `https://picsum.photos/seed/cws-gallery-${i + 1}/800/600`,
-  alt: `CWS project ${i + 1}`,
-}));
+// Real project photos from Google Photos — fill remaining slots with picsum
+const realGalleryPhotos = [
+  { src: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg", alt: "The Bone & Biscuit Co. — Front Lit Channel Letters, night" },
+  { src: "/manus-storage/hero_longos_night_4755c444.jpg", alt: "Longo's — Large illuminated script letters, night" },
+  { src: "/manus-storage/product_mountain_warehouse_2183dd12.jpg", alt: "Mountain Warehouse — Illuminated channel letters, mall" },
+  { src: "/manus-storage/product_subway_snow_0f5cf8db.jpg", alt: "Subway — Illuminated channel letters in winter" },
+  { src: "/manus-storage/product_olsen_closeup_0e12003a.jpg", alt: "Olsen — Black channel letters close-up" },
+  { src: "/manus-storage/gallery_hudsons_bay_night_b6c356e0.jpg", alt: "Hudson's Bay + Yorkdale — Signage at night" },
+  { src: "/manus-storage/gallery_smurfit_westrock_ebe60129.jpg", alt: "Smurfit Westrock — Dimensional letters on industrial building" },
+  { src: "/manus-storage/product_maple_leaf_letter_466caeec.jpg", alt: "Canadian maple leaf channel letter — fabrication detail" },
+  { src: "/manus-storage/install_action_ladders_d567f9bd.jpg", alt: "Installation crew mounting Bone & Biscuit sign" },
+  { src: "/manus-storage/install_delivery_truck_50851248.jpg", alt: "Channel letters on delivery truck, installation crew" },
+];
+
+export const gallery = [
+  ...realGalleryPhotos.map((p, i) => ({ id: i + 1, src: p.src, alt: p.alt })),
+  ...Array.from({ length: 14 }).map((_, i) => ({
+    id: i + 11,
+    src: `https://picsum.photos/seed/cws-gallery-${i + 11}/800/600`,
+    alt: `CWS project ${i + 11}`,
+  })),
+];
 
 export const testimonials = [
   {

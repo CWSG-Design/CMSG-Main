@@ -60,14 +60,14 @@ export default function Hero() {
           <div className="lg:col-span-5 relative fade-up" style={{ animationDelay: "0.15s" }}>
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-forest/20">
               <img
-                src="https://picsum.photos/seed/cws-hero-main/900/1100"
-                alt="Channel letter sign"
+                src="/manus-storage/hero_bone_biscuit_night_41fdab16.jpg"
+                alt="The Bone & Biscuit Co. illuminated channel letters at night"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-bone">
                 <div className="text-xs uppercase tracking-[0.2em] opacity-80">Featured Project</div>
-                <div className="font-serif text-2xl mt-1">Maple Brewing Co. — Reverse Lit</div>
+                <div className="font-serif text-2xl mt-1">The Bone &amp; Biscuit Co. — Front Lit</div>
               </div>
             </div>
             <div className="absolute -bottom-6 -left-6 hidden md:block bg-white rounded-2xl shadow-xl p-5 max-w-[220px] border border-stone-100">

@@ -2,17 +2,21 @@ import { Link } from "wouter";
 import { brand, navLinks, products } from "@/lib/mock";
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 
+// White+green logo for dark forest-dark background
+const LOGO_WHITE = "/manus-storage/logo-white-transparent_9b8ef757.webp";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-forest-dark text-bone">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-md bg-bone text-forest flex items-center justify-center font-serif text-xl font-bold">
-                C<span className="text-sage">W</span>S
-              </div>
-              <div className="font-serif text-xl">{brand.fullName}</div>
+            <div className="flex items-center">
+              <img
+                src={LOGO_WHITE}
+                alt="Canadian Wholesale Sign Group"
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <p className="mt-5 text-bone/70 leading-relaxed max-w-sm">
               Canadian manufacturer of premium LED channel letters. Built to last by a team that lives the craft.

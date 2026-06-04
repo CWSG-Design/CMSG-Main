@@ -32,6 +32,14 @@
 
 ## Pending / Future
 - [ ] Admin panel to approve/reject pending installer submissions
-- [ ] Upload real product/hero images when user provides them
+- [x] Upload real product/hero images from Google Photos album
+  - 10 real project photos (Bone & Biscuit, Longo's, Mountain Warehouse, Subway, Olsen, Hudson's Bay, Smurfit Westrock, install shots)
+  - Hero section: Bone & Biscuit night shot
+  - Products section: all 10 products now show real photos
+  - Gallery section: first 10 slots use real photos
+  - ShippingInstall section: both cards have real photo backgrounds
+- [x] Replace logo placeholder with official CWS logo (3 variants: white/transparent, black/transparent, white-on-black)
+  - Header: black+green on transparent (light background)
+  - Footer: white+green on transparent (dark forest background)
 - [ ] Connect custom domain (canadianwholesalesigns.ca)
 - [ ] SEO meta tags and Open Graph images

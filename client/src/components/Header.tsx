@@ -4,6 +4,9 @@ import { Link } from "wouter";
 import { brand, navLinks } from "@/lib/mock";
 import { Button } from "@/components/ui/button";
 
+// Official CWS logos — use light version on cream/white backgrounds
+const LOGO_LIGHT = "/manus-storage/logo-black-transparent_b82614d3.webp";
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -21,14 +24,12 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="h-11 w-11 rounded-md bg-forest text-bone flex items-center justify-center font-serif text-xl font-bold tracking-tight shadow-sm">
-            C<span className="text-sage">W</span>S
-          </div>
-          <div className="hidden sm:flex flex-col leading-none">
-            <span className="font-serif text-lg text-forest font-semibold">{brand.fullName}</span>
-            <span className="text-[11px] uppercase tracking-[0.18em] text-stone-500">Wholesale Channel Letters</span>
-          </div>
+        <Link to="/" className="flex items-center group">
+          <img
+            src={LOGO_LIGHT}
+            alt="Canadian Wholesale Sign Group"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
