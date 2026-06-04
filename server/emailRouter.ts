@@ -2,6 +2,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
 import { notifyOwner } from "./_core/notification";
 import { ENV } from "./_core/env";
+import { storagePut } from "./storage";
 
 const RECIPIENT = "sales@canadianwholesalesigns.ca";
 
@@ -41,6 +42,36 @@ async function sendEmail(subject: string, htmlBody: string, textBody: string): P
 }
 
 export const emailRouter = router({
+  /** Upload artwork/logo files for a quote and return their storage URLs */
+  uploadArtwork: publicProcedure
+    .input(
+      z.object({
+        files: z.array(
+          z.object({
+            name: z.string(),
+            type: z.string(),
+            data: z.string(), // base64-encoded file content
+          })
+        ).max(10, "Maximum 10 files per quote"),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const results: { name: string; url: string; key: string }[] = [];
+
+      for (const file of input.files) {
+        const buffer = Buffer.from(file.data, "base64");
+        const safeFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        const { key, url } = await storagePut(
+          `quote-artwork/${safeFileName}`,
+          buffer,
+          file.type || "application/octet-stream",
+        );
+        results.push({ name: file.name, url, key });
+      }
+
+      return { files: results };
+    }),
+
   /** Contact form submission */
   sendContact: publicProcedure
     .input(
@@ -120,6 +151,8 @@ export const emailRouter = router({
         hangerBar: z.boolean().optional(),
         remotePowerSupply: z.boolean().optional(),
         additionalInstructions: z.string().optional(),
+        // Artwork file URLs (uploaded separately)
+        artworkUrls: z.array(z.object({ name: z.string(), url: z.string() })).optional(),
       })
     )
     .mutation(async ({ input }) => {
@@ -171,6 +204,10 @@ export const emailRouter = router({
           ${row("Hanger Bar", input.hangerBar)}
           ${row("Remote Power Supply", input.remotePowerSupply)}
           ${row("Additional Instructions", input.additionalInstructions)}
+          ${input.artworkUrls && input.artworkUrls.length > 0 ? `
+          <tr><td colspan="2" style="padding:10px 12px;background:#1a3a2a;color:#fff;font-weight:bold;font-size:15px;">Attached Artwork Files</td></tr>
+          ${input.artworkUrls.map(f => `<tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold;width:200px;">${f.name}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8;"><a href="${f.url}">${f.url}</a></td></tr>`).join("")}
+          ` : ""}
         </table>
         <p style="font-family:sans-serif;font-size:12px;color:#888;margin-top:24px;">Sent from the CMSG website quote form.</p>
       `;

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { CheckCircle2, ChevronRight, ChevronLeft, ZoomIn, X } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, ZoomIn, X, UploadCloud, FileText, Trash2 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -260,6 +260,57 @@ export default function QuotePage() {
   // Color chart lightbox
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
 
+  // Step 4 — Artwork file uploads
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
+  const [uploadingFiles, setUploadingFiles] = useState(false);
+  const uploadArtwork = trpc.email.uploadArtwork.useMutation();
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+
+    // Validate: max 10 files, max 16 MB each
+    const oversized = files.filter(f => f.size > 16 * 1024 * 1024);
+    if (oversized.length) {
+      toast.error(`File(s) too large (max 16 MB): ${oversized.map(f => f.name).join(", ")}`);
+      return;
+    }
+    if (uploadedFiles.length + files.length > 10) {
+      toast.error("Maximum 10 files per quote.");
+      return;
+    }
+
+    setUploadingFiles(true);
+    try {
+      // Convert files to base64
+      const encoded = await Promise.all(
+        files.map(file => new Promise<{ name: string; type: string; data: string }>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const base64 = (reader.result as string).split(",")[1];
+            resolve({ name: file.name, type: file.type, data: base64 });
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        }))
+      );
+
+      const result = await uploadArtwork.mutateAsync({ files: encoded });
+      setUploadedFiles(prev => [...prev, ...result.files.map(f => ({ name: f.name, url: f.url }))]);
+      toast.success(`${result.files.length} file(s) uploaded successfully.`);
+    } catch (err) {
+      toast.error("Upload failed. Please try again or email files directly.");
+      console.error("[Upload] Error:", err);
+    } finally {
+      setUploadingFiles(false);
+      e.target.value = "";
+    }
+  };
+
+  const removeUploadedFile = (url: string) => {
+    setUploadedFiles(prev => prev.filter(f => f.url !== url));
+  };
+
   // Step 4 — Extras
   const [hangerBar, setHangerBar] = useState("");
   const [racewayLocation, setRacewayLocation] = useState("");
@@ -321,6 +372,7 @@ export default function QuotePage() {
       hangerBar: extras.includes("Hanger Bar") || undefined,
       remotePowerSupply: extras.includes("Remote Power Supply") || undefined,
       additionalInstructions: additionalNotes || undefined,
+      artworkUrls: uploadedFiles.length > 0 ? uploadedFiles : undefined,
     });
   };
 
@@ -783,12 +835,64 @@ export default function QuotePage() {
                 />
               </div>
 
-              <div className="bg-sage/10 border border-sage/20 rounded-2xl p-6">
-                <p className="text-sm text-stone-700 font-medium mb-2">Artwork Files</p>
-                <p className="text-sm text-stone-500">
-                  Please email your artwork files (PDF, EPS, AI preferred; JPG/PNG at 300 dpi CMYK for digital prints) directly to{" "}
-                  <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>{" "}
-                  with your company name in the subject line. Max file size: 300 MB.
+              <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                <SectionTitle>Artwork & Logo Files</SectionTitle>
+                <p className="text-sm text-stone-500 mb-5">
+                  Upload your logo or artwork files here (PDF, EPS, AI, SVG preferred; JPG/PNG at 300 dpi for digital prints).
+                  Max 16 MB per file, up to 10 files. Files will be attached to your quote request.
+                </p>
+
+                {/* Drop zone / file picker */}
+                <label className={`flex flex-col items-center justify-center gap-3 w-full border-2 border-dashed rounded-xl p-8 cursor-pointer transition-colors ${
+                  uploadingFiles
+                    ? "border-sage/40 bg-sage/5 cursor-wait"
+                    : "border-stone-300 hover:border-sage hover:bg-sage/5"
+                }`}>
+                  <input
+                    type="file"
+                    multiple
+                    accept=".pdf,.eps,.ai,.svg,.jpg,.jpeg,.png,.tiff,.tif,.zip"
+                    className="sr-only"
+                    onChange={handleFileChange}
+                    disabled={uploadingFiles || uploadedFiles.length >= 10}
+                  />
+                  {uploadingFiles ? (
+                    <>
+                      <span className="inline-block h-8 w-8 border-2 border-sage/40 border-t-sage rounded-full animate-spin" />
+                      <p className="text-sm text-stone-500">Uploading files…</p>
+                    </>
+                  ) : (
+                    <>
+                      <UploadCloud className="h-8 w-8 text-sage" />
+                      <p className="text-sm font-medium text-stone-700">Click to browse or drag & drop files here</p>
+                      <p className="text-xs text-stone-400">PDF, EPS, AI, SVG, JPG, PNG, TIFF, ZIP — max 16 MB each</p>
+                    </>
+                  )}
+                </label>
+
+                {/* Uploaded file list */}
+                {uploadedFiles.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {uploadedFiles.map(f => (
+                      <li key={f.url} className="flex items-center gap-3 bg-sage/5 border border-sage/20 rounded-lg px-4 py-2.5">
+                        <FileText className="h-4 w-4 text-sage shrink-0" />
+                        <span className="text-sm text-stone-700 flex-1 truncate">{f.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeUploadedFile(f.url)}
+                          className="text-stone-400 hover:text-red-500 transition-colors"
+                          aria-label="Remove file"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <p className="text-xs text-stone-400 mt-4">
+                  You can also email large files (&gt;16 MB) directly to{" "}
+                  <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>.
                 </p>
               </div>
             </div>
