@@ -121,6 +121,12 @@ export const products = [
     blurb: "Dimensional non-illuminated letters precision-routed from premium aluminum or acrylic — clean, architectural, and built to last.",
   },
   {
+    slug: "channel-letters-on-raceways",
+    title: "Channel Letters on Raceways",
+    image: "/manus-storage/smurfit_raceway_4011642c.jpg",
+    blurb: "Individual illuminated letters mounted on a painted aluminum raceway — clean wiring, simplified installation, and a polished professional finish on any substrate.",
+  },
+  {
     slug: "tenant-panels",
     title: "Tenant Panels",
     image: "/manus-storage/gallery_smurfit_westrock_ebe60129.jpg",
@@ -134,8 +140,18 @@ export const products = [
   },
 ];
 
-// Real project photos from Google Photos + brochure extracts
+// Real project photos from Google Photos + brochure extracts + product feature PDF
 const realGalleryPhotos = [
+  { src: "/manus-storage/focaccia_exterior_3d_90f6be65.jpg", alt: "Focaccia — Exterior 3D Printed Illuminated Channel Letters" },
+  { src: "/manus-storage/hangr_joes_logo_51c1cf66.jpg", alt: "Hangr Joe's Hot Chicken & Wings — 3D Printed Illuminated Channel Logo" },
+  { src: "/manus-storage/hangr_joes_open_192d356c.jpg", alt: "Hangr Joe's — 3D Printed Illuminated Window Sign" },
+  { src: "/manus-storage/bone_biscuit_hanging_day_7f9be643.jpg", alt: "The Bone & Biscuit Co. — Hanging Illuminated Exterior Channel Letters, daytime" },
+  { src: "/manus-storage/ems_interior_wall_bff681c0.jpg", alt: "Eastern Mountain Sports — Interior Cut Out / 3D Printed Letters" },
+  { src: "/manus-storage/ems_exterior_storefront_4f622de0.jpg", alt: "Eastern Mountain Sports — Exterior Storefront Cut Out Letters" },
+  { src: "/manus-storage/olsen_halo_interior_22037e11.jpg", alt: "Olsen — Interior 3D Printed Halo Illuminated Letters" },
+  { src: "/manus-storage/payhalf_interior_hanging_399e57ce.jpg", alt: "Pay Half — Interior 3D Printed Illuminated Hanging Signs" },
+  { src: "/manus-storage/footwear_dimensional_eaf2355d.jpg", alt: "Footwear — Interior 3D Printed Illuminated Hanging Signs" },
+  { src: "/manus-storage/smurfit_raceway_4011642c.jpg", alt: "Smurfit Westrock — Illuminated Exterior Channel Letters on Raceways" },
   { src: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg", alt: "The Bone & Biscuit Co. — Front Lit Channel Letters, night" },
   { src: "/manus-storage/bone_biscuit_daytime_426ff3ce.jpg", alt: "The Bone & Biscuit Co. — Open Face Channel Letters, daytime" },
   { src: "/manus-storage/hero_longos_night_4755c444.jpg", alt: "Longo's — Large illuminated script letters, night" },
@@ -155,11 +171,44 @@ const realGalleryPhotos = [
 
 export const gallery = [
   ...realGalleryPhotos.map((p, i) => ({ id: i + 1, src: p.src, alt: p.alt })),
-  ...Array.from({ length: 9 }).map((_, i) => ({
-    id: i + 16,
-    src: `https://picsum.photos/seed/cws-gallery-${i + 16}/800/600`,
-    alt: `CWS project ${i + 16}`,
+  ...Array.from({ length: 1 }).map((_, i) => ({
+    id: i + 26,
+    src: `https://picsum.photos/seed/cws-gallery-${i + 26}/800/600`,
+    alt: `CWS project ${i + 26}`,
   })),
+];
+
+export const processSteps = [
+  {
+    step: "01",
+    title: "Design",
+    description: "Our team works with your artwork and specs to produce precise production-ready drawings — every detail confirmed before fabrication begins.",
+  },
+  {
+    step: "02",
+    title: "Permit",
+    description: "We provide the technical documentation your clients need for municipal permit applications — sign drawings, electrical specs, and structural details.",
+  },
+  {
+    step: "03",
+    title: "Fabricate",
+    description: "CNC-routed faces, automated-bent returns, and LED-lit interiors — precision manufacturing at every stage in our Guelph, Ontario facility.",
+  },
+  {
+    step: "04",
+    title: "Finish",
+    description: "Custom powder coat colours, vinyl face films, and protective coatings applied to your exact spec — consistent finish on every unit.",
+  },
+  {
+    step: "05",
+    title: "Install",
+    description: "Ship direct to your crew or connect with a vetted installer from our national partner network — coast-to-coast coverage across Canada.",
+  },
+  {
+    step: "06",
+    title: "Maintain",
+    description: "Backed by our industry-leading 5-year warranty on LEDs, transformers, and workmanship — we stand behind every sign we build.",
+  },
 ];
 
 export const testimonials = [

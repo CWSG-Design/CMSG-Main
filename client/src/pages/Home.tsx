@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ValuesSection from "@/components/Values";
 import ProductsSection from "@/components/Products";
+import HowItWorks from "@/components/HowItWorks";
 import ShippingInstallSection from "@/components/ShippingInstallSection";
 import ResourcesSection from "@/components/Resources";
 import GallerySection from "@/components/Gallery";
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <Hero />
       <ValuesSection />
+      <HowItWorks />
       <ProductsSection />
       <ShippingInstallSection />
       <ResourcesSection />
