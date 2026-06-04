@@ -7,8 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { CheckCircle2, Users, MapPin, Wrench, Truck } from "lucide-react";
+import { CheckCircle2, Users, MapPin, Wrench, Truck, Loader2 } from "lucide-react";
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 const PROVINCES_STATES = [
   "Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador",
@@ -45,6 +46,16 @@ export default function InstallerSignUpPage() {
   const [form, setForm] = useState<FormState>(empty);
   const [submitted, setSubmitted] = useState(false);
 
+  const submitMutation = trpc.installer.submit.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Your listing has been submitted for review!");
+    },
+    onError: (err) => {
+      toast.error(err.message || "Something went wrong. Please try again.");
+    },
+  });
+
   const set = (k: keyof FormState, v: string) => setForm(f => ({ ...f, [k]: v }));
 
   const onSubmit = (e: React.FormEvent) => {
@@ -53,11 +64,23 @@ export default function InstallerSignUpPage() {
       toast.error("Please fill in all required fields.");
       return;
     }
-    const list = JSON.parse(localStorage.getItem("cws_installers") || "[]");
-    list.push({ ...form, ts: Date.now() });
-    localStorage.setItem("cws_installers", JSON.stringify(list));
-    setSubmitted(true);
-    toast.success("You've been added to the installer directory!");
+
+    submitMutation.mutate({
+      companyName: form.companyName,
+      contactName: [form.firstName, form.lastName].filter(Boolean).join(" ") || undefined,
+      email: form.email || undefined,
+      phone: form.phone || undefined,
+      website: form.website || undefined,
+      address: [form.street, form.street2].filter(Boolean).join(", ") || undefined,
+      city: form.city || undefined,
+      province: form.province || undefined,
+      postalCode: form.postal || undefined,
+      country: form.country || "Canada",
+      capabilities: form.capabilities || undefined,
+      equipment: form.equipment || undefined,
+      areasServed: form.areasServed || undefined,
+      maxTravelDistance: form.maxTravel || undefined,
+    });
   };
 
   return (
@@ -95,20 +118,28 @@ export default function InstallerSignUpPage() {
         </div>
       </section>
 
-      {/* Form */}
+      {/* Form / Success */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
         {submitted ? (
           <div className="max-w-xl mx-auto text-center py-20">
             <CheckCircle2 className="h-16 w-16 text-sage mx-auto mb-6" />
-            <h2 className="font-serif text-4xl text-forest">You're listed!</h2>
+            <h2 className="font-serif text-4xl text-forest">Submission Received!</h2>
             <p className="mt-4 text-stone-600">
-              <strong>{form.companyName}</strong> has been added to the CWS Installation Directory. Sign shops and brokers can now find you when they need installation services.
+              Thank you for submitting <strong>{form.companyName}</strong> to the CWS Installation
+              Directory. Your listing is currently under review and will appear on the map once
+              approved by our team.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/installation-directory">
-                <Button className="bg-forest hover:bg-forest/90 text-bone rounded-full px-7">View the Directory</Button>
+                <Button className="bg-forest hover:bg-forest/90 text-bone rounded-full px-7">
+                  View the Directory
+                </Button>
               </Link>
-              <Button variant="outline" onClick={() => { setSubmitted(false); setForm(empty); }} className="rounded-full px-7 border-forest text-forest hover:bg-forest/5">
+              <Button
+                variant="outline"
+                onClick={() => { setSubmitted(false); setForm(empty); }}
+                className="rounded-full px-7 border-forest text-forest hover:bg-forest/5"
+              >
                 Submit another
               </Button>
             </div>
@@ -149,6 +180,9 @@ export default function InstallerSignUpPage() {
             {/* Address */}
             <div className="bg-white rounded-2xl border border-stone-200 p-8">
               <h2 className="font-serif text-2xl text-forest mb-6">Business Address</h2>
+              <p className="text-sm text-stone-500 mb-5">
+                Your address is used to place your company on the map. It will not be publicly displayed.
+              </p>
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="md:col-span-2">
                   <Label htmlFor="street" className="text-stone-700">Street Address <span className="text-red-500">*</span></Label>
@@ -196,48 +230,42 @@ export default function InstallerSignUpPage() {
 
             {/* Capabilities & Coverage */}
             <div className="bg-white rounded-2xl border border-stone-200 p-8">
-              <h2 className="font-serif text-2xl text-forest mb-2">Capabilities & Coverage</h2>
-              <p className="text-stone-500 text-sm mb-6">Tell sign shops what you can do and where you operate. This is what appears in your directory listing.</p>
+              <h2 className="font-serif text-2xl text-forest mb-2">Capabilities &amp; Coverage</h2>
+              <p className="text-stone-500 text-sm mb-6">
+                Tell sign shops what you can do and where you operate. This is what appears in your directory listing.
+              </p>
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <Label htmlFor="capabilities" className="text-stone-700">Capabilities</Label>
                   <Textarea
-                    id="capabilities"
-                    rows={4}
-                    value={form.capabilities}
+                    id="capabilities" rows={4} value={form.capabilities}
                     onChange={e => set("capabilities", e.target.value)}
                     className="mt-1.5 resize-none"
-                    placeholder="e.g. Permits, installs, removals, electrical and non-electrical, interior and exterior signage…"
+                    placeholder="e.g. Permits, installs, removals, electrical and non-electrical, interior and exterior signage..."
                   />
                 </div>
                 <div>
                   <Label htmlFor="equipment" className="text-stone-700">Equipment</Label>
                   <Textarea
-                    id="equipment"
-                    rows={4}
-                    value={form.equipment}
+                    id="equipment" rows={4} value={form.equipment}
                     onChange={e => set("equipment", e.target.value)}
                     className="mt-1.5 resize-none"
-                    placeholder="e.g. 35'–85' vehicle reach, boom truck, scissor lift, trailer…"
+                    placeholder="e.g. 35-85 ft vehicle reach, boom truck, scissor lift, trailer..."
                   />
                 </div>
                 <div>
                   <Label htmlFor="areasServed" className="text-stone-700">Cities or Areas Served</Label>
                   <Textarea
-                    id="areasServed"
-                    rows={3}
-                    value={form.areasServed}
+                    id="areasServed" rows={3} value={form.areasServed}
                     onChange={e => set("areasServed", e.target.value)}
                     className="mt-1.5 resize-none"
-                    placeholder="e.g. Greater Toronto Area, Hamilton, Barrie, Kitchener-Waterloo…"
+                    placeholder="e.g. Greater Toronto Area, Hamilton, Barrie, Kitchener-Waterloo..."
                   />
                 </div>
                 <div>
                   <Label htmlFor="maxTravel" className="text-stone-700">Max Travel Distance</Label>
                   <Textarea
-                    id="maxTravel"
-                    rows={3}
-                    value={form.maxTravel}
+                    id="maxTravel" rows={3} value={form.maxTravel}
                     onChange={e => set("maxTravel", e.target.value)}
                     className="mt-1.5 resize-none"
                     placeholder="e.g. Up to 200 km from Toronto, ON. Will travel province-wide for large projects."
@@ -249,10 +277,23 @@ export default function InstallerSignUpPage() {
             {/* Disclaimer + Submit */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-sage/10 border border-sage/20 rounded-2xl p-6">
               <p className="text-sm text-stone-600 max-w-xl">
-                <strong>Please note:</strong> This listing is not an endorsement. CWS does not guarantee the work of listed companies. Sign shops should conduct their own due diligence when selecting an installation vendor.
+                <strong>Please note:</strong> Submissions are reviewed before appearing in the directory.
+                CWS does not guarantee the work of listed companies. Sign shops should conduct their own
+                due diligence when selecting an installation vendor.
               </p>
-              <Button type="submit" className="bg-forest hover:bg-forest/90 text-bone rounded-full px-8 shrink-0">
-                Submit Listing
+              <Button
+                type="submit"
+                disabled={submitMutation.isPending}
+                className="bg-forest hover:bg-forest/90 text-bone rounded-full px-8 shrink-0"
+              >
+                {submitMutation.isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Listing"
+                )}
               </Button>
             </div>
           </form>
