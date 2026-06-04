@@ -78,6 +78,10 @@ agenthub/agents/youtube/db
 
 memory/test_credentials.md
 
+# Manus project config (local only)
+.project-config.json
+.manus-logs/
+
 # Mobile development
 android-sdk/
 .env
