@@ -41,16 +41,49 @@ const LOGO_BOX_STYLES = [
   "Contour / Cloud Logo", "Circle / Oval Logo Box",
   "Square Logo Box", "Rectangle Logo Box", "Other",
 ];
-const ACRYLIC_COLORS = [
-  "#2447 White (Standard)", "SG #2447 White (Sign Grade)", "#7328 White",
-  "SG #7328 White", "#2406 White", "#2283 Red", "SG #2283 Red (Sign Grade)",
-  "#2793 Red", "SG #2793 Red (Sign Grade)", "#2415 Red",
-  "#2662 Orange – Diffuser Needed", "#2157 Red – Diffuser Needed",
-  "#2051 Blue – Diffuser Needed", "#2114 Blue", "#2648 Blue – Diffuser Needed",
-  "#2030 Hunter Green – Diffuser Needed", "#2108 Holly Green",
-  "#2146 Ivory", "#2016 Yellow – Diffuser Needed", "#2037 Yellow",
-  "#2119 Orange", "#2412 Bronze", "Day/Night – Diffuser Needed",
-  "Subway Green", "Subway Yellow", "#0000 Clear", "Custom (specify below)",
+// Acrylic swatches: { label, hex, note? }
+const ACRYLIC_SWATCHES = [
+  { label: "#2447 White", sub: "Standard", hex: "#F5F5F0" },
+  { label: "SG #2447 White", sub: "Sign Grade", hex: "#EFEFEA" },
+  { label: "#7328 White", sub: "", hex: "#F8F8F3" },
+  { label: "SG #7328 White", sub: "Sign Grade", hex: "#F2F2ED" },
+  { label: "#2406 White", sub: "", hex: "#FAFAF8" },
+  { label: "#2283 Red", sub: "", hex: "#C8102E" },
+  { label: "SG #2283 Red", sub: "Sign Grade", hex: "#BE0E2A" },
+  { label: "#2793 Red", sub: "", hex: "#A50021" },
+  { label: "SG #2793 Red", sub: "Sign Grade", hex: "#9B001F" },
+  { label: "#2415 Red", sub: "", hex: "#D62027" },
+  { label: "#2662 Orange", sub: "Diffuser Needed", hex: "#F26522", diffuser: true },
+  { label: "#2157 Red", sub: "Diffuser Needed", hex: "#E8112D", diffuser: true },
+  { label: "#2051 Blue", sub: "Diffuser Needed", hex: "#003087", diffuser: true },
+  { label: "#2114 Blue", sub: "", hex: "#0057A8" },
+  { label: "#2648 Blue", sub: "Diffuser Needed", hex: "#1B4F9B", diffuser: true },
+  { label: "#2030 Hunter Green", sub: "Diffuser Needed", hex: "#215732", diffuser: true },
+  { label: "#2108 Holly Green", sub: "", hex: "#2D6A4F" },
+  { label: "#2146 Ivory", sub: "", hex: "#F5ECD7" },
+  { label: "#2016 Yellow", sub: "Diffuser Needed", hex: "#FFD700", diffuser: true },
+  { label: "#2037 Yellow", sub: "", hex: "#F5C518" },
+  { label: "#2119 Orange", sub: "", hex: "#E8650A" },
+  { label: "#2412 Bronze", sub: "", hex: "#8B6914" },
+  { label: "Day/Night", sub: "Diffuser Needed", hex: "#D4C5A9", diffuser: true },
+  { label: "Subway Green", sub: "", hex: "#2E7D32" },
+  { label: "Subway Yellow", sub: "", hex: "#F9C80E" },
+  { label: "#0000 Clear", sub: "", hex: "transparent", border: true },
+  { label: "Custom", sub: "Specify below", hex: "custom" },
+];
+const ACRYLIC_COLORS = ACRYLIC_SWATCHES.map(s => s.label + (s.sub ? ` (${s.sub})` : ""));
+
+// Trim cap swatches
+const TRIM_CAP_SWATCHES = [
+  { label: "Standard White", hex: "#F5F5F0" },
+  { label: "Standard Black", hex: "#1A1A1A" },
+  { label: "Standard Silver", hex: "#C0C0C0" },
+  { label: "Standard Gold", hex: "#C9A84C" },
+  { label: "Standard Bronze", hex: "#8B6914" },
+  { label: "Standard Red", hex: "#C8102E" },
+  { label: "Standard Blue", hex: "#0057A8" },
+  { label: "Standard Green", hex: "#2D6A4F" },
+  { label: "Custom Painted", hex: "custom" },
 ];
 const INSTALLATION_TYPES = [
   "Flush Mount", "Standard Raceway (5\"×6\")", "Custom Raceway",
@@ -77,6 +110,60 @@ const STEPS = ["Your Info", "Product Type", "Sign Details", "Colors", "Extras & 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h3 className="font-serif text-xl text-forest mb-4">{children}</h3>;
+}
+
+type SwatchItem = { label: string; sub?: string; hex: string; diffuser?: boolean; border?: boolean };
+function SwatchPicker({
+  swatches, selected, onSelect, label,
+}: {
+  swatches: SwatchItem[];
+  selected: string;
+  onSelect: (v: string) => void;
+  label: string;
+}) {
+  return (
+    <div>
+      <p className="text-xs text-stone-500 mb-3">Click a swatch to select — it will populate the field below.</p>
+      <div className="flex flex-wrap gap-2">
+        {swatches.map(s => {
+          const value = s.label + (s.sub ? ` (${s.sub})` : "");
+          const isSelected = selected === value;
+          const isCustom = s.hex === "custom";
+          const isClear = s.hex === "transparent";
+          return (
+            <button
+              key={value}
+              type="button"
+              title={value}
+              onClick={() => onSelect(value)}
+              className={`group relative flex flex-col items-center gap-1.5 p-1.5 rounded-xl border-2 transition-all ${
+                isSelected
+                  ? "border-forest shadow-md scale-105"
+                  : "border-transparent hover:border-sage/50 hover:scale-105"
+              }`}
+            >
+              <span
+                className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold ${
+                  isClear ? "border-2 border-dashed border-stone-300 bg-white text-stone-400" : ""
+                } ${isCustom ? "border-2 border-dashed border-sage bg-sage/10 text-sage" : ""}`}
+                style={!isCustom && !isClear ? { backgroundColor: s.hex } : {}}
+              >
+                {isCustom && "+"}
+                {isClear && "∅"}
+              </span>
+              {s.diffuser && (
+                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 border-2 border-white" />
+              )}
+              {isSelected && (
+                <span className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-forest border-2 border-white" />
+              )}
+              <span className="text-[10px] text-stone-600 leading-tight text-center max-w-[48px] truncate">{s.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
   return (
@@ -542,28 +629,50 @@ export default function QuotePage() {
               </p>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Acrylic Color</SectionTitle>
-                <Select value={acrylicColor} onValueChange={setAcrylicColor}>
-                  <SelectTrigger><SelectValue placeholder="Select acrylic color…" /></SelectTrigger>
-                  <SelectContent className="max-h-60">
-                    {ACRYLIC_COLORS.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-                {acrylicColor === "Custom (specify below)" && (
-                  <Input className="mt-3" value={acrylicColorCustom} onChange={e => setAcrylicColorCustom(e.target.value)} placeholder="Describe your custom acrylic color…" />
-                )}
+                <SwatchPicker
+                  swatches={ACRYLIC_SWATCHES}
+                  selected={acrylicColor}
+                  onSelect={v => { setAcrylicColor(v); if (v !== "Custom (Specify below)") setAcrylicColorCustom(""); }}
+                  label="Acrylic Color"
+                />
+                <div className="mt-4">
+                  <FieldLabel>Acrylic Color</FieldLabel>
+                  <Select value={acrylicColor} onValueChange={v => { setAcrylicColor(v); if (v !== "Custom (Specify below)") setAcrylicColorCustom(""); }}>
+                    <SelectTrigger><SelectValue placeholder="Or select from dropdown…" /></SelectTrigger>
+                    <SelectContent className="max-h-60">
+                      {ACRYLIC_COLORS.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                  {(acrylicColor.startsWith("Custom")) && (
+                    <Input className="mt-3" value={acrylicColorCustom} onChange={e => setAcrylicColorCustom(e.target.value)} placeholder="Describe your custom acrylic color…" />
+                  )}
+                </div>
+                <p className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 mr-1.5 align-middle" />
+                  Swatches marked with an amber dot require a diffuser panel.
+                </p>
               </div>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Applied Graphics & Trim</SectionTitle>
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <FieldLabel>Applied Graphics Color(s)</FieldLabel>
-                    <Input value={graphicsColor} onChange={e => setGraphicsColor(e.target.value)} placeholder="e.g. 3M 3630-15 Black, 3M 3630-57 Red…" />
-                  </div>
-                  <div>
-                    <FieldLabel>Trim Cap Color</FieldLabel>
-                    <Input value={trimCapColor} onChange={e => setTrimCapColor(e.target.value)} placeholder="e.g. Standard White, Custom Painted Silver…" />
-                  </div>
+                <SectionTitle>Trim Cap Color</SectionTitle>
+                <SwatchPicker
+                  swatches={TRIM_CAP_SWATCHES}
+                  selected={trimCapColor}
+                  onSelect={setTrimCapColor}
+                  label="Trim Cap Color"
+                />
+                <div className="mt-4">
+                  <FieldLabel>Trim Cap Color</FieldLabel>
+                  <Input
+                    value={trimCapColor}
+                    onChange={e => setTrimCapColor(e.target.value)}
+                    placeholder="e.g. Standard White, Custom Painted Silver…"
+                  />
                 </div>
+              </div>
+              <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                <SectionTitle>Applied Graphics Color(s)</SectionTitle>
+                <FieldLabel>Applied Graphics Color(s)</FieldLabel>
+                <Input value={graphicsColor} onChange={e => setGraphicsColor(e.target.value)} placeholder="e.g. 3M 3630-15 Black, 3M 3630-57 Red…" />
               </div>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Return & Raceway Colors</SectionTitle>
