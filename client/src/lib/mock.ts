@@ -4,8 +4,8 @@ export const brand = {
   fullName: "Canadian Wholesale Sign Group",
   tagline: "Crafted In Canada For Sign Professionals",
   phone: "1-800-555-0142",
-  email: "hello@cwsgroup.ca",
-  address: "2840 Industrial Way, Mississauga, ON L4W 1Y3",
+  email: "sales@canadianwholesalesigns.ca",
+  address: "6 Nicholas Beaver Rd, Guelph, ON N1H 6H9",
 };
 
 export const navLinks = [

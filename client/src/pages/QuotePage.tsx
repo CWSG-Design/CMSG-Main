@@ -308,7 +308,7 @@ export default function QuotePage() {
           </p>
           <p className="mt-3 text-sm text-stone-500">
             For urgent requests, email us at{" "}
-            <a href="mailto:sales@cwsg.ca" className="text-forest underline">sales@cwsg.ca</a>.
+            <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>.
           </p>
           <Button onClick={() => { setSubmitted(false); setStep(0); }} className="mt-8 bg-forest hover:bg-forest/90 text-bone rounded-full px-8">
             Submit another quote
@@ -759,7 +759,7 @@ export default function QuotePage() {
                 <p className="text-sm text-stone-700 font-medium mb-2">Artwork Files</p>
                 <p className="text-sm text-stone-500">
                   Please email your artwork files (PDF, EPS, AI preferred; JPG/PNG at 300 dpi CMYK for digital prints) directly to{" "}
-                  <a href="mailto:sales@cwsg.ca" className="text-forest underline">sales@cwsg.ca</a>{" "}
+                  <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>{" "}
                   with your company name in the subject line. Max file size: 300 MB.
                 </p>
               </div>

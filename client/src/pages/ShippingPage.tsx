@@ -61,7 +61,7 @@ export default function ShippingPage() {
                 Estimated <span className="italic text-sage">transit times</span>.
               </h2>
               <p className="mt-5 text-stone-700 leading-relaxed">
-                Transit windows below are typical for ground freight from our facility in Mississauga, ON. We'll confirm the exact ETA the day your crate leaves the dock.
+                Transit windows below are typical for ground freight from our facility in Guelph, ON. We'll confirm the exact ETA the day your crate leaves the dock.
               </p>
               <div className="mt-8 relative aspect-[5/4] rounded-2xl overflow-hidden border border-stone-200 bg-white">
                 <img

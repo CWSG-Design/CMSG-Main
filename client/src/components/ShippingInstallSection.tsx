@@ -6,7 +6,7 @@ const cards = [
     to: "/shipping",
     eyebrow: "Logistics",
     title: "Canada-wide shipping, one flat rate.",
-    body: "Coast-to-coast freight from Mississauga, ON. Enclosed crates, peanut-free packaging, all-inclusive pricing to every province.",
+    body: "Coast-to-coast freight from Guelph, ON. Enclosed crates, peanut-free packaging, all-inclusive pricing to every province.",
     Icon: Truck,
     bg: "bg-forest text-bone",
     arrowBg: "bg-bone text-forest",
