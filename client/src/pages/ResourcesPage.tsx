@@ -13,6 +13,7 @@ import {
   ChevronDown,
   ArrowRight,
 } from "lucide-react";
+import ShareBar from "@/components/ShareBar";
 import { brand } from "@/lib/mock";
 
 /* ─── Data ──────────────────────────────────────────────────────────────── */
@@ -745,6 +746,14 @@ export default function ResourcesPage() {
             Specs, install guides, warranties and the deep technical knowledge to help you sell,
             design and install with confidence.
           </p>
+          <div className="mt-8 flex justify-center">
+            <ShareBar
+              variant="full"
+              title="Resources — Canadian Wholesale Sign Group"
+              description="Specs, install guides, warranties, glossary, FAQ and more. Everything you need to sell, design and install CWS signage with confidence."
+              className="[&_span]:text-bone/60 [&_a]:border-bone/30 [&_a]:text-bone/70 [&_a:hover]:bg-sage [&_a:hover]:text-forest [&_button]:border-bone/30 [&_button]:text-bone/70 [&_button:hover]:bg-sage [&_button:hover]:text-forest"
+            />
+          </div>
         </div>
       </section>
 

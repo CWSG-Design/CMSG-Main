@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, CheckCircle2, Ruler, Zap, Shield, Layers } from "lucide-react";
+import ShareBar from "@/components/ShareBar";
 import { products } from "@/lib/mock";
 
 /* ─── Per-product rich content ─────────────────────────────────────────────── */
@@ -371,6 +372,13 @@ export default function ProductDetailPage() {
                     Talk to Our Team
                   </Button>
                 </Link>
+              </div>
+              <div className="mt-6">
+                <ShareBar
+                  variant="full"
+                  title={`${product.title} — Canadian Wholesale Sign Group`}
+                  description={detail.description}
+                />
               </div>
             </div>
             <div className="relative">

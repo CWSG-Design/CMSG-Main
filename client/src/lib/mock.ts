@@ -8,6 +8,12 @@ export const brand = {
   address: "6 Nicholas Beaver Rd, Guelph, ON N1H 6H9",
   founded: "2014",
   website: "canadianwholesalesigns.com",
+  social: {
+    linkedin: "https://www.linkedin.com/company/canadian-wholesale-sign-group",
+    instagram: "https://www.instagram.com/canadianwholesalesigns",
+    facebook: "https://www.facebook.com/canadianwholesalesigns",
+    twitter: "https://x.com/CWSGroupCanada",
+  },
 };
 
 export const navLinks = [

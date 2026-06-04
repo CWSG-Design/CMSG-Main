@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import ShareBar from "@/components/ShareBar";
 import { products } from "@/lib/mock";
 
 const categories = [
@@ -56,6 +57,13 @@ export default function ProductsPage() {
           <p className="mt-6 max-w-2xl text-stone-700 leading-relaxed text-lg">
             Thirteen product types. Every one fabricated at our Guelph, Ontario facility using CNC precision routing, automated letter bending, and CSA-certified LED components. B2B wholesale pricing — shipped coast-to-coast in 10 days or less.
           </p>
+          <div className="mt-6">
+            <ShareBar
+              variant="full"
+              title="Product Catalogue — Canadian Wholesale Sign Group"
+              description="13 premium signage product types fabricated in Canada. Channel letters, 3D printed signs, fascia signs, pylon signs, and more. B2B wholesale pricing shipped coast-to-coast."
+            />
+          </div>
         </div>
       </section>
 

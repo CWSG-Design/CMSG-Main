@@ -9,6 +9,7 @@ import {
   Phone, Mail, MapPin, Wrench, Truck, Search, Users, Globe, X, ChevronRight,
 } from "lucide-react";
 import { Link } from "wouter";
+import ShareBar from "@/components/ShareBar";
 import { trpc } from "@/lib/trpc";
 
 type InstallerRow = {
@@ -235,6 +236,13 @@ export default function InstallationDirectoryPage() {
                 Please note: This listing is not an endorsement. CWS does not guarantee the work of
                 these companies. Please conduct your own due diligence when selecting a vendor.
               </p>
+              <div className="mt-5">
+                <ShareBar
+                  variant="full"
+                  title="Sign Installer Directory — Canadian Wholesale Sign Group"
+                  description="Find vetted sign installation companies across Canada. Browse our interactive map directory."
+                />
+              </div>
             </div>
             <Link href="/installer-sign-up">
               <Button className="bg-forest hover:bg-forest/90 text-bone rounded-full px-7 shrink-0">

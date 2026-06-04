@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight, ZoomIn } from "lucide-react";
+import ShareBar from "@/components/ShareBar";
 import { gallery } from "@/lib/mock";
 
 const filters = [
@@ -55,6 +56,13 @@ export default function GalleryPage() {
           <p className="mt-6 max-w-2xl text-stone-700 leading-relaxed text-lg">
             Every image in this gallery is a real CWS project — fabricated at our Guelph, Ontario facility and installed across Canada. From national retail brands to independent boutiques, our work speaks for itself.
           </p>
+          <div className="mt-6">
+            <ShareBar
+              variant="full"
+              title="Project Gallery — Canadian Wholesale Sign Group"
+              description="Real signage projects fabricated in Guelph, Ontario and installed across Canada. Channel letters, 3D printed signs, fascia signs, pylon signs, and more."
+            />
+          </div>
         </div>
       </section>
 
