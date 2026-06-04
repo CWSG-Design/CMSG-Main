@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { CheckCircle2, ChevronRight, ChevronLeft, ZoomIn, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -131,34 +132,45 @@ function SwatchPicker({
           const isCustom = s.hex === "custom";
           const isClear = s.hex === "transparent";
           return (
-            <button
-              key={value}
-              type="button"
-              title={value}
-              onClick={() => onSelect(value)}
-              className={`group relative flex flex-col items-center gap-1.5 p-1.5 rounded-xl border-2 transition-all ${
-                isSelected
-                  ? "border-forest shadow-md scale-105"
-                  : "border-transparent hover:border-sage/50 hover:scale-105"
-              }`}
-            >
-              <span
-                className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold ${
-                  isClear ? "border-2 border-dashed border-stone-300 bg-white text-stone-400" : ""
-                } ${isCustom ? "border-2 border-dashed border-sage bg-sage/10 text-sage" : ""}`}
-                style={!isCustom && !isClear ? { backgroundColor: s.hex } : {}}
+            <Tooltip key={value} delayDuration={150}>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  onClick={() => onSelect(value)}
+                  className={`group relative flex flex-col items-center gap-1.5 p-1.5 rounded-xl border-2 transition-all ${
+                    isSelected
+                      ? "border-forest shadow-md scale-105"
+                      : "border-transparent hover:border-sage/50 hover:scale-105"
+                  }`}
+                >
+                  <span
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold ${
+                      isClear ? "border-2 border-dashed border-stone-300 bg-white text-stone-400" : ""
+                    } ${isCustom ? "border-2 border-dashed border-sage bg-sage/10 text-sage" : ""}`}
+                    style={!isCustom && !isClear ? { backgroundColor: s.hex } : {}}
+                  >
+                    {isCustom && "+"}
+                    {isClear && "∅"}
+                  </span>
+                  {s.diffuser && (
+                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 border-2 border-white" />
+                  )}
+                  {isSelected && (
+                    <span className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-forest border-2 border-white" />
+                  )}
+                  <span className="text-[10px] text-stone-600 leading-tight text-center max-w-[48px] truncate">{s.label}</span>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                className="bg-forest text-bone text-xs px-3 py-2 rounded-lg shadow-lg max-w-[180px] text-center"
               >
-                {isCustom && "+"}
-                {isClear && "∅"}
-              </span>
-              {s.diffuser && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 border-2 border-white" />
-              )}
-              {isSelected && (
-                <span className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-forest border-2 border-white" />
-              )}
-              <span className="text-[10px] text-stone-600 leading-tight text-center max-w-[48px] truncate">{s.label}</span>
-            </button>
+                <p className="font-semibold">{s.label}{s.sub ? ` — ${s.sub}` : ""}</p>
+                {s.diffuser && (
+                  <p className="text-amber-300 mt-0.5 text-[11px]">⚠ Diffuser panel required</p>
+                )}
+              </TooltipContent>
+            </Tooltip>
           );
         })}
       </div>
