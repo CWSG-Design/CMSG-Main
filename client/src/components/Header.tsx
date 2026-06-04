@@ -34,13 +34,13 @@ export default function Header() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="text-sm font-medium text-stone-700 hover:text-forest transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sage hover:after:w-full after:transition-all"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -66,14 +66,14 @@ export default function Header() {
         <div className="lg:hidden bg-cream border-t border-stone-200">
           <div className="px-6 py-4 flex flex-col gap-3">
             {navLinks.map((l) => (
-              <a
+              <Link
                 key={l.label}
-                href={l.href}
+                to={l.href}
                 onClick={() => setOpen(false)}
                 className="py-2 text-stone-800 border-b border-stone-100"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
             <Link to="/quote" onClick={() => setOpen(false)}>
               <Button className="w-full bg-forest hover:bg-forest-dark text-bone rounded-full mt-2">Get a Quote</Button>

@@ -12,11 +12,17 @@ import ContactPage from "./pages/ContactPage";
 import InstallationDirectoryPage from "./pages/InstallationDirectoryPage";
 import NotFound from "./pages/NotFound";
 import ResourcesPage from "./pages/ResourcesPage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import GalleryPage from "./pages/GalleryPage";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/products" component={ProductsPage} />
+      <Route path="/products/:slug" component={ProductDetailPage} />
+      <Route path="/gallery" component={GalleryPage} />
       <Route path="/quote" component={QuotePage} />
       <Route path="/shipping" component={ShippingPage} />
       <Route path="/installation" component={InstallationPage} />

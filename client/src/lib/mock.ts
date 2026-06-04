@@ -11,8 +11,8 @@ export const brand = {
 };
 
 export const navLinks = [
-  { label: "Products", href: "/#products" },
-  { label: "Gallery", href: "/#gallery" },
+  { label: "Products", href: "/products" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Shipping", href: "/shipping" },
   { label: "Installation", href: "/installation" },
   { label: "Installer Directory", href: "/installation-directory" },
@@ -301,8 +301,8 @@ export const installation = {
   intro:
     "All CWS signs are shipped with the assumption they will be installed in accordance with the Canadian Electrical Code (CSA C22.1, Section 34) and all applicable local codes — including proper grounding and bonding.",
   videos: [
-    { label: "How to wire RGB LED channel letters", url: "https://www.youtube.com/watch?v=17bO-58Mw-A" },
-    { label: "Channel letters raceway & wireway mounting", url: "https://www.youtube.com/watch?v=DR_Si0jMuSs" },
+    { label: "How to Wire LED Channel Letters", url: "" },
+    { label: "Raceway & Wireway Mounting", url: "" },
   ],
   steps: [
     {

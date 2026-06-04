@@ -51,7 +51,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {products.slice(0, 8).map((p) => (
                 <li key={p.slug}>
-                  <a href={`#${p.slug}`} className="text-sm text-bone/75 hover:text-bone transition-colors">{p.title}</a>
+                  <Link to={`/products/${p.slug}`} className="text-sm text-bone/75 hover:text-bone transition-colors">{p.title}</Link>
                 </li>
               ))}
             </ul>

@@ -39,22 +39,37 @@ export default function InstallationPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid md:grid-cols-2 gap-5">
             {installation.videos.map((v) => (
-              <a
-                key={v.label}
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 bg-white rounded-2xl border border-stone-200 p-5 hover:border-forest hover:shadow-lg transition-all"
-              >
-                <span className="h-14 w-14 rounded-xl bg-forest group-hover:bg-sage text-bone flex items-center justify-center transition-colors">
-                  <PlayCircle className="h-7 w-7" />
-                </span>
-                <div>
-                  <div className="text-xs uppercase tracking-[0.18em] text-sage font-semibold">Watch video</div>
-                  <div className="font-serif text-lg text-forest mt-1">{v.label}</div>
+              v.url ? (
+                <a
+                  key={v.label}
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 bg-white rounded-2xl border border-stone-200 p-5 hover:border-forest hover:shadow-lg transition-all"
+                >
+                  <span className="h-14 w-14 rounded-xl bg-forest group-hover:bg-sage text-bone flex items-center justify-center transition-colors">
+                    <PlayCircle className="h-7 w-7" />
+                  </span>
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.18em] text-sage font-semibold">Watch video</div>
+                    <div className="font-serif text-lg text-forest mt-1">{v.label}</div>
+                  </div>
+                  <ArrowRight className="ml-auto h-5 w-5 text-stone-400 group-hover:text-forest transition-colors" />
+                </a>
+              ) : (
+                <div
+                  key={v.label}
+                  className="flex items-center gap-4 bg-stone-50 rounded-2xl border-2 border-dashed border-stone-300 p-5 opacity-60"
+                >
+                  <span className="h-14 w-14 rounded-xl bg-stone-200 text-stone-400 flex items-center justify-center">
+                    <PlayCircle className="h-7 w-7" />
+                  </span>
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.18em] text-stone-400 font-semibold">Video Coming Soon</div>
+                    <div className="font-serif text-lg text-stone-500 mt-1">{v.label}</div>
+                  </div>
                 </div>
-                <ArrowRight className="ml-auto h-5 w-5 text-stone-400 group-hover:text-forest transition-colors" />
-              </a>
+              )
             ))}
           </div>
         </div>
