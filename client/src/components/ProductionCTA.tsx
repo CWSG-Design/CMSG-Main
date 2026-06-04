@@ -18,7 +18,7 @@ export default function ProductionCTA() {
                 Channel letter signs in <span className="italic text-sage">10 days</span> or less.
               </h3>
               <p className="mt-5 text-bone/80 max-w-md leading-relaxed">
-                Your time matters. Our lean manufacturing process and Canadian-based shop means faster turnarounds without compromising the finish.
+                From the initial design phase to final delivery, clients receive efficient, cost-effective, and reliable support at every stage. CNC precision cutting and automated bending — no shortcuts, no compromises.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row md:justify-end gap-3">

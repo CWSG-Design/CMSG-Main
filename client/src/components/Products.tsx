@@ -17,7 +17,7 @@ export default function ProductsSection() {
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Products</div>
             <h2 className="font-serif text-4xl md:text-5xl text-bone leading-tight max-w-2xl">
-              Custom <span className="italic text-sage">business signs</span> — crafted to spec.
+              Full-range custom <span className="italic text-sage">signage solutions</span> — crafted to spec.
             </h2>
           </div>
           <div className="flex gap-3">

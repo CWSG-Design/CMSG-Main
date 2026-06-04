@@ -18,15 +18,15 @@ export default function Hero() {
           <div className="lg:col-span-7 fade-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-forest/20 bg-white/60 backdrop-blur px-3 py-1 text-xs uppercase tracking-[0.18em] text-forest mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-sage" />
-              Customized For Your Business
+              Canada's Dedicated Wholesale Partner
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-forest leading-[1.02]">
-              Wholesale
+              Premium LED
               <span className="block italic font-normal text-sage">Channel Letters</span>
               made in Canada.
             </h1>
             <p className="mt-7 max-w-xl text-base md:text-lg text-stone-700 leading-relaxed">
-              At {brand.fullName}, we are a turnkey manufacturer of premium LED channel letters with over 25 years of experience. We design, fabricate, and ship custom signage for sign shops and brokers across every Canadian province and the U.S.
+              Since {brand.founded}, {brand.fullName} has been a trusted B2B partner for high-quality custom business signage across North America. We provide a dependable, innovative alternative to traditional wholesale suppliers — specializing in premium LED channel letters, fascia signs, pylon signs, and custom interior signage.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link to="/quote">

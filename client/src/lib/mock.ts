@@ -2,10 +2,12 @@
 export const brand = {
   name: "CWS",
   fullName: "Canadian Wholesale Sign Group",
-  tagline: "Crafted In Canada For Sign Professionals",
+  tagline: "Canada's Dedicated Wholesale Signage Partner",
   phone: "519.498.5825",
   email: "sales@canadianwholesalesigns.ca",
   address: "6 Nicholas Beaver Rd, Guelph, ON N1H 6H9",
+  founded: "2014",
+  website: "canadianwholesalesigns.com",
 };
 
 export const navLinks = [
@@ -20,26 +22,32 @@ export const navLinks = [
 
 export const values = [
   {
-    title: "Craftsmanship",
+    title: "Quality",
     description:
-      "Every channel letter is shaped, welded, and finished by hands that have spent decades perfecting the trade.",
+      "Built with top-grade materials and industry-leading standards. Our signs are precision-cut on CNC router tables and formed on automated bending machines — engineered to last.",
   },
   {
-    title: "Integrity",
+    title: "Customization",
     description:
-      "We commit, we communicate, we deliver. Honest timelines and transparent pricing — every single project.",
+      "Every sign is tailored to your client's unique brand goals and budget requirements. Face-lit, halo-lit, combination-lit, 3D printed — we build exactly what you spec.",
   },
   {
-    title: "Expertise",
+    title: "Reliability",
     description:
-      "Dedicated solely to channel letter fabrication, paired with lean manufacturing and automated precision tooling.",
+      "Consistent, dependable service from the initial design phase to final delivery. Our 10-day lead time is real, and our communication is transparent at every stage.",
   },
   {
-    title: "Partnership",
+    title: "Innovation",
     description:
-      "Your reputation is on the line at every install. We treat your customers as if they were ours.",
+      "From automated bending technology to our 3D printed illuminated sign house specialty, we continuously invest in modern manufacturing to deliver standout designs.",
   },
 ];
+
+export const about = {
+  headline: "Canada's Dedicated Wholesale Signage Partner — Since 2014",
+  body: "Since 2014, Canadian Wholesale Sign Group has been a trusted B2B partner for high-quality custom business signage across North America. Founded to offer a dependable, innovative alternative to traditional wholesale suppliers, we specialize in premium LED wholesale channel letters and a full range of custom signage solutions. Our mission is simple: exceed client expectations through superior craftsmanship, collaborative service, and tailored branding solutions.",
+  manufacturing: "We leverage high-end technology at every step — faces and backs are precision-cut on a CNC router table, while returns are formed on an automated bending machine for structural integrity and consistency. All channel letter products utilize LED illumination for an efficient, cost-effective, and high-impact result.",
+};
 
 export const resources = [
   { title: "Guides & Diagrams", description: "Spec sheets, mounting plans, colour charts and step-by-step how-tos." },
@@ -56,67 +64,80 @@ export const products = [
     slug: "front-lit-channel-letters",
     title: "Front Lit Channel Letters",
     image: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg",
-    blurb: "Classic illuminated faces with crisp daytime and nighttime presence.",
+    blurb: "High-visibility illuminated faces that deliver a classic, professional look — seen clearly from a distance day or night.",
+  },
+  {
+    slug: "halo-illuminated-channel-letters",
+    title: "Halo Illuminated Channel Letters",
+    image: "/manus-storage/boutique_halo_lit_b374c3e0.jpg",
+    blurb: "Designed to add a touch of elegance to any building — a sophisticated warm glow washes behind the letters against the wall.",
+  },
+  {
+    slug: "face-halo-combination",
+    title: "Face & Halo Combination Lit",
+    image: "/manus-storage/gallery_hudsons_bay_night_b6c356e0.jpg",
+    blurb: "Maximum impact — combines front illumination with halo glow for a truly standout, cutting-edge design.",
   },
   {
     slug: "trimless-channel-letters",
     title: "Trimless Channel Letters",
     image: "/manus-storage/product_mountain_warehouse_2183dd12.jpg",
-    blurb: "Seamless premium look — no visible trim cap, pure architectural finish.",
+    blurb: "Seamless premium look — no visible trim cap, pure architectural finish that elevates any brand.",
+  },
+  {
+    slug: "fascia-storefront-signs",
+    title: "Fascia & Storefront Signs",
+    image: "/manus-storage/real_deal_fascia_c73ac06c.jpg",
+    blurb: "Your core storefront solution for maximum impact. Durable, expertly crafted fascia signs that transform retail environments into sophisticated branded spaces.",
+  },
+  {
+    slug: "interior-hanging-signs",
+    title: "Custom Interior & Hanging Signs",
+    image: "/manus-storage/hardware_interior_hanging_c7034b10.jpg",
+    blurb: "Elevate your retail or corporate environment with high-impact interior signage — from hanging channel letters to suspended aisle markers.",
+  },
+  {
+    slug: "3d-printed-signs",
+    title: "3D Printed Illuminated Signs",
+    image: "/manus-storage/great_outdoors_footwear_interior_798c2347.jpg",
+    blurb: "Our house specialty. A minimalist 3D signage approach with crisp, premium look — bold typography, acrylic faces, and a clean floating aesthetic with concealed wiring.",
+  },
+  {
+    slug: "pylon-ground-signs",
+    title: "Pylon & Ground Signs",
+    image: "/manus-storage/hero_longos_night_4755c444.jpg",
+    blurb: "Command attention from a distance. High-impact pylon and ground signs engineered for durability and maximum visibility — scalable from single units to multi-tenant pylons.",
   },
   {
     slug: "push-through-faux-neon",
     title: "Push-Through & Faux Neon",
-    image: "/manus-storage/hero_longos_night_4755c444.jpg",
-    blurb: "Modern LED neon and acrylic push-throughs that glow like the real thing.",
-  },
-  {
-    slug: "open-face-channel-letters",
-    title: "Open Face Channel Letters",
     image: "/manus-storage/product_subway_snow_0f5cf8db.jpg",
-    blurb: "Exposed neon-style LEDs framed in painted aluminum returns.",
+    blurb: "Modern LED neon and acrylic push-throughs that glow like the real thing — without the fragility or power cost.",
   },
   {
     slug: "flat-cut-out-letters",
     title: "Flat Cut Out Letters",
     image: "/manus-storage/product_olsen_closeup_0e12003a.jpg",
-    blurb: "Dimensional non-illuminated letters routed from premium materials.",
+    blurb: "Dimensional non-illuminated letters precision-routed from premium aluminum or acrylic — clean, architectural, and built to last.",
   },
   {
     slug: "tenant-panels",
     title: "Tenant Panels",
     image: "/manus-storage/gallery_smurfit_westrock_ebe60129.jpg",
-    blurb: "Durable pylon and monument panels built for harsh Canadian winters.",
+    blurb: "Durable pylon and monument panels built for harsh Canadian winters — consistent finish across multi-tenant properties.",
   },
   {
-    slug: "reverse-lit-channel-letters",
-    title: "Reverse Lit Channel Letters",
-    image: "/manus-storage/product_maple_leaf_letter_466caeec.jpg",
-    blurb: "Halo-lit elegance that washes light against the wall behind the letter.",
-  },
-  {
-    slug: "front-halo-lit",
-    title: "Front / Halo Lit Letters",
-    image: "/manus-storage/gallery_hudsons_bay_night_b6c356e0.jpg",
-    blurb: "Dual illumination — face-lit by day, halo-glow by night.",
-  },
-  {
-    slug: "contour-logos",
-    title: "Contour Logos & Logo Boxes",
-    image: "/manus-storage/install_action_ladders_d567f9bd.jpg",
-    blurb: "Custom-shaped illuminated logos and clean modern logo boxes.",
-  },
-  {
-    slug: "in-store-display",
-    title: "In-Store Display Signs",
-    image: "/manus-storage/install_delivery_truck_50851248.jpg",
-    blurb: "Interior signage that brings your brand inside the showroom.",
+    slug: "open-face-channel-letters",
+    title: "Open Face Channel Letters",
+    image: "/manus-storage/bone_biscuit_daytime_426ff3ce.jpg",
+    blurb: "Exposed neon-style LEDs framed in painted aluminum returns — a retro-modern look with contemporary LED efficiency.",
   },
 ];
 
-// Real project photos from Google Photos — fill remaining slots with picsum
+// Real project photos from Google Photos + brochure extracts
 const realGalleryPhotos = [
   { src: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg", alt: "The Bone & Biscuit Co. — Front Lit Channel Letters, night" },
+  { src: "/manus-storage/bone_biscuit_daytime_426ff3ce.jpg", alt: "The Bone & Biscuit Co. — Open Face Channel Letters, daytime" },
   { src: "/manus-storage/hero_longos_night_4755c444.jpg", alt: "Longo's — Large illuminated script letters, night" },
   { src: "/manus-storage/product_mountain_warehouse_2183dd12.jpg", alt: "Mountain Warehouse — Illuminated channel letters, mall" },
   { src: "/manus-storage/product_subway_snow_0f5cf8db.jpg", alt: "Subway — Illuminated channel letters in winter" },
@@ -126,14 +147,18 @@ const realGalleryPhotos = [
   { src: "/manus-storage/product_maple_leaf_letter_466caeec.jpg", alt: "Canadian maple leaf channel letter — fabrication detail" },
   { src: "/manus-storage/install_action_ladders_d567f9bd.jpg", alt: "Installation crew mounting Bone & Biscuit sign" },
   { src: "/manus-storage/install_delivery_truck_50851248.jpg", alt: "Channel letters on delivery truck, installation crew" },
+  { src: "/manus-storage/real_deal_fascia_c73ac06c.jpg", alt: "The Real Deal Sports Bar & Billiards — Fascia sign" },
+  { src: "/manus-storage/hardware_interior_hanging_c7034b10.jpg", alt: "HARDWARE — Interior hanging illuminated letters" },
+  { src: "/manus-storage/great_outdoors_footwear_interior_798c2347.jpg", alt: "The Great Outdoors Footwear — Interior 3D illuminated sign" },
+  { src: "/manus-storage/boutique_halo_lit_b374c3e0.jpg", alt: "Boutique — Halo illuminated letters on brick wall" },
 ];
 
 export const gallery = [
   ...realGalleryPhotos.map((p, i) => ({ id: i + 1, src: p.src, alt: p.alt })),
-  ...Array.from({ length: 14 }).map((_, i) => ({
-    id: i + 11,
-    src: `https://picsum.photos/seed/cws-gallery-${i + 11}/800/600`,
-    alt: `CWS project ${i + 11}`,
+  ...Array.from({ length: 9 }).map((_, i) => ({
+    id: i + 16,
+    src: `https://picsum.photos/seed/cws-gallery-${i + 16}/800/600`,
+    alt: `CWS project ${i + 16}`,
   })),
 ];
 
@@ -190,12 +215,12 @@ export const testimonials = [
 
 export const shipping = {
   intro:
-    "From our facility just outside Toronto, we ship coast-to-coast across all 10 provinces and 3 territories — plus the U.S. Lower 48. One flat all-inclusive rate, peanut-free packaging, enclosed carriers.",
+    "From our facility in Guelph, Ontario, we ship coast-to-coast across all 10 provinces and 3 territories — plus the U.S. Lower 48. One flat all-inclusive rate, peanut-free packaging, enclosed carriers.",
   highlights: [
     {
       title: "Coast-to-Coast Coverage",
       description:
-        "Our central Ontario location lets us ship simply to every Canadian province and territory, with options to send into the U.S. Lower 48, Alaska and Hawaii.",
+        "Our central Ontario location lets us ship efficiently to every Canadian province and territory, with options to send into the U.S. Lower 48, Alaska and Hawaii.",
     },
     {
       title: "All-Inclusive Rates",
@@ -269,7 +294,7 @@ export const installation = {
 };
 
 export const stats = [
-  { value: "25+", label: "Years in business" },
+  { value: "2014", label: "Founded" },
   { value: "10", label: "Provinces served" },
   { value: "10 day", label: "Average lead time" },
   { value: "5 yr", label: "Warranty standard" },

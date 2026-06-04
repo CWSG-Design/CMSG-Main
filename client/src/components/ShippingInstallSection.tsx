@@ -6,7 +6,7 @@ const cards = [
     to: "/shipping",
     eyebrow: "Logistics",
     title: "Canada-wide shipping, one flat rate.",
-    body: "Coast-to-coast freight from Guelph, ON. Enclosed crates, peanut-free packaging, all-inclusive pricing to every province.",
+    body: "North America-wide freight from Guelph, ON. Enclosed crates, peanut-free packaging, all-inclusive flat rates to every Canadian province — plus the U.S. Lower 48. Professional results delivered on time.",
     Icon: Truck,
     arrowBg: "bg-sage text-forest",
     photo: "/manus-storage/install_delivery_truck_50851248.jpg",
@@ -16,7 +16,7 @@ const cards = [
     to: "/installation",
     eyebrow: "Installation",
     title: "A clean install, every time.",
-    body: "Step-by-step LED channel-letter wiring guide, Canadian Electrical Code references, and instructional videos for your crew.",
+    body: "All CWS signs ship with full installation documentation, Canadian Electrical Code references, and instructional videos. Our installer partner network is available across Canada for end-to-end project support.",
     Icon: Wrench,
     arrowBg: "bg-bone text-forest",
     photo: "/manus-storage/install_action_ladders_d567f9bd.jpg",
@@ -36,7 +36,7 @@ export default function ShippingInstallSection() {
             </h2>
           </div>
           <p className="text-stone-600 max-w-sm">
-            From the crate yard to the wall, we make sure every CWS sign arrives ready and goes up clean.
+            End-to-end management from initial design to final installation — efficient, cost-effective, and reliable at every stage.
           </p>
         </div>
 

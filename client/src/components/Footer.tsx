@@ -19,7 +19,7 @@ export default function Footer() {
               />
             </div>
             <p className="mt-5 text-bone/70 leading-relaxed max-w-sm">
-              Canadian manufacturer of premium LED channel letters. Built to last by a team that lives the craft.
+              Canada's dedicated wholesale signage partner since {brand.founded}. Premium LED channel letters, fascia signs, pylon signs, and custom interior signage — shipped coast-to-coast.
             </p>
             <div className="mt-6 flex gap-3">
               {[Linkedin, Instagram, Facebook].map((Icon, i) => (
@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <div className="text-xs uppercase tracking-[0.18em] text-sage font-semibold mb-4">Products</div>
             <ul className="space-y-2.5">
-              {products.slice(0, 6).map((p) => (
+              {products.slice(0, 8).map((p) => (
                 <li key={p.slug}>
                   <a href={`#${p.slug}`} className="text-sm text-bone/75 hover:text-bone transition-colors">{p.title}</a>
                 </li>

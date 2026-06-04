@@ -1,21 +1,37 @@
-import { values } from "@/lib/mock";
-import { Hammer, ShieldCheck, Cpu, Handshake } from "lucide-react";
+import { values, about } from "@/lib/mock";
+import { Star, Settings2, Zap, Users } from "lucide-react";
 
-const ICONS = [Hammer, ShieldCheck, Cpu, Handshake];
+const ICONS = [Star, Settings2, Zap, Users];
 
 export default function ValuesSection() {
   return (
     <section className="py-20 lg:py-28 bg-forest text-bone">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+
+        {/* About intro */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 mb-16 pb-16 border-b border-bone/10">
           <div>
-            <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Our Values</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Who We Are</div>
+            <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+              Canada's dedicated <span className="italic text-sage">wholesale signage</span> partner.
+            </h2>
+          </div>
+          <div className="flex flex-col justify-center gap-4">
+            <p className="text-bone/80 leading-relaxed">{about.body}</p>
+            <p className="text-bone/60 text-sm leading-relaxed">{about.manufacturing}</p>
+          </div>
+        </div>
+
+        {/* Four pillars */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-6">
+          <div>
+            <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Our Four Pillars</div>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight max-w-xl">
               Built on principles that <span className="italic text-sage">last.</span>
             </h2>
           </div>
           <p className="text-bone/70 max-w-sm">
-            Every decision we make — from materials to shipping — reflects the values we've held for 25 years.
+            Every decision we make — from materials to manufacturing to shipping — reflects these four commitments.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -17,7 +17,7 @@ export default function InstallerCTA() {
               <span className="italic text-sage">Join our directory.</span>
             </h3>
             <p className="mt-2 text-stone-600 max-w-2xl">
-              Get referrals from CWS clients in your service area. Free to join, no contracts.
+              CWS works with a trusted network of professional sign installers across Canada. Join our directory to receive referrals from CWS clients in your service area — free to list, no contracts.
             </p>
           </div>
           <Link to="/installer-sign-up" className="md:ml-auto">
