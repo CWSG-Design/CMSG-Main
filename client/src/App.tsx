@@ -11,8 +11,9 @@ import InstallerSignUpPage from "./pages/InstallerSignUpPage";
 import ContactPage from "./pages/ContactPage";
 import InstallationDirectoryPage from "./pages/InstallationDirectoryPage";
 import NotFound from "./pages/NotFound";
-
+import ResourcesPage from "./pages/ResourcesPage";
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/installer-sign-up" component={InstallerSignUpPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/installation-directory" component={InstallationDirectoryPage} />
+      <Route path="/resources" component={ResourcesPage} />
       <Route component={NotFound} />
     </Switch>
   );
