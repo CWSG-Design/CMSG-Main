@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -276,24 +277,51 @@ export default function QuotePage() {
   const next = () => { if (validate()) setStep(s => Math.min(s + 1, STEPS.length - 1)); };
   const back = () => setStep(s => Math.max(s - 1, 0));
 
+  const sendQuote = trpc.email.sendQuote.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Quote request submitted! We'll be in touch within 1 business day.");
+    },
+    onError: (err) => {
+      toast.error("Failed to submit quote. Please try again or email us directly.");
+      console.error("[Quote] Send error:", err);
+    },
+  });
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const data = {
-      companyName, isTradeCustomer, firstName, lastName, jobRole, email, phone,
-      street, street2, city, province, postal, country,
-      numSigns, inHandDate, installDate,
-      illumination, acrylicFaced, metalFaced, specialty, supplementary, mounting,
-      signText, overallW, overallH, logoW, logoH, mainLetterH, secLetterH,
-      installationType, installLocation, faceGraphics, ledType, logoBoxStyle,
-      acrylicColor, acrylicColorCustom, graphicsColor, trimCapColor, returnColor, racewayColor,
-      hangerBar, racewayLocation, extras, additionalNotes,
-      ts: Date.now(),
-    };
-    const list = JSON.parse(localStorage.getItem("cws_quotes") || "[]");
-    list.push(data);
-    localStorage.setItem("cws_quotes", JSON.stringify(list));
-    setSubmitted(true);
-    toast.success("Quote request submitted! We'll be in touch within 1 business day.");
+    const allSignTypes = [...acrylicFaced, ...metalFaced, ...specialty, ...supplementary];
+    sendQuote.mutate({
+      companyName,
+      firstName,
+      lastName,
+      jobTitle: jobRole || undefined,
+      email,
+      phone: phone || undefined,
+      billingAddress: [street, street2, city, province, postal, country].filter(Boolean).join(", ") || undefined,
+      illumination: illumination.join(", ") || undefined,
+      signTypes: allSignTypes.length ? allSignTypes : undefined,
+      mounting: mounting.join(", ") || undefined,
+      signText: signText || undefined,
+      width: overallW || undefined,
+      height: overallH || undefined,
+      letterHeight: mainLetterH || undefined,
+      logoWidth: logoW || undefined,
+      logoHeight: logoH || undefined,
+      installationType: installationType || undefined,
+      installationLocation: installLocation || undefined,
+      faceGraphics: faceGraphics.join(", ") || undefined,
+      ledType: ledType.join(", ") || undefined,
+      logoBoxStyle: logoBoxStyle || undefined,
+      acrylicColor: acrylicColor === "Custom (Specify below)" ? acrylicColorCustom : acrylicColor || undefined,
+      graphicsColor: graphicsColor || undefined,
+      trimCapColor: trimCapColor || undefined,
+      returnColor: returnColor || undefined,
+      racewayColo: racewayColor || undefined,
+      hangerBar: extras.includes("Hanger Bar") || undefined,
+      remotePowerSupply: extras.includes("Remote Power Supply") || undefined,
+      additionalInstructions: additionalNotes || undefined,
+    });
   };
 
   if (submitted) {
@@ -776,8 +804,9 @@ export default function QuotePage() {
                 Next: {STEPS[step + 1]} <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
             ) : (
-              <Button type="submit" className="bg-sage hover:bg-forest text-forest hover:text-bone rounded-full px-8 transition-colors">
-                Submit Quote Request
+              <Button type="submit" disabled={sendQuote.isPending} className="bg-sage hover:bg-forest text-forest hover:text-bone rounded-full px-8 transition-colors gap-2">
+                {sendQuote.isPending && <span className="inline-block h-4 w-4 border-2 border-forest/40 border-t-forest rounded-full animate-spin" />}
+                {sendQuote.isPending ? "Submitting…" : "Submit Quote Request"}
               </Button>
             )}
           </div>

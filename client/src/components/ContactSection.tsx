@@ -5,7 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { brand } from "@/lib/mock";
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,6 +18,17 @@ export default function ContactSection() {
     message: "",
   });
 
+  const sendContact = trpc.email.sendContact.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Message sent! We'll get back to you within 1 business day.");
+    },
+    onError: (err) => {
+      toast.error("Failed to send message. Please try again or email us directly.");
+      console.error("[Contact] Send error:", err);
+    },
+  });
+
   const update = (k: string, v: string) => setForm({ ...form, [k]: v });
 
   const onSubmit = (e: React.FormEvent) => {
@@ -25,11 +37,14 @@ export default function ContactSection() {
       toast.error("Please fill in your name, email, and message.");
       return;
     }
-    const list = JSON.parse(localStorage.getItem("cws_contacts") || "[]");
-    list.push({ ...form, ts: Date.now() });
-    localStorage.setItem("cws_contacts", JSON.stringify(list));
-    setSubmitted(true);
-    toast.success("Message sent! We'll get back to you within 1 business day.");
+    const [firstName, ...rest] = form.name.trim().split(" ");
+    sendContact.mutate({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      subject: form.subject || undefined,
+      message: form.message,
+    });
   };
 
   return (
@@ -160,10 +175,15 @@ export default function ContactSection() {
                   </p>
                   <Button
                     type="submit"
+                    disabled={sendContact.isPending}
                     className="bg-sage hover:bg-bone hover:text-forest text-forest rounded-full px-8 gap-2 shrink-0"
                   >
-                    <Send className="h-4 w-4" />
-                    Send Message
+                    {sendContact.isPending ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Send className="h-4 w-4" />
+                    )}
+                    {sendContact.isPending ? "Sending…" : "Send Message"}
                   </Button>
                 </div>
               </form>
