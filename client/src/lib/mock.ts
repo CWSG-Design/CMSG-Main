@@ -105,7 +105,7 @@ export const products = [
   {
     slug: "interior-hanging-signs",
     title: "Custom Interior & Hanging Signs",
-    image: "/manus-storage/hardware_interior_hanging_c7034b10.jpg",
+    image: "/manus-storage/pay-here-interior-hanging_df7811b0.jpg",
     blurb: "Elevate your retail or corporate environment with high-impact interior signage — from hanging channel letters to suspended aisle markers.",
   },
   {
