@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "wouter";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { products } from "@/lib/mock";
 
@@ -43,9 +44,9 @@ export default function ProductsSection() {
           className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-2 -mx-6 px-6 lg:mx-0 lg:px-0"
         >
           {products.map((p) => (
-            <a
+            <Link
               key={p.slug}
-              href={`#${p.slug}`}
+              to={`/products/${p.slug}`}
               className="group flex-shrink-0 w-[280px] md:w-[340px] snap-start bg-cream text-forest rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300"
             >
               <div className="relative aspect-[5/4] overflow-hidden">
@@ -62,7 +63,7 @@ export default function ProductsSection() {
                 <h3 className="font-serif text-xl text-forest">{p.title}</h3>
                 <p className="mt-1.5 text-sm text-stone-600 leading-relaxed">{p.blurb}</p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
