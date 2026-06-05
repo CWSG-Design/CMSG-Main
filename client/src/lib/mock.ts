@@ -129,13 +129,13 @@ export const products = [
   {
     slug: "channel-letters-on-raceways",
     title: "Channel Letters on Raceways",
-    image: "/manus-storage/smurfit_raceway_4011642c.jpg",
+    image: "/manus-storage/smurfit-westrock-raceway_e8d3b2e6.webp",
     blurb: "Individual illuminated letters mounted on a painted aluminum raceway — clean wiring, simplified installation, and a polished professional finish on any substrate.",
   },
   {
     slug: "tenant-panels",
     title: "Tenant Panels",
-    image: "/manus-storage/gallery_smurfit_westrock_ebe60129.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/tenant-panels-placeholder-iqmYPxr5cv8BugLVA8bKff.webp",
     blurb: "Durable pylon and monument panels built for harsh Canadian winters — consistent finish across multi-tenant properties.",
   },
   {
@@ -157,7 +157,7 @@ const realGalleryPhotos = [
   { src: "/manus-storage/olsen_halo_interior_22037e11.jpg", alt: "Olsen — Interior 3D Printed Halo Illuminated Letters" },
   { src: "/manus-storage/payhalf_interior_hanging_399e57ce.jpg", alt: "Pay Half — Interior 3D Printed Illuminated Hanging Signs" },
   { src: "/manus-storage/footwear_dimensional_eaf2355d.jpg", alt: "Footwear — Interior 3D Printed Illuminated Hanging Signs" },
-  { src: "/manus-storage/smurfit_raceway_4011642c.jpg", alt: "Smurfit Westrock — Illuminated Exterior Channel Letters on Raceways" },
+  { src: "/manus-storage/smurfit-westrock-raceway_e8d3b2e6.webp", alt: "Smurfit Westrock — Illuminated Exterior Channel Letters on Raceways" },
   { src: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg", alt: "The Bone & Biscuit Co. — Front Lit Channel Letters, night" },
   { src: "/manus-storage/bone_biscuit_daytime_426ff3ce.jpg", alt: "The Bone & Biscuit Co. — Open Face Channel Letters, daytime" },
   { src: "/manus-storage/hero_longos_night_4755c444.jpg", alt: "Longo's — Large illuminated script letters, night" },
