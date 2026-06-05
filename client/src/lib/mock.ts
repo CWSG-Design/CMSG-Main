@@ -68,7 +68,7 @@ export const resources = [
 export const products = [
   {
     slug: "front-lit-channel-letters",
-    title: "Front Lit Channel Letters",
+    title: "Exterior Front Lit Channel Letters",
     image: "/manus-storage/hero_longos_night_4755c444.jpg",
     blurb: "High-visibility illuminated faces that deliver a classic, professional look — seen clearly from a distance day or night.",
   },

@@ -16,7 +16,7 @@ const productDetails: Record<string, {
   relatedSlugs: string[];
 }> = {
   "front-lit-channel-letters": {
-    tagline: "The industry standard — illuminated from the inside out.",
+    tagline: "Exterior front-lit — the industry standard, illuminated from the inside out.",
     description:
       "Front-lit channel letters are the most widely specified illuminated sign type in North America. Each letter is individually fabricated from aluminum returns, a polycarbonate or acrylic face, and an LED module array inside. The result is a bright, even glow that reads clearly day and night — from across a parking lot or down a busy street.",
     specs: [
