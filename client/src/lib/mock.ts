@@ -69,19 +69,25 @@ export const products = [
   {
     slug: "front-lit-channel-letters",
     title: "Front Lit Channel Letters",
-    image: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg",
+    image: "/manus-storage/hero_longos_night_4755c444.jpg",
     blurb: "High-visibility illuminated faces that deliver a classic, professional look — seen clearly from a distance day or night.",
+  },
+  {
+    slug: "front-lit-vertical-supports",
+    title: "Front Lit Channel Letters on Vertical Supports",
+    image: "/manus-storage/hero_bone_biscuit_night_41fdab16.jpg",
+    blurb: "Channel letters mounted on custom vertical support structures — ideal for freestanding installations, canopies, and locations where direct wall mounting is not possible.",
   },
   {
     slug: "halo-illuminated-channel-letters",
     title: "Halo Illuminated Channel Letters",
-    image: "/manus-storage/boutique_halo_lit_b374c3e0.jpg",
+    image: "/manus-storage/product_olsen_closeup_0e12003a.jpg",
     blurb: "Designed to add a touch of elegance to any building — a sophisticated warm glow washes behind the letters against the wall.",
   },
   {
     slug: "face-halo-combination",
     title: "Face & Halo Combination Lit",
-    image: "/manus-storage/gallery_hudsons_bay_night_b6c356e0.jpg",
+    image: "/manus-storage/boutique_halo_lit_b374c3e0.jpg",
     blurb: "Maximum impact — combines front illumination with halo glow for a truly standout, cutting-edge design.",
   },
   {
@@ -93,7 +99,7 @@ export const products = [
   {
     slug: "fascia-storefront-signs",
     title: "Fascia & Storefront Signs",
-    image: "/manus-storage/real_deal_fascia_c73ac06c.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-fascia-storefront-7D6bQcaUas6rdasni4v2vW.webp",
     blurb: "Your core storefront solution for maximum impact. Durable, expertly crafted fascia signs that transform retail environments into sophisticated branded spaces.",
   },
   {
@@ -111,19 +117,19 @@ export const products = [
   {
     slug: "pylon-ground-signs",
     title: "Pylon & Ground Signs",
-    image: "/manus-storage/hero_longos_night_4755c444.jpg",
+    image: "/manus-storage/pylon-longo-render_30c77770.webp",
     blurb: "Command attention from a distance. High-impact pylon and ground signs engineered for durability and maximum visibility — scalable from single units to multi-tenant pylons.",
   },
   {
     slug: "push-through-faux-neon",
     title: "Push-Through & Faux Neon",
-    image: "/manus-storage/product_subway_snow_0f5cf8db.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-push-through-faux-neon-RdkdPaUHbT8L2rwPZyC7Ex.webp",
     blurb: "Modern LED neon and acrylic push-throughs that glow like the real thing — without the fragility or power cost.",
   },
   {
     slug: "flat-cut-out-letters",
     title: "Flat Cut Out Letters",
-    image: "/manus-storage/product_olsen_closeup_0e12003a.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-flat-cut-out-XRXE5CbYTKkiEPJCmAofsk.webp",
     blurb: "Dimensional non-illuminated letters precision-routed from premium aluminum or acrylic — clean, architectural, and built to last.",
   },
   {
@@ -141,7 +147,7 @@ export const products = [
   {
     slug: "open-face-channel-letters",
     title: "Open Face Channel Letters",
-    image: "/manus-storage/bone_biscuit_daytime_426ff3ce.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-open-face-nNyfRKn8dVpCVZc3RgGoHb.webp",
     blurb: "Exposed neon-style LEDs framed in painted aluminum returns — a retro-modern look with contemporary LED efficiency.",
   },
 ];
