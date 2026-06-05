@@ -40,6 +40,31 @@ const productDetails: Record<string, {
     useCases: ["Retail storefronts", "Restaurant & QSR fascia", "Mall tenant signage", "Office building identification", "Hotel & hospitality"],
     relatedSlugs: ["halo-illuminated-channel-letters", "face-halo-combination", "trimless-channel-letters"],
   },
+  "front-lit-vertical-supports": {
+    tagline: "Channel letters elevated — freestanding, canopy-mounted, or structure-supported.",
+    description:
+      "Front-lit channel letters on vertical supports bring full illuminated signage to locations where direct wall mounting is not an option. Custom-fabricated steel or aluminum support structures — single posts, twin-post frames, or canopy-integrated brackets — are engineered to your site conditions and wind-load requirements. The channel letters themselves are identical in quality to our wall-mounted product: aluminum returns, polycarbonate faces, and UL-listed LED modules throughout. The result is a freestanding illuminated sign that commands attention from the street, parking lot, or building approach.",
+    specs: [
+      { label: "Letter return depth", value: "3\" – 8\" standard; custom depths available" },
+      { label: "Face material", value: "Polycarbonate or acrylic, 3mm standard" },
+      { label: "Return material", value: "0.040\" – 0.063\" aluminum" },
+      { label: "LED module", value: "UL-listed LED modules, 50,000 hr rated" },
+      { label: "Support structure", value: "Powder-coated steel or aluminum; engineered to local wind-load code" },
+      { label: "Post finish", value: "Custom powder coat to match or contrast letters" },
+      { label: "Footing", value: "Structural drawings provided; concrete footing by installer" },
+      { label: "Lead time", value: "12–15 business days from approved artwork & engineering" },
+    ],
+    features: [
+      "Full illuminated channel letters — same quality as wall-mounted product",
+      "Engineered support structures rated to local wind-load requirements",
+      "Single-post, twin-post, canopy bracket, and custom frame configurations",
+      "Concealed wiring routed through post for clean finish",
+      "CSA-certified electrical components throughout",
+      "5-year LED warranty standard",
+    ],
+    useCases: ["Freestanding retail pad signage", "Drive-through canopy identification", "Gas station & convenience store forecourts", "Industrial & warehouse entrance signs", "Parking structure wayfinding"],
+    relatedSlugs: ["front-lit-channel-letters", "pylon-ground-signs", "channel-letters-on-raceways"],
+  },
   "halo-illuminated-channel-letters": {
     tagline: "Sophisticated back-glow for an architectural finish.",
     description:
