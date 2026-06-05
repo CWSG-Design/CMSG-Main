@@ -111,7 +111,7 @@ export const products = [
   {
     slug: "3d-printed-signs",
     title: "3D Printed Illuminated Signs",
-    image: "/manus-storage/great_outdoors_footwear_interior_798c2347.jpg",
+    image: "/manus-storage/focaccia-perspective_7c22b259.webp",
     blurb: "Our house specialty. A minimalist 3D signage approach with crisp, premium look — bold typography, acrylic faces, and a clean floating aesthetic with concealed wiring.",
   },
   {
@@ -149,6 +149,12 @@ export const products = [
     title: "Open Face Channel Letters",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-open-face-nNyfRKn8dVpCVZc3RgGoHb.webp",
     blurb: "Exposed neon-style LEDs framed in painted aluminum returns — a retro-modern look with contemporary LED efficiency.",
+  },
+  {
+    slug: "illuminated-hanging-window-signs",
+    title: "Illuminated Hanging Window Signs",
+    image: "/manus-storage/open-sign-window_2ef5c6a0.webp",
+    blurb: "Eye-catching illuminated signs designed to hang in storefront windows — custom shapes, full-colour graphics, and bold LED backlighting that commands attention from the street.",
   },
 ];
 

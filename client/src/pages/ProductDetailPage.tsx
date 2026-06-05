@@ -340,6 +340,29 @@ const productDetails: Record<string, {
     useCases: ["Bars & restaurants", "Entertainment venues", "Retail with a vintage aesthetic", "Breweries & distilleries", "Event spaces"],
     relatedSlugs: ["push-through-faux-neon", "front-lit-channel-letters", "face-halo-combination"],
   },
+  "illuminated-hanging-window-signs": {
+    tagline: "Street-level impact — bold illuminated signs that stop foot traffic cold.",
+    description:
+      "Illuminated hanging window signs are a high-visibility solution for storefronts that need to communicate instantly — day or night. Suspended from a ceiling track or mounted to the interior of a window, these signs combine custom-shaped acrylic or aluminum bodies with vibrant full-colour graphics and LED backlighting. The result is a sign that glows from inside the window, visible from the street and impossible to ignore. Ideal for restaurants, retail, and any business that wants to make a statement at eye level.",
+    specs: [
+      { label: "Construction", value: "Acrylic or aluminum body, custom-cut shape" },
+      { label: "Illumination", value: "Internal LED backlighting" },
+      { label: "Graphics", value: "Full-colour UV-printed or vinyl-applied" },
+      { label: "Mounting", value: "Ceiling suspension hardware or window suction mount" },
+      { label: "Power", value: "Low-voltage LED driver, standard outlet" },
+      { label: "Lead time", value: "10 business days from approved artwork" },
+    ],
+    features: [
+      "Custom shape — any logo, mascot, or graphic",
+      "Full-colour UV printing for vibrant, photo-quality graphics",
+      "Internal LED backlighting for day and night visibility",
+      "Lightweight construction — easy to hang and reposition",
+      "Low-voltage LED driver — energy efficient and safe",
+      "5-year LED warranty",
+    ],
+    useCases: ["Restaurants & quick-service", "Retail storefronts", "Bars & entertainment venues", "Pop-up shops & events", "Franchise locations"],
+    relatedSlugs: ["3d-printed-signs", "interior-hanging-signs", "push-through-faux-neon"],
+  },
 };
 
 /* ─── Component ─────────────────────────────────────────────────────────────── */
