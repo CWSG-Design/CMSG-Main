@@ -141,7 +141,7 @@ export const products = [
   {
     slug: "tenant-panels",
     title: "Tenant Panels",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/tenant-panels-placeholder-iqmYPxr5cv8BugLVA8bKff.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/tenant-panel-blank-pylon-YDp6GWjoqU6iwATKMFULu4.webp",
     blurb: "Durable pylon and monument panels built for harsh Canadian winters — consistent finish across multi-tenant properties.",
   },
   {
