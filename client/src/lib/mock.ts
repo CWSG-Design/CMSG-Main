@@ -81,7 +81,7 @@ export const products = [
   {
     slug: "halo-illuminated-channel-letters",
     title: "Halo Illuminated Channel Letters",
-    image: "/manus-storage/product_olsen_closeup_0e12003a.jpg",
+    image: "/manus-storage/olsen-halo-lit-fix_2a3b509f.webp",
     blurb: "Designed to add a touch of elegance to any building — a sophisticated warm glow washes behind the letters against the wall.",
   },
   {
