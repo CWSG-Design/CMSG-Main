@@ -159,3 +159,15 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-up { animation: fadeUp 0.8s ease-out both; }
+
+/* Quote button pulse — ring expands and fades outward */
+@keyframes quotePulse {
+  0%   { box-shadow: 0 0 0 0px oklch(0.57 0.07 140 / 0.70); }
+  60%  { box-shadow: 0 0 0 8px oklch(0.57 0.07 140 / 0.00); }
+  100% { box-shadow: 0 0 0 0px oklch(0.57 0.07 140 / 0.00); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .animate-quote-pulse {
+    animation: quotePulse 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+}

@@ -153,7 +153,7 @@ export default function Header() {
               <Link to="/quote">
                 <Button
                   size="sm"
-                  className="bg-sage hover:bg-sage/90 text-forest font-semibold rounded-full px-5 h-8 text-sm"
+                  className="bg-sage hover:bg-sage/90 text-forest font-semibold rounded-full px-5 h-8 text-sm animate-quote-pulse"
                 >
                   Get a Quote
                 </Button>
