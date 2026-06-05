@@ -122,7 +122,7 @@ export const products = [
   },
   {
     slug: "push-through-faux-neon",
-    title: "Acrylic Push-Through Letters",
+    title: "Acrylic Push-Through Graphics",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-push-through-faux-neon-RdkdPaUHbT8L2rwPZyC7Ex.webp",
     blurb: "Precision-routed acrylic letters set into an aluminum cabinet face — a clean, luminous finish that reads boldly day and night.",
   },

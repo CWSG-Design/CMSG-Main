@@ -229,7 +229,7 @@ const productDetails: Record<string, {
     relatedSlugs: ["fascia-storefront-signs", "tenant-panels", "channel-letters-on-raceways"],
   },
   "push-through-faux-neon": {
-    tagline: "Aluminum face, acrylic push-through — bold illumination built into the cabinet.",
+    tagline: "Aluminum face, acrylic push-through graphics — bold illumination built into the cabinet.",
     description:
       "Acrylic push-through letters are precision-routed from solid acrylic sheet and set flush into a fabricated aluminum cabinet face. When backlit with LED modules, the acrylic letters glow evenly while the surrounding aluminum face remains dark — creating a high-contrast, architectural look that reads clearly day and night. Because the letters are integral to the cabinet face rather than applied on top, the finished sign is exceptionally clean, durable, and weather-resistant. CMSG fabricates push-through faces in any letter style, size, or colour, with cabinet depths and finishes matched to your specification.",
     specs: [
