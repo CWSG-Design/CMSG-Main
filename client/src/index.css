@@ -120,12 +120,13 @@
     .container { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
   @media (min-width: 1024px) {
-    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1440px; }
+    .container { padding-left: 2rem; padding-right: 2rem; }
   }
 
-  /* Site-wide max-width utility — use instead of max-w-7xl */
+  /* Site-wide layout wrapper — full-width with responsive gutters.
+     No hard pixel cap: content fills the viewport on all screen sizes. */
   .max-w-site {
-    max-width: 1440px;
+    width: 100%;
   }
 
   /* Brand palette helpers */
