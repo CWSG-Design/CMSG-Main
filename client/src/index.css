@@ -42,6 +42,10 @@
   --color-sage:        oklch(0.57 0.07 140);
   --color-cream:       oklch(0.97 0.012 90);
   --color-bone:        oklch(0.93 0.015 90);
+
+  /* Layout */
+  --width-site: 90rem; /* 1440px — primary content cap */
+  --max-width-site: var(--width-site);
 }
 
 :root {
@@ -116,7 +120,12 @@
     .container { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
   @media (min-width: 1024px) {
-    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1440px; }
+  }
+
+  /* Site-wide max-width utility — use instead of max-w-7xl */
+  .max-w-site {
+    max-width: 1440px;
   }
 
   /* Brand palette helpers */
