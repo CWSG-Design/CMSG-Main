@@ -129,7 +129,7 @@ export const products = [
   {
     slug: "flat-cut-out-letters",
     title: "Flat Cut Out Letters",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663198236848/fqrndmDfuKdSopt9AKQw52/placeholder-flat-cut-out-XRXE5CbYTKkiEPJCmAofsk.webp",
+    image: "/manus-storage/flat-cut-out-letters_990c9ed4.png",
     blurb: "Dimensional non-illuminated letters precision-routed from premium aluminum or acrylic — clean, architectural, and built to last.",
   },
   {
