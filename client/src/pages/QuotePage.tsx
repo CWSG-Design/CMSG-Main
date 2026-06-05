@@ -75,6 +75,116 @@ const ACRYLIC_SWATCHES = [
 ];
 const ACRYLIC_COLORS = ACRYLIC_SWATCHES.map(s => s.label + (s.sub ? ` (${s.sub})` : ""));
 
+// 3M Scotchcal Translucent Film Series 3630 — full color list from 3M/Glantz reference guide
+const VINYL_3M_3630_COLORS = [
+  "3630-015 Yellow",
+  "3630-15 Yellow",
+  "3630-25 Sunflower",
+  "3630-125 Golden Yellow",
+  "3630-235 Yellow",
+  "3630-86 Yellow",
+  "3630-84 Tangerine",
+  "3630-144 Poppy Orange",
+  "3630-124 Orange",
+  "3630-74 Kumquat Orange",
+  "3630-43 Light Tomato Red",
+  "3630-143 Poppy Red",
+  "3630-163 Scarlet",
+  "3630-93 Fire Engine Red",
+  "3630-33 Red",
+  "3630-73 Dark Red",
+  "3630-53 Cardinal Red",
+  "3630-83 Regal Red",
+  "3630-133 Raspberry",
+  "3630-98 Electric Pink",
+  "3630-78 Vivid Rose",
+  "3630-128 Plum Purple",
+  "3630-158 Bright Violet",
+  "3630-77 Burgundy",
+  "3630-49 Burgundy",
+  "3630-328 Berry Burgundy",
+  "3630-118 Intense Magenta",
+  "3630-44 Fuchsia",
+  "3630-87 Royal Blue",
+  "3630-135 Indigo",
+  "3630-27 Electric Blue",
+  "3630-36 Blue",
+  "3630-47 Patriot Blue",
+  "3630-157 Sultan Blue",
+  "3630-217 Blue",
+  "3630-227 Azure",
+  "3630-147 Light European Blue",
+  "3630-57 Olympic Blue",
+  "3630-337 Process Blue",
+  "3630-127 Intense Blue",
+  "3630-167 Bright Blue",
+  "3630-97 Bristol Blue",
+  "3630-37 Sapphire",
+  "3630-216 Blue Coral",
+  "3630-287 Blue",
+  "3630-297 Blue",
+  "3630-187 Forest",
+  "3630-246 Brilliant Green",
+  "3630-106 Turquoise",
+  "3630-236 Turquoise",
+  "3630-115 Blue Lagoon",
+  "3630-316 Green",
+  "3630-126 Dark Emerald Green",
+  "3630-76 Holly Green",
+  "3630-276 KY Blue Grass",
+  "3630-196 Green",
+  "3630-137 Light Kelly Green",
+  "3630-146 Green",
+  "3630-56 Green",
+  "3630-156 Vivid Green",
+  "3630-26 Rust Brown",
+  "3630-63 Brown",
+  "3630-59 Dark Brown",
+  "3630-69 Duranodic",
+  "3630-121 Silver",
+  "3630-141 Gold Nugget",
+  "3630-131 Gold Metallic",
+  "3630-005 Ivory",
+  "3630-149 Light Beige",
+  "3630-39 Warm Beige",
+  "3630-111 Dover White",
+  "3630-20 White",
+  "3630-71 Shadow Gray",
+  "3630-51 Silver Gray",
+  "3630-61 Slate Gray",
+  "3630-22 Black",
+];
+
+// 3M Envision Translucent Film Series 3730 — higher light-transmission option
+const VINYL_3M_3730_COLORS = [
+  "3730-015L Yellow",
+  "3730-43L Light Tomato Red",
+  "3730-33L Red",
+  "3730-73L Dark Red",
+  "3730-53L Cardinal Red",
+  "3730-157L Regal Red",
+  "3730-133L Raspberry",
+  "3730-137L European Blue",
+  "3730-125L Plum Purple",
+  "3730-128L Plum Purple",
+  "3730-246L Teal Green",
+  "3730-44L Orange",
+  "3730-36L Blue",
+  "3730-76L Holly Green",
+  "3730-26L Olympic Blue",
+  "3730-57L Vivid Green",
+  "3730-156L Regal Red",
+  "3730-337L Process Blue",
+  "3730-106L Brilliant Green",
+  "3730-127L Intense Blue",
+  "3730-83L Bright Blue",
+  "3730-167L Bright Blue",
+  "3730-49L Burgundy",
+  "3730-97L Bristol Blue",
+  "3730-20L Green",
+  "3730-74 Golden Yellow",
+];
+
 // Trim cap swatches
 const TRIM_CAP_SWATCHES = [
   { label: "Standard White", hex: "#F5F5F0" },
@@ -253,6 +363,7 @@ export default function QuotePage() {
   const [acrylicColor, setAcrylicColor] = useState("");
   const [acrylicColorCustom, setAcrylicColorCustom] = useState("");
   const [graphicsColor, setGraphicsColor] = useState("");
+  const [vinylColor, setVinylColor] = useState("");
   const [trimCapColor, setTrimCapColor] = useState("");
   const [returnColor, setReturnColor] = useState("");
   const [racewayColor, setRacewayColor] = useState("");
@@ -341,6 +452,11 @@ export default function QuotePage() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Guard: only submit on the final step — prevents accidental submission via Enter key
+    if (step !== STEPS.length - 1) {
+      next();
+      return;
+    }
     const allSignTypes = [...acrylicFaced, ...metalFaced, ...specialty, ...supplementary];
     sendQuote.mutate({
       companyName,
@@ -365,7 +481,7 @@ export default function QuotePage() {
       ledType: ledType.join(", ") || undefined,
       logoBoxStyle: logoBoxStyle || undefined,
       acrylicColor: acrylicColor === "Custom (Specify below)" ? acrylicColorCustom : acrylicColor || undefined,
-      graphicsColor: graphicsColor || undefined,
+      graphicsColor: [vinylColor, graphicsColor].filter(Boolean).join(", ") || undefined,
       trimCapColor: trimCapColor || undefined,
       returnColor: returnColor || undefined,
       racewayColo: racewayColor || undefined,
@@ -762,9 +878,34 @@ export default function QuotePage() {
                 </div>
               </div>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Applied Graphics Color(s)</SectionTitle>
-                <FieldLabel>Applied Graphics Color(s)</FieldLabel>
-                <Input value={graphicsColor} onChange={e => setGraphicsColor(e.target.value)} placeholder="e.g. 3M 3630-15 Black, 3M 3630-57 Red…" />
+                <SectionTitle>Applied Vinyl Color(s)</SectionTitle>
+                <p className="text-xs text-stone-500 mb-4">
+                  Select from the 3M translucent vinyl series below. Use the text field to specify additional colors or custom matches.
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <FieldLabel>3M Scotchcal™ Translucent Film Series 3630</FieldLabel>
+                    <Select value={vinylColor.startsWith("3630") ? vinylColor : ""} onValueChange={v => setVinylColor(v)}>
+                      <SelectTrigger><SelectValue placeholder="Select a 3630 color…" /></SelectTrigger>
+                      <SelectContent className="max-h-72">
+                        {VINYL_3M_3630_COLORS.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <FieldLabel>3M Envision™ Translucent Film Series 3730 (Higher Light Transmission)</FieldLabel>
+                    <Select value={vinylColor.startsWith("3730") ? vinylColor : ""} onValueChange={v => setVinylColor(v)}>
+                      <SelectTrigger><SelectValue placeholder="Select a 3730 color…" /></SelectTrigger>
+                      <SelectContent className="max-h-72">
+                        {VINYL_3M_3730_COLORS.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <FieldLabel>Additional or Custom Vinyl Colors</FieldLabel>
+                    <Input value={graphicsColor} onChange={e => setGraphicsColor(e.target.value)} placeholder="e.g. 3M 3630-22 Black, custom match…" />
+                  </div>
+                </div>
               </div>
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Return & Raceway Colors</SectionTitle>
