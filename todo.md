@@ -53,3 +53,5 @@
   - Product recommendations based on answers
   - Contact form with submission via tRPC sendAssessment procedure
   - Nav link added to header and footer
+  - Explore-all products panel (accordion, recommended starred, expandable detail per product)
+  - Download PDF Report button (client-side jsPDF, branded with CMSG colours, answers + recommendations + next steps)
