@@ -125,6 +125,10 @@ export const emailRouter = router({
         email: z.string().email(),
         phone: z.string().optional(),
         billingAddress: z.string().optional(),
+        isTradeCustomer: z.string().optional(),
+        numSigns: z.string().optional(),
+        inHandDate: z.string().optional(),
+        installDate: z.string().optional(),
         // Step 2 — Product type
         illumination: z.string().optional(),
         signTypes: z.array(z.string()).optional(),
@@ -134,6 +138,7 @@ export const emailRouter = router({
         width: z.string().optional(),
         height: z.string().optional(),
         letterHeight: z.string().optional(),
+        secondaryLetterHeight: z.string().optional(),
         logoWidth: z.string().optional(),
         logoHeight: z.string().optional(),
         installationType: z.string().optional(),
@@ -174,6 +179,10 @@ export const emailRouter = router({
           ${row("Email", input.email)}
           ${row("Phone", input.phone)}
           ${row("Billing Address", input.billingAddress)}
+          ${row("Trade Customer", input.isTradeCustomer)}
+          ${row("Number of Signs", input.numSigns)}
+          ${row("In-Hand Date", input.inHandDate)}
+          ${row("Installation Date", input.installDate)}
 
           <tr><td colspan="2" style="padding:10px 12px;background:#1a3a2a;color:#fff;font-weight:bold;font-size:15px;">Product Type</td></tr>
           ${row("Illumination", input.illumination)}
@@ -185,6 +194,7 @@ export const emailRouter = router({
           ${row("Overall Width", input.width)}
           ${row("Overall Height", input.height)}
           ${row("Letter Height", input.letterHeight)}
+          ${row("Secondary Letter Height", input.secondaryLetterHeight)}
           ${row("Logo Width", input.logoWidth)}
           ${row("Logo Height", input.logoHeight)}
           ${row("Installation Type", input.installationType)}

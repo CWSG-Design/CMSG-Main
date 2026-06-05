@@ -13,22 +13,10 @@ import { toast } from "sonner";
 import { CheckCircle2, ChevronRight, ChevronLeft, ZoomIn, X, UploadCloud, FileText, Trash2 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { products } from "@/lib/mock";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const ACRYLIC_FACED = [
-  "(AF) Front Lit Trimmed", "(AF) Front/Back Lit Trimmed",
-  "(AF) Front Lit Trimless", "(AF) Front/Back Lit Trimless",
-  "Blade (AF) Front Lit Trimmed", "Blade (AF) Front Lit Trimless",
-];
-const METAL_FACED = [
-  "(MF) Reverse (Halo) Lit", "(MF) Reverse Edgelit",
-  "(MF) Reverse Edgelit FCO", "(MF) Push-Thru Letters",
-  "(MF) Push-Thru Logos", "Blade (MF) Push-Thru",
-  "Blade (MF) Acrylic Backed",
-];
-const SPECIALTY = ["(SPE) Open Faced Letters", "(SPE) Marquee Letters"];
-const SUPPLEMENTARY = ["(SUP) Tenant Panel *", "(SUP) FCOs - Flat Cut Outs *"];
 const MOUNTING = [
   "Raceway", "Dimensional Backer – W/ Back", "Flush / Direct Mount",
   "Blade – (MF) Push-Thru / Acrylic Backed", "Wireway",
@@ -44,7 +32,8 @@ const LOGO_BOX_STYLES = [
   "Contour / Cloud Logo", "Circle / Oval Logo Box",
   "Square Logo Box", "Rectangle Logo Box", "Other",
 ];
-// Acrylic swatches: { label, hex, note? }
+
+// Acrylic swatches
 const ACRYLIC_SWATCHES = [
   { label: "#2447 White", sub: "Standard", hex: "#F5F5F0" },
   { label: "SG #2447 White", sub: "Sign Grade", hex: "#EFEFEA" },
@@ -76,114 +65,42 @@ const ACRYLIC_SWATCHES = [
 ];
 const ACRYLIC_COLORS = ACRYLIC_SWATCHES.map(s => s.label + (s.sub ? ` (${s.sub})` : ""));
 
-// 3M Scotchcal Translucent Film Series 3630 — full color list from 3M/Glantz reference guide
+// 3M Scotchcal Translucent Film Series 3630
 const VINYL_3M_3630_COLORS = [
-  "3630-015 Yellow",
-  "3630-15 Yellow",
-  "3630-25 Sunflower",
-  "3630-125 Golden Yellow",
-  "3630-235 Yellow",
-  "3630-86 Yellow",
-  "3630-84 Tangerine",
-  "3630-144 Poppy Orange",
-  "3630-124 Orange",
-  "3630-74 Kumquat Orange",
-  "3630-43 Light Tomato Red",
-  "3630-143 Poppy Red",
-  "3630-163 Scarlet",
-  "3630-93 Fire Engine Red",
-  "3630-33 Red",
-  "3630-73 Dark Red",
-  "3630-53 Cardinal Red",
-  "3630-83 Regal Red",
-  "3630-133 Raspberry",
-  "3630-98 Electric Pink",
-  "3630-78 Vivid Rose",
-  "3630-128 Plum Purple",
-  "3630-158 Bright Violet",
-  "3630-77 Burgundy",
-  "3630-49 Burgundy",
-  "3630-328 Berry Burgundy",
-  "3630-118 Intense Magenta",
-  "3630-44 Fuchsia",
-  "3630-87 Royal Blue",
-  "3630-135 Indigo",
-  "3630-27 Electric Blue",
-  "3630-36 Blue",
-  "3630-47 Patriot Blue",
-  "3630-157 Sultan Blue",
-  "3630-217 Blue",
-  "3630-227 Azure",
-  "3630-147 Light European Blue",
-  "3630-57 Olympic Blue",
-  "3630-337 Process Blue",
-  "3630-127 Intense Blue",
-  "3630-167 Bright Blue",
-  "3630-97 Bristol Blue",
-  "3630-37 Sapphire",
-  "3630-216 Blue Coral",
-  "3630-287 Blue",
-  "3630-297 Blue",
-  "3630-187 Forest",
-  "3630-246 Brilliant Green",
-  "3630-106 Turquoise",
-  "3630-236 Turquoise",
-  "3630-115 Blue Lagoon",
-  "3630-316 Green",
-  "3630-126 Dark Emerald Green",
-  "3630-76 Holly Green",
-  "3630-276 KY Blue Grass",
-  "3630-196 Green",
-  "3630-137 Light Kelly Green",
-  "3630-146 Green",
-  "3630-56 Green",
-  "3630-156 Vivid Green",
-  "3630-26 Rust Brown",
-  "3630-63 Brown",
-  "3630-59 Dark Brown",
-  "3630-69 Duranodic",
-  "3630-121 Silver",
-  "3630-141 Gold Nugget",
-  "3630-131 Gold Metallic",
-  "3630-005 Ivory",
-  "3630-149 Light Beige",
-  "3630-39 Warm Beige",
-  "3630-111 Dover White",
-  "3630-20 White",
-  "3630-71 Shadow Gray",
-  "3630-51 Silver Gray",
-  "3630-61 Slate Gray",
-  "3630-22 Black",
+  "3630-015 Yellow","3630-15 Yellow","3630-25 Sunflower","3630-125 Golden Yellow",
+  "3630-235 Yellow","3630-86 Yellow","3630-84 Tangerine","3630-144 Poppy Orange",
+  "3630-124 Orange","3630-74 Kumquat Orange","3630-43 Light Tomato Red",
+  "3630-143 Poppy Red","3630-163 Scarlet","3630-93 Fire Engine Red","3630-33 Red",
+  "3630-73 Dark Red","3630-53 Cardinal Red","3630-83 Regal Red","3630-133 Raspberry",
+  "3630-98 Electric Pink","3630-78 Vivid Rose","3630-128 Plum Purple",
+  "3630-158 Bright Violet","3630-77 Burgundy","3630-49 Burgundy",
+  "3630-328 Berry Burgundy","3630-118 Intense Magenta","3630-44 Fuchsia",
+  "3630-87 Royal Blue","3630-135 Indigo","3630-27 Electric Blue","3630-36 Blue",
+  "3630-47 Patriot Blue","3630-157 Sultan Blue","3630-217 Blue","3630-227 Azure",
+  "3630-147 Light European Blue","3630-57 Olympic Blue","3630-337 Process Blue",
+  "3630-127 Intense Blue","3630-167 Bright Blue","3630-97 Bristol Blue",
+  "3630-37 Sapphire","3630-216 Blue Coral","3630-287 Blue","3630-297 Blue",
+  "3630-187 Forest","3630-246 Brilliant Green","3630-106 Turquoise",
+  "3630-236 Turquoise","3630-115 Blue Lagoon","3630-316 Green",
+  "3630-126 Dark Emerald Green","3630-76 Holly Green","3630-276 KY Blue Grass",
+  "3630-196 Green","3630-137 Light Kelly Green","3630-146 Green","3630-56 Green",
+  "3630-156 Vivid Green","3630-26 Rust Brown","3630-63 Brown","3630-59 Dark Brown",
+  "3630-69 Duranodic","3630-121 Silver","3630-141 Gold Nugget",
+  "3630-131 Gold Metallic","3630-005 Ivory","3630-149 Light Beige",
+  "3630-39 Warm Beige","3630-111 Dover White","3630-20 White",
+  "3630-71 Shadow Gray","3630-51 Silver Gray","3630-61 Slate Gray","3630-22 Black",
 ];
 
-// 3M Envision Translucent Film Series 3730 — higher light-transmission option
+// 3M Envision Translucent Film Series 3730
 const VINYL_3M_3730_COLORS = [
-  "3730-015L Yellow",
-  "3730-43L Light Tomato Red",
-  "3730-33L Red",
-  "3730-73L Dark Red",
-  "3730-53L Cardinal Red",
-  "3730-157L Regal Red",
-  "3730-133L Raspberry",
-  "3730-137L European Blue",
-  "3730-125L Plum Purple",
-  "3730-128L Plum Purple",
-  "3730-246L Teal Green",
-  "3730-44L Orange",
-  "3730-36L Blue",
-  "3730-76L Holly Green",
-  "3730-26L Olympic Blue",
-  "3730-57L Vivid Green",
-  "3730-156L Regal Red",
-  "3730-337L Process Blue",
-  "3730-106L Brilliant Green",
-  "3730-127L Intense Blue",
-  "3730-83L Bright Blue",
-  "3730-167L Bright Blue",
-  "3730-49L Burgundy",
-  "3730-97L Bristol Blue",
-  "3730-20L Green",
-  "3730-74 Golden Yellow",
+  "3730-015L Yellow","3730-43L Light Tomato Red","3730-33L Red","3730-73L Dark Red",
+  "3730-53L Cardinal Red","3730-157L Regal Red","3730-133L Raspberry",
+  "3730-137L European Blue","3730-125L Plum Purple","3730-128L Plum Purple",
+  "3730-246L Teal Green","3730-44L Orange","3730-36L Blue","3730-76L Holly Green",
+  "3730-26L Olympic Blue","3730-57L Vivid Green","3730-156L Regal Red",
+  "3730-337L Process Blue","3730-106L Brilliant Green","3730-127L Intense Blue",
+  "3730-83L Bright Blue","3730-167L Bright Blue","3730-49L Burgundy",
+  "3730-97L Bristol Blue","3730-20L Green","3730-74 Golden Yellow",
 ];
 
 // Trim cap swatches
@@ -198,12 +115,14 @@ const TRIM_CAP_SWATCHES = [
   { label: "Standard Green", hex: "#2D6A4F" },
   { label: "Custom Painted", hex: "custom" },
 ];
+
 const INSTALLATION_TYPES = [
   "Flush Mount", "Standard Raceway (5\"×6\")", "Custom Raceway",
   "Extruded Raceway", "Wireway", "Remote Raceway",
   "Flush Mount & Standard Raceway", "Flush Mount & Custom Raceway",
   "Flush Mount & Extruded Raceway", "Flush Mount & Wireway", "Existing Raceway",
 ];
+
 const PROVINCES_STATES = [
   "Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador",
   "Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island",
@@ -218,7 +137,41 @@ const PROVINCES_STATES = [
   "Wisconsin","Wyoming",
 ];
 
-const STEPS = ["Your Info", "Product Type", "Sign Details", "Colors", "Extras & Files"];
+// Which detail fields to show per product slug
+type ProductFieldSet = {
+  showSignText?: boolean;
+  showLetterDimensions?: boolean;   // main + secondary letter height
+  showOverallDimensions?: boolean;  // overall W × H
+  showLogoDimensions?: boolean;
+  showMounting?: boolean;
+  showInstallation?: boolean;
+  showFaceGraphics?: boolean;
+  showLED?: boolean;
+  showLogoBox?: boolean;
+  showIllumination?: boolean;
+  showPanelDimensions?: boolean;    // for tenant panels / pylon faces
+  showPrintMaterial?: boolean;      // for 3D printed signs
+};
+
+const PRODUCT_FIELDS: Record<string, ProductFieldSet> = {
+  "front-lit-channel-letters":        { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "front-lit-vertical-supports":      { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "halo-illuminated-channel-letters": { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "face-halo-combination":            { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "trimless-channel-letters":         { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "fascia-storefront-signs":          { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "interior-hanging-signs":           { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "3d-printed-signs":                 { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true, showPrintMaterial: true },
+  "pylon-ground-signs":               { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true, showPanelDimensions: true },
+  "push-through-faux-neon":           { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "flat-cut-out-letters":             { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showInstallation: true, showFaceGraphics: true, showIllumination: false },
+  "channel-letters-on-raceways":      { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "tenant-panels":                    { showSignText: true, showOverallDimensions: true, showPanelDimensions: true, showFaceGraphics: true, showIllumination: true },
+  "open-face-channel-letters":        { showSignText: true, showLetterDimensions: true, showOverallDimensions: true, showLogoDimensions: true, showMounting: true, showInstallation: true, showLED: true, showLogoBox: true, showIllumination: true },
+  "illuminated-hanging-window-signs": { showSignText: true, showOverallDimensions: true, showLogoDimensions: true, showInstallation: true, showFaceGraphics: true, showLED: true, showLogoBox: true, showIllumination: true, showPrintMaterial: true },
+};
+
+const STEPS = ["Your Info", "Select Product", "Sign Details", "Colors", "Extras & Files"];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function SectionTitle({ children }: { children: React.ReactNode }) {
@@ -227,7 +180,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 type SwatchItem = { label: string; sub?: string; hex: string; diffuser?: boolean; border?: boolean };
 function SwatchPicker({
-  swatches, selected, onSelect, label,
+  swatches, selected, onSelect,
 }: {
   swatches: SwatchItem[];
   selected: string;
@@ -289,6 +242,7 @@ function SwatchPicker({
     </div>
   );
 }
+
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
   return (
     <Label className="text-stone-700 mb-1.5 block">
@@ -296,6 +250,7 @@ function FieldLabel({ children, required }: { children: React.ReactNode; require
     </Label>
   );
 }
+
 function CheckGroup({ items, selected, onChange }: { items: string[]; selected: string[]; onChange: (v: string[]) => void }) {
   const toggle = (item: string) =>
     onChange(selected.includes(item) ? selected.filter(x => x !== item) : [...selected, item]);
@@ -316,53 +271,14 @@ function CheckGroup({ items, selected, onChange }: { items: string[]; selected: 
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
-// Map product slug → { category, value } for pre-selecting sign type checkboxes
-const SLUG_TO_SIGN_TYPE: Record<string, { category: "acrylicFaced" | "metalFaced" | "specialty" | "supplementary"; value: string }> = {
-  "front-lit-channel-letters":        { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
-  "front-lit-vertical-supports":      { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
-  "halo-illuminated-channel-letters": { category: "metalFaced",     value: "(MF) Reverse (Halo) Lit" },
-  "face-halo-combination":            { category: "acrylicFaced",   value: "(AF) Front/Back Lit Trimmed" },
-  "trimless-channel-letters":         { category: "acrylicFaced",   value: "(AF) Front Lit Trimless" },
-  "fascia-storefront-signs":          { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
-  "interior-hanging-signs":           { category: "specialty",      value: "(SPE) Marquee Letters" },
-  "3d-printed-signs":                 { category: "specialty",      value: "(SPE) Open Faced Letters" },
-  "pylon-ground-signs":               { category: "supplementary",  value: "(SUP) Tenant Panel *" },
-  "push-through-faux-neon":           { category: "metalFaced",     value: "(MF) Push-Thru Letters" },
-  "flat-cut-out-letters":             { category: "supplementary",  value: "(SUP) FCOs - Flat Cut Outs *" },
-  "channel-letters-on-raceways":      { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
-  "tenant-panels":                    { category: "supplementary",  value: "(SUP) Tenant Panel *" },
-  "open-face-channel-letters":        { category: "specialty",      value: "(SPE) Open Faced Letters" },
-  "illuminated-hanging-window-signs": { category: "specialty",      value: "(SPE) Open Faced Letters" },
-};
-
-const SLUG_TO_TITLE: Record<string, string> = {
-  "front-lit-channel-letters":        "Front Lit Channel Letters",
-  "front-lit-vertical-supports":      "Front Lit Channel Letters on Vertical Supports",
-  "halo-illuminated-channel-letters": "Halo Illuminated Channel Letters",
-  "face-halo-combination":            "Face & Halo Combination Lit",
-  "trimless-channel-letters":         "Trimless Channel Letters",
-  "fascia-storefront-signs":          "Fascia & Storefront Signs",
-  "interior-hanging-signs":           "Custom Interior & Hanging Signs",
-  "3d-printed-signs":                 "3D Printed Illuminated Signs",
-  "pylon-ground-signs":               "Pylon & Ground Signs",
-  "push-through-faux-neon":           "Push-Through & Faux Neon",
-  "flat-cut-out-letters":             "Flat Cut Out Letters",
-  "channel-letters-on-raceways":      "Channel Letters on Raceways",
-  "tenant-panels":                    "Tenant Panels",
-  "open-face-channel-letters":        "Open Face Channel Letters",
-  "illuminated-hanging-window-signs": "3D Printed Illuminated Hanging Window Signs",
-};
-
 export default function QuotePage() {
   const search = useSearch();
   const prefilledSlug = useMemo(() => new URLSearchParams(search).get("product") ?? "", [search]);
-  const prefilledTitle = prefilledSlug ? (SLUG_TO_TITLE[prefilledSlug] ?? "") : "";
-  const prefilledSignType = prefilledSlug ? (SLUG_TO_SIGN_TYPE[prefilledSlug] ?? null) : null;
 
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
-  // Step 0 — Info
+  // ── Step 0: Your Info ──
   const [companyName, setCompanyName] = useState("");
   const [isTradeCustomer, setIsTradeCustomer] = useState<"yes" | "no" | "">("");
   const [firstName, setFirstName] = useState("");
@@ -380,26 +296,19 @@ export default function QuotePage() {
   const [inHandDate, setInHandDate] = useState("");
   const [installDate, setInstallDate] = useState("");
 
-  // Step 1 — Product Type
-  const [illumination, setIllumination] = useState<string[]>([]);
-  const [acrylicFaced, setAcrylicFaced] = useState<string[]>(() =>
-    prefilledSignType?.category === "acrylicFaced" ? [prefilledSignType.value] : []
-  );
-  const [metalFaced, setMetalFaced] = useState<string[]>(() =>
-    prefilledSignType?.category === "metalFaced" ? [prefilledSignType.value] : []
-  );
-  const [specialty, setSpecialty] = useState<string[]>(() =>
-    prefilledSignType?.category === "specialty" ? [prefilledSignType.value] : []
-  );
-  const [supplementary, setSupplementary] = useState<string[]>(() =>
-    prefilledSignType?.category === "supplementary" ? [prefilledSignType.value] : []
-  );
-  const [mounting, setMounting] = useState<string[]>([]);
+  // ── Step 1: Product Selection ──
+  const [selectedSlug, setSelectedSlug] = useState<string>(() => prefilledSlug || "");
+  const selectedProduct = useMemo(() => products.find(p => p.slug === selectedSlug) ?? null, [selectedSlug]);
+  const fieldSet: ProductFieldSet = useMemo(() => (selectedSlug ? (PRODUCT_FIELDS[selectedSlug] ?? {}) : {}), [selectedSlug]);
 
-  // Step 2 — Sign Details
+  // ── Step 2: Sign Details ──
+  const [illumination, setIllumination] = useState<string[]>([]);
+  const [mounting, setMounting] = useState<string[]>([]);
   const [signText, setSignText] = useState("");
   const [overallW, setOverallW] = useState("");
   const [overallH, setOverallH] = useState("");
+  const [panelW, setPanelW] = useState("");
+  const [panelH, setPanelH] = useState("");
   const [logoW, setLogoW] = useState("");
   const [logoH, setLogoH] = useState("");
   const [mainLetterH, setMainLetterH] = useState("");
@@ -409,8 +318,9 @@ export default function QuotePage() {
   const [faceGraphics, setFaceGraphics] = useState<string[]>([]);
   const [ledType, setLedType] = useState<string[]>([]);
   const [logoBoxStyle, setLogoBoxStyle] = useState("");
+  const [printMaterial, setPrintMaterial] = useState("");
 
-  // Step 3 — Colors
+  // ── Step 3: Colors ──
   const [acrylicColor, setAcrylicColor] = useState("");
   const [acrylicColorCustom, setAcrylicColorCustom] = useState("");
   const [graphicsColor, setGraphicsColor] = useState("");
@@ -422,7 +332,7 @@ export default function QuotePage() {
   // Color chart lightbox
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
 
-  // Step 4 — Artwork file uploads
+  // ── Step 4: Extras & Files ──
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
   const [uploadingFiles, setUploadingFiles] = useState(false);
   const uploadArtwork = trpc.email.uploadArtwork.useMutation();
@@ -430,8 +340,6 @@ export default function QuotePage() {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (!files.length) return;
-
-    // Validate: max 10 files, max 16 MB each
     const oversized = files.filter(f => f.size > 16 * 1024 * 1024);
     if (oversized.length) {
       toast.error(`File(s) too large (max 16 MB): ${oversized.map(f => f.name).join(", ")}`);
@@ -441,10 +349,8 @@ export default function QuotePage() {
       toast.error("Maximum 10 files per quote.");
       return;
     }
-
     setUploadingFiles(true);
     try {
-      // Convert files to base64
       const encoded = await Promise.all(
         files.map(file => new Promise<{ name: string; type: string; data: string }>((resolve, reject) => {
           const reader = new FileReader();
@@ -456,7 +362,6 @@ export default function QuotePage() {
           reader.readAsDataURL(file);
         }))
       );
-
       const result = await uploadArtwork.mutateAsync({ files: encoded });
       setUploadedFiles(prev => [...prev, ...result.files.map(f => ({ name: f.name, url: f.url }))]);
       toast.success(`${result.files.length} file(s) uploaded successfully.`);
@@ -473,17 +378,19 @@ export default function QuotePage() {
     setUploadedFiles(prev => prev.filter(f => f.url !== url));
   };
 
-  // Step 4 — Extras
   const [hangerBar, setHangerBar] = useState("");
   const [racewayLocation, setRacewayLocation] = useState("");
   const [extras, setExtras] = useState<string[]>([]);
-  const [additionalNotes, setAdditionalNotes] = useState(() =>
-    prefilledTitle ? `Interested in: ${prefilledTitle}` : ""
-  );
+  const [additionalNotes, setAdditionalNotes] = useState("");
 
+  // ── Validation ──
   const validate = () => {
     if (step === 0 && (!companyName || !firstName || !email || !isTradeCustomer)) {
       toast.error("Please fill in Company Name, Contact Name, Email, and confirm trade status.");
+      return false;
+    }
+    if (step === 1 && !selectedSlug) {
+      toast.error("Please select a product to continue.");
       return false;
     }
     return true;
@@ -504,7 +411,10 @@ export default function QuotePage() {
   });
 
   const submitQuote = () => {
-    const allSignTypes = [...acrylicFaced, ...metalFaced, ...specialty, ...supplementary];
+    const detailParts: string[] = [];
+    if (printMaterial) detailParts.push(`Print Material: ${printMaterial}`);
+    if (panelW || panelH) detailParts.push(`Panel Size: ${panelW || "?"}W × ${panelH || "?"}H`);
+
     sendQuote.mutate({
       companyName,
       firstName,
@@ -513,13 +423,18 @@ export default function QuotePage() {
       email,
       phone: phone || undefined,
       billingAddress: [street, street2, city, province, postal, country].filter(Boolean).join(", ") || undefined,
+      isTradeCustomer: isTradeCustomer || undefined,
+      numSigns: numSigns || undefined,
+      inHandDate: inHandDate || undefined,
+      installDate: installDate || undefined,
       illumination: illumination.join(", ") || undefined,
-      signTypes: allSignTypes.length ? allSignTypes : undefined,
+      signTypes: selectedProduct ? [selectedProduct.title] : undefined,
       mounting: mounting.join(", ") || undefined,
       signText: signText || undefined,
       width: overallW || undefined,
       height: overallH || undefined,
       letterHeight: mainLetterH || undefined,
+      secondaryLetterHeight: secLetterH || undefined,
       logoWidth: logoW || undefined,
       logoHeight: logoH || undefined,
       installationType: installationType || undefined,
@@ -534,7 +449,10 @@ export default function QuotePage() {
       racewayColo: racewayColor || undefined,
       hangerBar: extras.includes("Hanger Bar") || undefined,
       remotePowerSupply: extras.includes("Remote Power Supply") || undefined,
-      additionalInstructions: additionalNotes || undefined,
+      additionalInstructions: [
+        detailParts.join(" | "),
+        additionalNotes,
+      ].filter(Boolean).join("\n\n") || undefined,
       artworkUrls: uploadedFiles.length > 0 ? uploadedFiles : undefined,
     });
   };
@@ -553,7 +471,7 @@ export default function QuotePage() {
             For urgent requests, email us at{" "}
             <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>.
           </p>
-          <Button onClick={() => { setSubmitted(false); setStep(0); }} className="mt-8 bg-forest hover:bg-forest/90 text-bone rounded-full px-8">
+          <Button type="button" onClick={() => { setSubmitted(false); setStep(0); }} className="mt-8 bg-forest hover:bg-forest/90 text-bone rounded-full px-8">
             Submit another quote
           </Button>
         </div>
@@ -607,18 +525,11 @@ export default function QuotePage() {
           </div>
         </div>
       </div>
+
       {/* Form */}
       <form onSubmit={e => e.preventDefault()}>
         <div className="max-w-4xl mx-auto px-6 lg:px-10 py-12 space-y-8">
-          {/* Pre-fill notice */}
-          {prefilledTitle && (
-            <div className="flex items-center gap-3 bg-sage/10 border border-sage/30 rounded-xl px-5 py-3.5">
-              <span className="text-sage text-lg">&#10003;</span>
-              <p className="text-sm text-forest">
-                Quoting for: <strong>{prefilledTitle}</strong> — sign type pre-selected on Step 2. You can adjust any selections before submitting.
-              </p>
-            </div>
-          )}
+
           {/* ── Step 0: Your Info ── */}
           {step === 0 && (
             <div className="space-y-8">
@@ -729,33 +640,59 @@ export default function QuotePage() {
             </div>
           )}
 
-          {/* ── Step 1: Product Type ── */}
+          {/* ── Step 1: Select Product ── */}
           {step === 1 && (
             <div className="space-y-6">
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Illumination</SectionTitle>
-                <CheckGroup items={["Illuminated", "Non-Illuminated"]} selected={illumination} onChange={setIllumination} />
-              </div>
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Acrylic Faced (AF)</SectionTitle>
-                <CheckGroup items={ACRYLIC_FACED} selected={acrylicFaced} onChange={setAcrylicFaced} />
-              </div>
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Metal Faced (MF)</SectionTitle>
-                <CheckGroup items={METAL_FACED} selected={metalFaced} onChange={setMetalFaced} />
-              </div>
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Specialty (SPE)</SectionTitle>
-                <CheckGroup items={SPECIALTY} selected={specialty} onChange={setSpecialty} />
-              </div>
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Supplementary (SUP) *</SectionTitle>
-                <p className="text-xs text-stone-500 mb-4">* Supplementary products are only available with channel letter orders.</p>
-                <CheckGroup items={SUPPLEMENTARY} selected={supplementary} onChange={setSupplementary} />
-              </div>
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Mounting Options</SectionTitle>
-                <CheckGroup items={MOUNTING} selected={mounting} onChange={setMounting} />
+                <SectionTitle>What product are you quoting?</SectionTitle>
+                <p className="text-sm text-stone-500 mb-6">Select the product that best matches your project. You can provide more detail on the next step.</p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {products.map(p => {
+                    const isSelected = selectedSlug === p.slug;
+                    return (
+                      <button
+                        key={p.slug}
+                        type="button"
+                        onClick={() => setSelectedSlug(p.slug)}
+                        className={`group relative text-left rounded-2xl border-2 overflow-hidden transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
+                          isSelected
+                            ? "border-forest shadow-lg scale-[1.02]"
+                            : "border-stone-200 hover:border-sage hover:shadow-md"
+                        }`}
+                      >
+                        <div className="aspect-[16/9] overflow-hidden bg-stone-100">
+                          <img
+                            src={p.image}
+                            alt={p.title}
+                            className={`w-full h-full object-cover transition-transform duration-300 ${isSelected ? "scale-105" : "group-hover:scale-105"}`}
+                          />
+                        </div>
+                        {isSelected && (
+                          <div className="absolute top-2 right-2 bg-forest text-bone rounded-full p-1 shadow-md">
+                            <CheckCircle2 className="h-4 w-4" />
+                          </div>
+                        )}
+                        <div className={`p-4 ${isSelected ? "bg-forest/5" : "bg-white"}`}>
+                          <h3 className={`font-serif text-sm font-semibold leading-snug ${isSelected ? "text-forest" : "text-stone-800 group-hover:text-forest"} transition-colors`}>
+                            {p.title}
+                          </h3>
+                          <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{p.blurb}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+                {!selectedSlug && (
+                  <p className="mt-4 text-xs text-stone-400 text-center">Select a product above to continue.</p>
+                )}
+                {selectedSlug && (
+                  <div className="mt-6 flex items-center gap-3 bg-sage/10 border border-sage/30 rounded-xl px-5 py-3.5">
+                    <CheckCircle2 className="h-5 w-5 text-sage shrink-0" />
+                    <p className="text-sm text-forest">
+                      Selected: <strong>{selectedProduct?.title}</strong>. The next step will show fields specific to this product.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -763,87 +700,172 @@ export default function QuotePage() {
           {/* ── Step 2: Sign Details ── */}
           {step === 2 && (
             <div className="space-y-6">
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Sign Text & Dimensions</SectionTitle>
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div className="md:col-span-2">
-                    <FieldLabel>Sign Text</FieldLabel>
-                    <Textarea value={signText} onChange={e => setSignText(e.target.value)} placeholder="Enter the text to appear on the sign…" rows={3} className="resize-none" />
-                  </div>
+              {selectedProduct && (
+                <div className="flex items-center gap-3 bg-sage/10 border border-sage/30 rounded-xl px-5 py-3">
+                  <img src={selectedProduct.image} alt={selectedProduct.title} className="w-12 h-12 rounded-lg object-cover shrink-0" />
                   <div>
-                    <FieldLabel>Overall Width (inches)</FieldLabel>
-                    <Input type="number" value={overallW} onChange={e => setOverallW(e.target.value)} placeholder='e.g. 96' />
-                  </div>
-                  <div>
-                    <FieldLabel>Overall Height (inches)</FieldLabel>
-                    <Input type="number" value={overallH} onChange={e => setOverallH(e.target.value)} placeholder='e.g. 18' />
-                  </div>
-                  <div>
-                    <FieldLabel>Main Channel Letter Height (inches)</FieldLabel>
-                    <Input type="number" value={mainLetterH} onChange={e => setMainLetterH(e.target.value)} placeholder='e.g. 12' />
-                  </div>
-                  <div>
-                    <FieldLabel>Secondary Channel Letter Height (inches)</FieldLabel>
-                    <Input type="number" value={secLetterH} onChange={e => setSecLetterH(e.target.value)} placeholder='e.g. 8' />
-                  </div>
-                  <div>
-                    <FieldLabel>Logo Width (inches)</FieldLabel>
-                    <Input type="number" value={logoW} onChange={e => setLogoW(e.target.value)} placeholder="If applicable" />
-                  </div>
-                  <div>
-                    <FieldLabel>Logo Height (inches)</FieldLabel>
-                    <Input type="number" value={logoH} onChange={e => setLogoH(e.target.value)} placeholder="If applicable" />
+                    <p className="text-xs text-stone-500 uppercase tracking-wider font-semibold">Quoting for</p>
+                    <p className="text-sm font-semibold text-forest">{selectedProduct.title}</p>
                   </div>
                 </div>
-              </div>
+              )}
 
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Installation</SectionTitle>
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <FieldLabel required>Installation Type</FieldLabel>
-                    <Select value={installationType} onValueChange={setInstallationType}>
-                      <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
-                      <SelectContent>
-                        {INSTALLATION_TYPES.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <FieldLabel required>Installation Location</FieldLabel>
-                    <Select value={installLocation} onValueChange={setInstallLocation}>
-                      <SelectTrigger><SelectValue placeholder="Select location…" /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Interior">Interior</SelectItem>
-                        <SelectItem value="Exterior">Exterior</SelectItem>
-                        <SelectItem value="Both Interior and Exterior">Both Interior and Exterior</SelectItem>
-                      </SelectContent>
-                    </Select>
+              {/* Illumination */}
+              {fieldSet.showIllumination && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Illumination</SectionTitle>
+                  <CheckGroup items={["Illuminated", "Non-Illuminated"]} selected={illumination} onChange={setIllumination} />
+                </div>
+              )}
+
+              {/* Sign Text */}
+              {fieldSet.showSignText && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Sign Text</SectionTitle>
+                  <FieldLabel>Text to appear on the sign</FieldLabel>
+                  <Textarea value={signText} onChange={e => setSignText(e.target.value)} placeholder="Enter the text to appear on the sign…" rows={3} className="resize-none" />
+                </div>
+              )}
+
+              {/* Dimensions */}
+              {(fieldSet.showOverallDimensions || fieldSet.showLetterDimensions || fieldSet.showLogoDimensions || fieldSet.showPanelDimensions) && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Dimensions</SectionTitle>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    {fieldSet.showOverallDimensions && (
+                      <>
+                        <div>
+                          <FieldLabel>Overall Width (inches)</FieldLabel>
+                          <Input type="number" value={overallW} onChange={e => setOverallW(e.target.value)} placeholder='e.g. 96' />
+                        </div>
+                        <div>
+                          <FieldLabel>Overall Height (inches)</FieldLabel>
+                          <Input type="number" value={overallH} onChange={e => setOverallH(e.target.value)} placeholder='e.g. 18' />
+                        </div>
+                      </>
+                    )}
+                    {fieldSet.showLetterDimensions && (
+                      <>
+                        <div>
+                          <FieldLabel>Main Channel Letter Height (inches)</FieldLabel>
+                          <Input type="number" value={mainLetterH} onChange={e => setMainLetterH(e.target.value)} placeholder='e.g. 12' />
+                        </div>
+                        <div>
+                          <FieldLabel>Secondary Channel Letter Height (inches)</FieldLabel>
+                          <Input type="number" value={secLetterH} onChange={e => setSecLetterH(e.target.value)} placeholder='e.g. 8' />
+                        </div>
+                      </>
+                    )}
+                    {fieldSet.showLogoDimensions && (
+                      <>
+                        <div>
+                          <FieldLabel>Logo Width (inches)</FieldLabel>
+                          <Input type="number" value={logoW} onChange={e => setLogoW(e.target.value)} placeholder="If applicable" />
+                        </div>
+                        <div>
+                          <FieldLabel>Logo Height (inches)</FieldLabel>
+                          <Input type="number" value={logoH} onChange={e => setLogoH(e.target.value)} placeholder="If applicable" />
+                        </div>
+                      </>
+                    )}
+                    {fieldSet.showPanelDimensions && (
+                      <>
+                        <div>
+                          <FieldLabel>Panel Width (inches)</FieldLabel>
+                          <Input type="number" value={panelW} onChange={e => setPanelW(e.target.value)} placeholder='e.g. 48' />
+                        </div>
+                        <div>
+                          <FieldLabel>Panel Height (inches)</FieldLabel>
+                          <Input type="number" value={panelH} onChange={e => setPanelH(e.target.value)} placeholder='e.g. 24' />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
-              </div>
+              )}
 
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Sign Face Graphics</SectionTitle>
-                <CheckGroup items={FACE_GRAPHICS} selected={faceGraphics} onChange={setFaceGraphics} />
-              </div>
-
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>LED Illumination Type</SectionTitle>
-                <CheckGroup items={LED_OPTIONS} selected={ledType} onChange={setLedType} />
-              </div>
-
-              <div className="bg-white rounded-2xl border border-stone-200 p-8">
-                <SectionTitle>Logo Box Style</SectionTitle>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {LOGO_BOX_STYLES.map(s => (
-                    <label key={s} className="flex items-center gap-2 cursor-pointer group">
-                      <input type="radio" name="logoBoxStyle" value={s} checked={logoBoxStyle === s} onChange={() => setLogoBoxStyle(s)} className="accent-forest" />
-                      <span className="text-sm text-stone-700 group-hover:text-forest transition-colors">{s}</span>
-                    </label>
-                  ))}
+              {/* Mounting */}
+              {fieldSet.showMounting && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Mounting Options</SectionTitle>
+                  <CheckGroup items={MOUNTING} selected={mounting} onChange={setMounting} />
                 </div>
-              </div>
+              )}
+
+              {/* Installation */}
+              {fieldSet.showInstallation && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Installation</SectionTitle>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <FieldLabel>Installation Type</FieldLabel>
+                      <Select value={installationType} onValueChange={setInstallationType}>
+                        <SelectTrigger><SelectValue placeholder="Select type…" /></SelectTrigger>
+                        <SelectContent>
+                          {INSTALLATION_TYPES.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <FieldLabel>Installation Location</FieldLabel>
+                      <Select value={installLocation} onValueChange={setInstallLocation}>
+                        <SelectTrigger><SelectValue placeholder="Select location…" /></SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Interior">Interior</SelectItem>
+                          <SelectItem value="Exterior">Exterior</SelectItem>
+                          <SelectItem value="Both Interior and Exterior">Both Interior and Exterior</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Face Graphics */}
+              {fieldSet.showFaceGraphics && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Sign Face Graphics</SectionTitle>
+                  <CheckGroup items={FACE_GRAPHICS} selected={faceGraphics} onChange={setFaceGraphics} />
+                </div>
+              )}
+
+              {/* LED */}
+              {fieldSet.showLED && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>LED Illumination Type</SectionTitle>
+                  <CheckGroup items={LED_OPTIONS} selected={ledType} onChange={setLedType} />
+                </div>
+              )}
+
+              {/* Logo Box */}
+              {fieldSet.showLogoBox && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Logo Box Style</SectionTitle>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {LOGO_BOX_STYLES.map(s => (
+                      <label key={s} className="flex items-center gap-2 cursor-pointer group">
+                        <input type="radio" name="logoBoxStyle" value={s} checked={logoBoxStyle === s} onChange={() => setLogoBoxStyle(s)} className="accent-forest" />
+                        <span className="text-sm text-stone-700 group-hover:text-forest transition-colors">{s}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Print Material (3D Printed) */}
+              {fieldSet.showPrintMaterial && (
+                <div className="bg-white rounded-2xl border border-stone-200 p-8">
+                  <SectionTitle>Print Material</SectionTitle>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {["ASA (UV-stable, recommended)", "ABS", "PETG", "PLA", "Other / Not Sure"].map(m => (
+                      <label key={m} className="flex items-center gap-2 cursor-pointer group">
+                        <input type="radio" name="printMaterial" value={m} checked={printMaterial === m} onChange={() => setPrintMaterial(m)} className="accent-forest" />
+                        <span className="text-sm text-stone-700 group-hover:text-forest transition-colors">{m}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -887,8 +909,9 @@ export default function QuotePage() {
               </div>
 
               <p className="text-sm text-stone-500 bg-sage/10 border border-sage/20 rounded-xl p-4">
-                Fill out only what applies. You can also specify custom colors in the text fields below.
+                Fill out only what applies to your product. You can also specify custom colors in the text fields below.
               </p>
+
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Acrylic Color</SectionTitle>
                 <SwatchPicker
@@ -914,6 +937,7 @@ export default function QuotePage() {
                   Swatches marked with an amber dot require a diffuser panel.
                 </p>
               </div>
+
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Trim Cap Color</SectionTitle>
                 <SwatchPicker
@@ -931,6 +955,7 @@ export default function QuotePage() {
                   />
                 </div>
               </div>
+
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Applied Vinyl Color(s)</SectionTitle>
                 <p className="text-xs text-stone-500 mb-4">
@@ -961,6 +986,7 @@ export default function QuotePage() {
                   </div>
                 </div>
               </div>
+
               <div className="bg-white rounded-2xl border border-stone-200 p-8">
                 <SectionTitle>Return & Raceway Colors</SectionTitle>
                 <div className="grid md:grid-cols-2 gap-5">
@@ -1036,8 +1062,6 @@ export default function QuotePage() {
                   Upload your logo or artwork files here (PDF, EPS, AI, SVG preferred; JPG/PNG at 300 dpi for digital prints).
                   Max 16 MB per file, up to 10 files. Files will be attached to your quote request.
                 </p>
-
-                {/* Drop zone / file picker */}
                 <label className={`flex flex-col items-center justify-center gap-3 w-full border-2 border-dashed rounded-xl p-8 cursor-pointer transition-colors ${
                   uploadingFiles
                     ? "border-sage/40 bg-sage/5 cursor-wait"
@@ -1064,8 +1088,6 @@ export default function QuotePage() {
                     </>
                   )}
                 </label>
-
-                {/* Uploaded file list */}
                 {uploadedFiles.length > 0 && (
                   <ul className="mt-4 space-y-2">
                     {uploadedFiles.map(f => (
@@ -1084,7 +1106,6 @@ export default function QuotePage() {
                     ))}
                   </ul>
                 )}
-
                 <p className="text-xs text-stone-400 mt-4">
                   You can also email large files (&gt;16 MB) directly to{" "}
                   <a href="mailto:sales@canadianwholesalesigns.ca" className="text-forest underline">sales@canadianwholesalesigns.ca</a>.
@@ -1130,8 +1151,6 @@ export default function QuotePage() {
           )}
         </DialogContent>
       </Dialog>
-
-      <Footer />
     </main>
   );
 }
