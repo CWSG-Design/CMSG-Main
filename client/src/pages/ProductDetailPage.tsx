@@ -18,7 +18,7 @@ const productDetails: Record<string, {
   "front-lit-channel-letters": {
     tagline: "Exterior front-lit — the industry standard, illuminated from the inside out.",
     description:
-      "Front-lit channel letters are the most widely specified illuminated sign type in North America. Each letter is individually fabricated from aluminum returns, a polycarbonate or acrylic face, and an LED module array inside. The result is a bright, even glow that reads clearly day and night — from across a parking lot or down a busy street.",
+      "Exterior front-lit channel letters are the most widely specified illuminated sign type in North America — and for good reason. Each letter is individually fabricated from heavy-gauge aluminum returns, a UV-stabilised polycarbonate or acrylic face, and a sealed LED module array. The aluminum housing is powder-coated inside and out for corrosion resistance, while the face material is rated for continuous outdoor exposure across the full Canadian climate range: from -40 °C prairie winters to high-humidity coastal summers. Weep holes and sealed wiring compartments prevent moisture ingress, and every unit ships with a UL-listed Class 2 LED driver rated for outdoor installation. The result is a bright, even glow that reads clearly day and night — from across a parking lot or down a busy street — year after year without fading, warping, or rust.",
     specs: [
       { label: "Return depth", value: "3\" – 8\" standard; custom depths available" },
       { label: "Face material", value: "Polycarbonate or acrylic, 3mm standard" },
