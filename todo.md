@@ -43,3 +43,13 @@
   - Footer: white+green on transparent (dark forest background)
 - [ ] Connect custom domain (canadianwholesalesigns.ca)
 - [ ] SEO meta tags and Open Graph images
+- [x] Rebuild quote form with logical product-first flow (Step 1: Your Info → Step 2: Select Product → Step 3: Sign Details → Step 4: Colors → Step 5: Extras & Files)
+  - Product selection step with visual card grid of all 15 products
+  - Product-specific spec fields that adapt based on selected product
+  - Pre-fill from product detail pages via ?product= query param
+  - Fix form submit bug (decouple from browser form submit event)
+- [x] Build Signage Needs Assessment quiz page (/assessment)
+  - 7-question quiz with distinct visual style (dark forest green theme)
+  - Product recommendations based on answers
+  - Contact form with submission via tRPC sendAssessment procedure
+  - Nav link added to header and footer

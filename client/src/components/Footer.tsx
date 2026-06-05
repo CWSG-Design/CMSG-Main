@@ -121,6 +121,7 @@ export default function Footer() {
         <div className="mt-14 pt-6 border-t border-bone/15 flex flex-col md:flex-row gap-3 justify-between text-xs text-bone/55">
           <div>© {new Date().getFullYear()} {brand.fullName}. All rights reserved.</div>
           <div className="flex gap-5">
+            <Link to="/assessment" className="hover:text-bone">Sign Assessment</Link>
             <Link to="/privacy" className="hover:text-bone">Privacy</Link>
             <Link to="/terms" className="hover:text-bone">Terms</Link>
             <Link to="/accessibility" className="hover:text-bone">Accessibility</Link>

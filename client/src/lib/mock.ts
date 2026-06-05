@@ -23,6 +23,7 @@ export const navLinks = [
   { label: "Installation", href: "/installation" },
   { label: "Installer Directory", href: "/installation-directory" },
   { label: "Resources", href: "/resources" },
+  { label: "Sign Assessment", href: "/assessment" },
   { label: "Contact", href: "/contact" },
 ];
 

@@ -19,6 +19,7 @@ import AccessibilityPage from "./pages/AccessibilityPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import GalleryPage from "./pages/GalleryPage";
+import AssessmentPage from "./pages/AssessmentPage";
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/installation-directory" component={InstallationDirectoryPage} />
       <Route path="/resources" component={ResourcesPage} />
+      <Route path="/assessment" component={AssessmentPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/accessibility" component={AccessibilityPage} />

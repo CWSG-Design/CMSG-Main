@@ -325,4 +325,77 @@ export const emailRouter = router({
 
       return { success: sent || true };
     }),
+  /** Signage Needs Assessment submission */
+  sendAssessment: publicProcedure
+    .input(
+      z.object({
+        answers: z.record(z.string(), z.string()),
+        recommendations: z.array(z.string()),
+        businessName: z.string(),
+        contactName: z.string(),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        city: z.string().optional(),
+        preferredContact: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const questionLabels: Record<string, string> = {
+        goal: 'Goal',
+        businessType: 'Business Type',
+        location: 'Sign Location',
+        illumination: 'Night Visibility',
+        existing: 'Existing Signage',
+        installation: 'Installation',
+        stage: 'Purchase Stage',
+      };
+
+      const answerRows = Object.entries(input.answers)
+        .map(([k, v]) => `<tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold;width:200px">${questionLabels[k] ?? k}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${v}</td></tr>`)
+        .join('');
+
+      const recItems = input.recommendations.length
+        ? input.recommendations.map((r: string) => `<li style="margin:4px 0">${r.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}</li>`).join('')
+        : '<li>No specific recommendations generated</li>';
+
+      const emailSubject = `[CMSG Assessment] ${input.businessName}`;
+
+      const htmlBody = `
+        <h2 style="color:#1a3a2a;font-family:sans-serif;margin-bottom:4px;">Signage Needs Assessment</h2>
+        <p style="font-family:sans-serif;font-size:13px;color:#666;margin-top:0;">Submitted via the CMSG website assessment tool.</p>
+        <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%;max-width:640px;border:1px solid #e5e0d8;">
+          <tr><td colspan="2" style="padding:10px 12px;background:#1a3a2a;color:#fff;font-weight:bold;font-size:15px;">Contact</td></tr>
+          <tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold;width:200px">Business</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${input.businessName}</td></tr>
+          <tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold">Contact Name</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${input.contactName}</td></tr>
+          <tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold">Email</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8"><a href="mailto:${input.email}">${input.email}</a></td></tr>
+          ${input.phone ? `<tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold">Phone</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${input.phone}</td></tr>` : ''}
+          ${input.city ? `<tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold">City</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${input.city}</td></tr>` : ''}
+          <tr><td style="padding:6px 12px;background:#f5f0e8;font-weight:bold">Preferred Contact</td><td style="padding:6px 12px;border-bottom:1px solid #e5e0d8">${input.preferredContact ?? 'Email'}</td></tr>
+          <tr><td colspan="2" style="padding:10px 12px;background:#1a3a2a;color:#fff;font-weight:bold;font-size:15px;">Assessment Answers</td></tr>
+          ${answerRows}
+          <tr><td colspan="2" style="padding:10px 12px;background:#1a3a2a;color:#fff;font-weight:bold;font-size:15px;">Recommended Products</td></tr>
+          <tr><td colspan="2" style="padding:10px 12px"><ul style="margin:0;padding-left:20px">${recItems}</ul></td></tr>
+        </table>
+      `;
+
+      const textLines = [
+        `[CMSG Assessment] ${input.businessName}`,
+        `Contact: ${input.contactName} | ${input.email}${input.phone ? ' | ' + input.phone : ''}${input.city ? ' | ' + input.city : ''}`,
+        `Preferred Contact: ${input.preferredContact ?? 'Email'}`,
+        '',
+        '--- Assessment Answers ---',
+        ...Object.entries(input.answers).map(([k, v]) => `${questionLabels[k] ?? k}: ${v}`),
+        '',
+        '--- Recommended Products ---',
+        ...input.recommendations.map((r: string) => r.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())),
+      ];
+
+      const sent = await sendEmail(emailSubject, htmlBody, textLines.join('\n'));
+      await notifyOwner({
+        title: `Assessment: ${input.businessName} — Stage: ${input.answers.stage ?? 'unknown'}`,
+        content: textLines.join('\n'),
+      }).catch(() => {});
+      return { success: sent || true };
+    }),
+
 });
