@@ -16,9 +16,9 @@ const productDetails: Record<string, {
   relatedSlugs: string[];
 }> = {
   "front-lit-channel-letters": {
-    tagline: "Exterior front-lit — the industry standard, illuminated from the inside out.",
+    tagline: "Every exterior channel letter style — built for Canadian weather, engineered for visibility.",
     description:
-      "Exterior front-lit channel letters are the most widely specified illuminated sign type in North America — and for good reason. Each letter is individually fabricated from heavy-gauge aluminum returns, a UV-stabilised polycarbonate or acrylic face, and a sealed LED module array. The aluminum housing is powder-coated inside and out for corrosion resistance, while the face material is rated for continuous outdoor exposure across the full Canadian climate range: from -40 °C prairie winters to high-humidity coastal summers. Weep holes and sealed wiring compartments prevent moisture ingress, and every unit ships with a UL-listed Class 2 LED driver rated for outdoor installation. The result is a bright, even glow that reads clearly day and night — from across a parking lot or down a busy street — year after year without fading, warping, or rust.",
+      "Exterior channel letters from CMSG cover the full range of styles used on building facades, storefronts, and freestanding structures: front-lit, halo-lit, combination front-and-halo, and raceway-mounted sets. Every style is fabricated from heavy-gauge aluminum returns powder-coated inside and out for corrosion resistance, with UV-stabilised polycarbonate or acrylic faces rated for continuous outdoor exposure across the full Canadian climate range — from -40 °C prairie winters to high-humidity coastal summers. Weep holes and sealed wiring compartments prevent moisture ingress, and every unit ships with a UL-listed Class 2 LED driver rated for outdoor installation. Front-lit letters deliver a bright, even face glow; halo letters cast a dramatic backlit halo against the building surface; combination letters do both simultaneously; and raceway-mounted sets simplify installation for multi-unit rollouts. One supplier, every exterior channel letter style, to the same tight tolerances.",
     specs: [
       { label: "Return depth", value: "3\" – 8\" standard; custom depths available" },
       { label: "Face material", value: "Polycarbonate or acrylic, 3mm standard" },
@@ -114,27 +114,29 @@ const productDetails: Record<string, {
     relatedSlugs: ["front-lit-channel-letters", "halo-illuminated-channel-letters", "push-through-faux-neon"],
   },
   "trimless-channel-letters": {
-    tagline: "Pure architectural finish — no visible trim cap.",
+    tagline: "Every interior channel letter style — one supplier, one standard.",
     description:
-      "Trimless channel letters eliminate the standard aluminum trim cap that borders the face of a conventional channel letter. The result is a seamless, flush face that reads as a single clean plane of light — a premium look favoured by fashion retail, luxury brands, and design-conscious architects.",
+      "Interior channel letters from CMSG cover the full range of styles used in lobbies, retail interiors, showrooms, and architectural feature walls. Whether you need a trimless face for a luxury retail client, an open-face letter for an industrial-chic restaurant, a halo-lit letter for a corporate reception, or a combination front-and-halo letter for maximum visual impact — every style is fabricated to the same tight tolerances and finished to your exact specification. Because interior letters are not exposed to weather, they can be built with lighter returns, tighter radii, and a wider range of face materials than their exterior counterparts, giving you more design freedom.",
     specs: [
-      { label: "Return depth", value: "3\" – 6\"" },
-      { label: "Face material", value: "Acrylic, flush-routed to return edge" },
-      { label: "Return material", value: "0.063\" aluminum, precision-formed" },
-      { label: "LED module", value: "UL-listed LED modules" },
-      { label: "Finish", value: "Custom powder coat; face colour-matched or contrasting" },
-      { label: "Lead time", value: "12 business days from approved artwork" },
+      { label: "Return depth", value: "2\" – 6\" standard; shallower profiles available for interior" },
+      { label: "Return material", value: "0.040\" – 0.063\" aluminum, precision-formed" },
+      { label: "Face material", value: "Acrylic or polycarbonate; trimless, standard, or open-face" },
+      { label: "Halo option", value: "Routed returns with rear-facing LED for halo glow" },
+      { label: "LED module", value: "UL-listed LED modules, 50,000 hr rated" },
+      { label: "Finish", value: "Custom powder coat — any RAL or Pantone; brushed or anodised available" },
+      { label: "Mounting", value: "Flush-to-wall, standoff, or suspended cable systems" },
+      { label: "Lead time", value: "10–12 business days from approved artwork" },
     ],
     features: [
-      "No visible trim cap — seamless face-to-return transition",
-      "Premium architectural aesthetic",
-      "Available in any face colour or translucency",
-      "Precision CNC-routed faces for tight tolerances",
-      "CSA-certified components",
-      "5-year LED warranty",
+      "Trimless option: seamless face-to-return transition, no visible trim cap",
+      "Open-face option: exposed LED modules for an industrial or vintage aesthetic",
+      "Halo option: rear-facing LEDs cast a glow against the mounting surface",
+      "Combination option: front-lit face plus halo glow in a single letter",
+      "Lighter interior-grade returns allow tighter radii and more complex letterforms",
+      "CSA-certified components; 5-year LED warranty",
     ],
-    useCases: ["Fashion & luxury retail", "High-end restaurant groups", "Corporate campus signage", "Architectural feature signage"],
-    relatedSlugs: ["front-lit-channel-letters", "flat-cut-out-letters", "halo-illuminated-channel-letters"],
+    useCases: ["Corporate lobbies and reception areas", "Luxury and fashion retail interiors", "Restaurant and hospitality feature walls", "Showrooms and trade-show displays", "Healthcare and institutional wayfinding"],
+    relatedSlugs: ["front-lit-channel-letters", "flat-cut-out-letters", "interior-hanging-signs"],
   },
   "fascia-storefront-signs": {
     tagline: "Your core storefront solution — built for Canadian conditions.",

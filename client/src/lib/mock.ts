@@ -68,9 +68,9 @@ export const resources = [
 export const products = [
   {
     slug: "front-lit-channel-letters",
-    title: "Exterior Front Lit Channel Letters",
+    title: "Exterior Channel Letters",
     image: "/manus-storage/hero_longos_night_4755c444.jpg",
-    blurb: "High-visibility illuminated faces that deliver a classic, professional look — seen clearly from a distance day or night.",
+    blurb: "Full range of exterior channel letter styles — front-lit, halo, combination, and raceway-mounted — built for Canadian weather and maximum street visibility.",
   },
   {
     slug: "front-lit-vertical-supports",
@@ -92,9 +92,9 @@ export const products = [
   },
   {
     slug: "trimless-channel-letters",
-    title: "Trimless Channel Letters",
+    title: "Interior Channel Letters",
     image: "/manus-storage/product_mountain_warehouse_2183dd12.jpg",
-    blurb: "Seamless premium look — no visible trim cap, pure architectural finish that elevates any brand.",
+    blurb: "Full range of interior channel letter styles — trimless, open-face, halo, and combination — crafted for lobbies, retail interiors, and architectural feature walls.",
   },
   {
     slug: "fascia-storefront-signs",
