@@ -152,7 +152,7 @@ export const products = [
   },
   {
     slug: "illuminated-hanging-window-signs",
-    title: "Illuminated Hanging Window Signs",
+    title: "3D Printed Illuminated Hanging Window Signs",
     image: "/manus-storage/open-sign-window_2ef5c6a0.webp",
     blurb: "Eye-catching illuminated signs designed to hang in storefront windows — custom shapes, full-colour graphics, and bold LED backlighting that commands attention from the street.",
   },
