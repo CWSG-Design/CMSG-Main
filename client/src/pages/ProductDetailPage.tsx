@@ -18,15 +18,15 @@ const productDetails: Record<string, {
   "front-lit-channel-letters": {
     tagline: "Every exterior channel letter style — built for Canadian weather, engineered for visibility.",
     description:
-      "Exterior channel letters from CMSG cover the full range of styles used on building facades, storefronts, and freestanding structures: front-lit, halo-lit, combination front-and-halo, and raceway-mounted sets. Every style is fabricated from heavy-gauge aluminum returns powder-coated inside and out for corrosion resistance, with UV-stabilised polycarbonate or acrylic faces rated for continuous outdoor exposure across the full Canadian climate range — from -40 °C prairie winters to high-humidity coastal summers. Weep holes and sealed wiring compartments prevent moisture ingress, and every unit ships with a UL-listed Class 2 LED driver rated for outdoor installation. Front-lit letters deliver a bright, even face glow; halo letters cast a dramatic backlit halo against the building surface; combination letters do both simultaneously; and raceway-mounted sets simplify installation for multi-unit rollouts. One supplier, every exterior channel letter style, to the same tight tolerances.",
+      "Exterior channel letters from CMSG cover the full range of styles used on building facades, storefronts, and freestanding structures: front-lit, halo-lit, combination front-and-halo, and raceway-mounted sets. Every style is fabricated from heavy-gauge aluminum returns with a durable painted finish inside and out for corrosion resistance, with 3/16\" white acrylic faces rated for continuous outdoor exposure across the full Canadian climate range — from -40 °C prairie winters to high-humidity coastal summers. Weep holes and sealed wiring compartments prevent moisture ingress, and every unit ships with a UL-listed Class 2 LED driver rated for outdoor installation. Front-lit letters deliver a bright, even face glow; halo letters cast a dramatic backlit halo against the building surface; combination letters do both simultaneously; and raceway-mounted sets simplify installation for multi-unit rollouts. One supplier, every exterior channel letter style, to the same tight tolerances.",
     specs: [
       { label: "Return depth", value: "3\" – 8\" standard; custom depths available" },
-      { label: "Face material", value: "Polycarbonate or acrylic, 3mm standard" },
+      { label: "Face material", value: "3/16\" white acrylic" },
       { label: "Return material", value: "0.040\" – 0.063\" aluminum" },
       { label: "LED module", value: "UL-listed LED modules, 50,000 hr rated" },
       { label: "Power supply", value: "UL-listed Class 2 LED driver, included" },
       { label: "Mounting", value: "Flush-to-wall or raceway; template provided" },
-      { label: "Finish", value: "Custom powder coat, any RAL or Pantone" },
+      { label: "Finish", value: "Custom painted finish, any RAL or Pantone" },
       { label: "Lead time", value: "10 business days from approved artwork" },
     ],
     features: [
@@ -46,11 +46,11 @@ const productDetails: Record<string, {
       "Front-lit channel letters on vertical supports bring full illuminated signage to locations where direct wall mounting is not an option. Custom-fabricated steel or aluminum support structures — single posts, twin-post frames, or canopy-integrated brackets — are engineered to your site conditions and wind-load requirements. The channel letters themselves are identical in quality to our wall-mounted product: aluminum returns, polycarbonate faces, and UL-listed LED modules throughout. The result is a freestanding illuminated sign that commands attention from the street, parking lot, or building approach.",
     specs: [
       { label: "Letter return depth", value: "3\" – 8\" standard; custom depths available" },
-      { label: "Face material", value: "Polycarbonate or acrylic, 3mm standard" },
+      { label: "Face material", value: "3/16\" white acrylic" },
       { label: "Return material", value: "0.040\" – 0.063\" aluminum" },
       { label: "LED module", value: "UL-listed LED modules, 50,000 hr rated" },
-      { label: "Support structure", value: "Powder-coated steel or aluminum; engineered to local wind-load code" },
-      { label: "Post finish", value: "Custom powder coat to match or contrast letters" },
+      { label: "Support structure", value: "Painted steel or aluminum; engineered to local wind-load code" },
+      { label: "Post finish", value: "Custom painted finish to match or contrast letters" },
       { label: "Footing", value: "Structural drawings provided; concrete footing by installer" },
       { label: "Lead time", value: "12–15 business days from approved artwork & engineering" },
     ],
@@ -75,7 +75,7 @@ const productDetails: Record<string, {
       { label: "Return material", value: "0.063\" aluminum" },
       { label: "LED module", value: "Rear-facing UL-listed LED strip" },
       { label: "Standoff", value: "1.5\" – 3\" aluminum standoffs included" },
-      { label: "Finish", value: "Custom powder coat; halo colour via LED colour temp" },
+      { label: "Finish", value: "Custom painted finish; halo colour via LED colour temp" },
       { label: "Lead time", value: "10 business days from approved artwork" },
     ],
     features: [
@@ -95,11 +95,11 @@ const productDetails: Record<string, {
       "Face & halo combination letters deliver the best of both worlds: a bright illuminated face for daytime readability combined with a rear halo glow for dramatic nighttime presence. The dual-circuit design allows independent dimming of face and halo, giving your clients full control over the look at any hour.",
     specs: [
       { label: "Return depth", value: "4\" – 8\" to accommodate dual LED circuits" },
-      { label: "Face material", value: "Polycarbonate or acrylic, 3mm" },
+      { label: "Face material", value: "3/16\" white acrylic" },
       { label: "Rear LED", value: "Independent rear-facing LED strip" },
       { label: "Power supply", value: "Dual UL-listed Class 2 drivers" },
       { label: "Dimming", value: "0–10V or PWM dimming on both circuits" },
-      { label: "Finish", value: "Custom powder coat" },
+      { label: "Finish", value: "Custom painted finish" },
       { label: "Lead time", value: "12 business days from approved artwork" },
     ],
     features: [
@@ -120,10 +120,10 @@ const productDetails: Record<string, {
     specs: [
       { label: "Return depth", value: "2\" – 6\" standard; shallower profiles available for interior" },
       { label: "Return material", value: "0.040\" – 0.063\" aluminum, precision-formed" },
-      { label: "Face material", value: "Acrylic or polycarbonate; trimless, standard, or open-face" },
+      { label: "Face material", value: "3/16\" white acrylic; trimless, standard, or open-face" },
       { label: "Halo option", value: "Routed returns with rear-facing LED for halo glow" },
       { label: "LED module", value: "UL-listed LED modules, 50,000 hr rated" },
-      { label: "Finish", value: "Custom powder coat — any RAL or Pantone; brushed or anodised available" },
+      { label: "Finish", value: "Custom painted finish — any RAL or Pantone; brushed or anodised available" },
       { label: "Mounting", value: "Flush-to-wall, standoff, or suspended cable systems" },
       { label: "Lead time", value: "10–12 business days from approved artwork" },
     ],
@@ -146,7 +146,7 @@ const productDetails: Record<string, {
       { label: "Panel material", value: "ACM (aluminum composite), 4mm or 6mm" },
       { label: "Illumination", value: "LED-backlit or surface-mounted LED modules" },
       { label: "Frame", value: "Extruded aluminum frame system" },
-      { label: "Finish", value: "Custom powder coat or vinyl wrap" },
+      { label: "Finish", value: "Custom painted finish or vinyl wrap" },
       { label: "Max single-piece size", value: "Up to 10' × 4' standard; larger on request" },
       { label: "Lead time", value: "12–15 business days from approved artwork" },
     ],
@@ -154,7 +154,7 @@ const productDetails: Record<string, {
       "Engineered for Canadian freeze-thaw and snow-load conditions",
       "Full ACM panel or letter-only configurations",
       "Integrated LED lighting options",
-      "Custom powder coat to any RAL or Pantone",
+      "Custom painted finish to any RAL or Pantone",
       "Ships flat-packed with full installation hardware",
       "CSA-certified electrical components",
     ],
@@ -169,7 +169,7 @@ const productDetails: Record<string, {
       { label: "Materials", value: "Aluminum, acrylic, PVC foam, or composite" },
       { label: "Illumination", value: "LED edge-lit, halo, or face-lit options" },
       { label: "Suspension", value: "Aircraft cable, rigid rod, or direct-mount" },
-      { label: "Finish", value: "Powder coat, vinyl, or raw brushed aluminum" },
+      { label: "Finish", value: "Painted, vinyl-wrapped, or raw brushed aluminum" },
       { label: "Lead time", value: "10–14 business days from approved artwork" },
     ],
     features: [
@@ -210,7 +210,7 @@ const productDetails: Record<string, {
     description:
       "Pylon and ground signs are the highest-visibility sign type for any property. CWS fabricates single-tenant and multi-tenant pylon cabinets, monument signs, and post-and-panel systems — all engineered for Canadian wind and snow loads. LED-illuminated faces with aluminum cabinet construction ensure decades of reliable service.",
     specs: [
-      { label: "Cabinet material", value: "Aluminum extrusion frame, ACM or polycarbonate faces" },
+      { label: "Cabinet material", value: "Aluminum extrusion frame, ACM or 3/16\" white acrylic faces" },
       { label: "Illumination", value: "Internal LED — even face illumination" },
       { label: "Height", value: "Up to 20' standard pylon; taller on engineering review" },
       { label: "Tenants", value: "Single or multi-tenant configurations" },
@@ -234,9 +234,9 @@ const productDetails: Record<string, {
       "Acrylic push-through letters are precision-routed from solid acrylic sheet and set flush into a fabricated aluminum cabinet face. When backlit with LED modules, the acrylic letters glow evenly while the surrounding aluminum face remains dark — creating a high-contrast, architectural look that reads clearly day and night. Because the letters are integral to the cabinet face rather than applied on top, the finished sign is exceptionally clean, durable, and weather-resistant. CMSG fabricates push-through faces in any letter style, size, or colour, with cabinet depths and finishes matched to your specification.",
     specs: [
       { label: "Push-through letter material", value: "Cast acrylic, 10mm standard; 6mm or 12mm available" },
-      { label: "Cabinet face material", value: "0.063\" aluminum, CNC-routed" },
+      { label: "Cabinet face material", value: ".100\" (10 ga.) aluminum, CNC-routed" },
       { label: "Cabinet depth", value: "3\" – 8\" standard; custom depths available" },
-      { label: "Cabinet finish", value: "Powder coat — any RAL or Pantone colour" },
+      { label: "Cabinet finish", value: "Painted finish — any RAL or Pantone colour" },
       { label: "Illumination", value: "UL-listed LED modules, 50,000 hr rated" },
       { label: "Power supply", value: "UL-listed Class 2 LED driver, included" },
       { label: "Acrylic colours", value: "Full Rowmark / 3M acrylic palette; custom tints available" },
@@ -246,7 +246,7 @@ const productDetails: Record<string, {
       "Letters routed flush into the aluminum face — no exposed edges or gaps",
       "Even, diffused LED glow through the full acrylic depth",
       "High-contrast day/night readability — dark face, luminous letters",
-      "Powder-coated aluminum cabinet resists corrosion and UV fade",
+      "Painted aluminum cabinet resists corrosion and UV fade",
       "Available in single-face or double-face cabinet configurations",
       "Custom cabinet shapes — rectangular, shaped, or contour-cut",
     ],
@@ -259,7 +259,7 @@ const productDetails: Record<string, {
       "Flat cut-out letters are non-illuminated dimensional letters precision-routed from aluminum or acrylic sheet. They mount flush to the wall or on standoffs for a floating effect. The result is a clean, architectural sign that works equally well indoors and outdoors — and pairs beautifully with halo illumination when combined with a backlit system.",
     specs: [
       { label: "Material", value: "0.125\" – 0.25\" aluminum or 10mm acrylic" },
-      { label: "Finish", value: "Powder coat, anodize, brushed, or vinyl wrap" },
+      { label: "Finish", value: "Anodize, brushed, or vinyl wrap" },
       { label: "Mounting", value: "Flush or standoff (1\" – 3\" aluminum standoffs)" },
       { label: "Max letter height", value: "48\" standard; larger on request" },
       { label: "Lead time", value: "8–10 business days from approved artwork" },
@@ -268,7 +268,7 @@ const productDetails: Record<string, {
       "CNC-routed for precision edges and tight radii",
       "Available in aluminum or acrylic",
       "Standoff mounting creates a floating shadow effect",
-      "Any powder coat colour — RAL or Pantone matched",
+      "Any painted or vinyl-wrapped finish — RAL or Pantone matched",
       "Lightweight — suitable for interior and exterior",
       "No electrical required — no permits needed in most jurisdictions",
     ],
@@ -281,7 +281,7 @@ const productDetails: Record<string, {
       "Channel letters on raceways are pre-assembled at our facility — each letter is mounted and wired to a painted aluminum raceway before shipping. The installer simply anchors the raceway to the wall and connects power. This approach dramatically reduces on-site installation time and is the preferred method for multi-unit rollouts where consistency and speed are critical.",
     specs: [
       { label: "Raceway material", value: "Extruded aluminum, custom depth" },
-      { label: "Raceway finish", value: "Powder coat — colour-matched to building or letters" },
+      { label: "Raceway finish", value: "Painted finish — colour-matched to building or letters" },
       { label: "Letter type", value: "Any CWS channel letter type" },
       { label: "Pre-wired", value: "Yes — fully wired and tested before shipping" },
       { label: "Power entry", value: "Single power entry point on raceway" },
@@ -303,8 +303,8 @@ const productDetails: Record<string, {
     description:
       "Tenant panels are the individual sign cabinets that slot into a pylon or monument structure to identify each tenant. CWS produces aluminum-framed tenant panels with polycarbonate or acrylic faces, internal LED illumination, and a changeable-copy option for properties with high tenant turnover. Engineered for Canadian winters — freeze-thaw, snow load, and UV rated.",
     specs: [
-      { label: "Frame", value: "Extruded aluminum, powder coated" },
-      { label: "Face", value: "Polycarbonate or acrylic" },
+      { label: "Frame", value: "Extruded aluminum" },
+      { label: "Face", value: "3/16\" white acrylic" },
       { label: "Illumination", value: "Internal LED — even face illumination" },
       { label: "Copy change", value: "Fixed or changeable-copy configurations" },
       { label: "Standard sizes", value: "Custom to fit existing pylon structure" },
@@ -330,7 +330,7 @@ const productDetails: Record<string, {
       { label: "Face", value: "Open — no face material" },
       { label: "LED module", value: "Exposed LED strip or individual LED modules" },
       { label: "Return material", value: "0.063\" aluminum" },
-      { label: "Finish", value: "Custom powder coat" },
+      { label: "Finish", value: "Custom painted finish" },
       { label: "Lead time", value: "10 business days from approved artwork" },
     ],
     features: [
