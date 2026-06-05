@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function ProductionCTA() {
   return (
     <section className="py-24 lg:py-28 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-4 lg:px-6">
         <div className="relative overflow-hidden rounded-3xl bg-forest text-bone p-10 md:p-16">
           <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-sage/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-sage/15 blur-3xl" />

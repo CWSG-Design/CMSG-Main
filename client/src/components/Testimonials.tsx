@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="py-24 lg:py-32 bg-bone">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-4 lg:px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Testimonials</div>

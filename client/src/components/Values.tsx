@@ -6,7 +6,7 @@ const ICONS = [Star, Settings2, Zap, Users];
 export default function ValuesSection() {
   return (
     <section className="py-20 lg:py-28 bg-forest text-bone">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-4 lg:px-6">
 
         {/* About intro */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 mb-16 pb-16 border-b border-bone/10">

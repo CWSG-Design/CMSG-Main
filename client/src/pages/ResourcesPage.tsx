@@ -734,7 +734,7 @@ export default function ResourcesPage() {
 
       {/* Hero */}
       <section className="py-20 bg-forest text-bone">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        <div className="max-w-4xl mx-auto px-6 lg:px-6 text-center">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">
             Resources
           </div>
@@ -759,7 +759,7 @@ export default function ResourcesPage() {
 
       {/* Quick-jump nav */}
       <div className="sticky top-[65px] z-40 bg-cream/95 backdrop-blur border-b border-stone-200">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10 py-3 flex gap-2 overflow-x-auto scrollbar-none">
+        <div className="max-w-5xl mx-auto px-6 lg:px-6 py-3 flex gap-2 overflow-x-auto scrollbar-none">
           {sections.map((s) => {
             const Icon = s.icon;
             return (
@@ -786,7 +786,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Accordion sections */}
-      <div className="max-w-5xl mx-auto px-6 lg:px-10 py-12 space-y-4">
+      <div className="max-w-5xl mx-auto px-6 lg:px-6 py-12 space-y-4">
         {sections.map((s) => (
           <ResourceCard
             key={s.id}
