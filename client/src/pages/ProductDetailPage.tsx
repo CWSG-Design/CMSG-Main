@@ -259,7 +259,7 @@ const productDetails: Record<string, {
       "Flat cut-out letters are non-illuminated dimensional letters precision-routed from aluminum or acrylic sheet. They mount flush to the wall or on standoffs for a floating effect. The result is a clean, architectural sign that works equally well indoors and outdoors — and pairs beautifully with halo illumination when combined with a backlit system.",
     specs: [
       { label: "Material", value: "0.125\" – 0.25\" aluminum or 10mm acrylic" },
-      { label: "Finish", value: "Anodize, brushed, or vinyl wrap" },
+      { label: "Finish", value: "Painted finish, anodize, or brushed" },
       { label: "Mounting", value: "Flush or standoff (1\" – 3\" aluminum standoffs)" },
       { label: "Max letter height", value: "48\" standard; larger on request" },
       { label: "Lead time", value: "8–10 business days from approved artwork" },
@@ -268,7 +268,7 @@ const productDetails: Record<string, {
       "CNC-routed for precision edges and tight radii",
       "Available in aluminum or acrylic",
       "Standoff mounting creates a floating shadow effect",
-      "Any painted or vinyl-wrapped finish — RAL or Pantone matched",
+      "Painted finish or anodize — any RAL or Pantone matched",
       "Lightweight — suitable for interior and exterior",
       "No electrical required — no permits needed in most jurisdictions",
     ],
