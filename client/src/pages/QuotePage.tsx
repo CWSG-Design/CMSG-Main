@@ -450,13 +450,7 @@ export default function QuotePage() {
     },
   });
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Guard: only submit on the final step — prevents accidental submission via Enter key
-    if (step !== STEPS.length - 1) {
-      next();
-      return;
-    }
+  const submitQuote = () => {
     const allSignTypes = [...acrylicFaced, ...metalFaced, ...specialty, ...supplementary];
     sendQuote.mutate({
       companyName,
@@ -562,7 +556,7 @@ export default function QuotePage() {
       </div>
 
       {/* Form */}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={e => e.preventDefault()}>
         <div className="max-w-4xl mx-auto px-6 lg:px-10 py-12 space-y-8">
 
           {/* ── Step 0: Your Info ── */}
@@ -1049,7 +1043,7 @@ export default function QuotePage() {
                 Next: {STEPS[step + 1]} <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
             ) : (
-              <Button type="submit" disabled={sendQuote.isPending} className="bg-sage hover:bg-forest text-forest hover:text-bone rounded-full px-8 transition-colors gap-2">
+              <Button type="button" onClick={submitQuote} disabled={sendQuote.isPending} className="bg-sage hover:bg-forest text-forest hover:text-bone rounded-full px-8 transition-colors gap-2">
                 {sendQuote.isPending && <span className="inline-block h-4 w-4 border-2 border-forest/40 border-t-forest rounded-full animate-spin" />}
                 {sendQuote.isPending ? "Submitting…" : "Submit Quote Request"}
               </Button>
