@@ -13,6 +13,9 @@ import ContactPage from "./pages/ContactPage";
 import InstallationDirectoryPage from "./pages/InstallationDirectoryPage";
 import NotFound from "./pages/NotFound";
 import ResourcesPage from "./pages/ResourcesPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import AccessibilityPage from "./pages/AccessibilityPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import GalleryPage from "./pages/GalleryPage";
@@ -41,6 +44,9 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/installation-directory" component={InstallationDirectoryPage} />
       <Route path="/resources" component={ResourcesPage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/terms" component={TermsPage} />
+      <Route path="/accessibility" component={AccessibilityPage} />
       <Route component={NotFound} />
     </Switch>
     </>
