@@ -49,8 +49,8 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-forest-dark text-bone">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 xl:gap-8">
+          <div className="lg:col-span-3">
             <div className="flex items-center">
               <img
                 src={LOGO_WHITE}
@@ -86,10 +86,20 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <div className="text-xs uppercase tracking-[0.18em] text-sage font-semibold mb-4">Products</div>
             <ul className="space-y-2.5">
               {products.slice(0, 8).map((p) => (
+                <li key={p.slug}>
+                  <Link to={`/products/${p.slug}`} className="text-sm text-bone/75 hover:text-bone transition-colors">{p.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:col-span-2">
+            <div className="text-xs uppercase tracking-[0.18em] text-sage font-semibold mb-4">More Products</div>
+            <ul className="space-y-2.5">
+              {products.slice(8).map((p) => (
                 <li key={p.slug}>
                   <Link to={`/products/${p.slug}`} className="text-sm text-bone/75 hover:text-bone transition-colors">{p.title}</Link>
                 </li>
