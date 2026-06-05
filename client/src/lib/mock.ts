@@ -178,11 +178,7 @@ const realGalleryPhotos = [
 
 export const gallery = [
   ...realGalleryPhotos.map((p, i) => ({ id: i + 1, src: p.src, alt: p.alt })),
-  ...Array.from({ length: 1 }).map((_, i) => ({
-    id: i + 26,
-    src: `https://picsum.photos/seed/cws-gallery-${i + 26}/800/600`,
-    alt: `CWS project ${i + 26}`,
-  })),
+  { id: 21, src: "/manus-storage/pylon-longo-render_30c77770.webp", alt: "Longo's — Pylon sign with tenant directory, retail plaza" },
 ];
 
 export const processSteps = [
