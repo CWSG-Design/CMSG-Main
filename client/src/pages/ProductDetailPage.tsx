@@ -413,7 +413,7 @@ export default function ProductDetailPage() {
               <p className="mt-4 text-lg text-sage font-medium italic">{detail.tagline}</p>
               <p className="mt-5 text-stone-700 leading-relaxed text-base max-w-xl">{detail.description}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/quote">
+                <Link to={`/quote?product=${slug}`}>
                   <Button className="bg-forest text-bone hover:bg-sage hover:text-forest rounded-full px-7 py-3 text-sm font-semibold transition-all active:scale-[0.97]">
                     Request a Quote <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -569,7 +569,7 @@ export default function ProductDetailPage() {
             Send us your artwork and specs — we'll have a detailed quote back to you within one business day.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/quote">
+            <Link to={`/quote?product=${slug}`}>
               <Button className="bg-forest text-bone hover:bg-sage hover:text-forest rounded-full px-8 py-3 text-sm font-semibold transition-all active:scale-[0.97]">
                 Request a Quote <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

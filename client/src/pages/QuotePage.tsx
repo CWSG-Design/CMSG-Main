@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useSearch } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { trpc } from "@/lib/trpc";
@@ -315,7 +316,49 @@ function CheckGroup({ items, selected, onChange }: { items: string[]; selected: 
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
+// Map product slug → { category, value } for pre-selecting sign type checkboxes
+const SLUG_TO_SIGN_TYPE: Record<string, { category: "acrylicFaced" | "metalFaced" | "specialty" | "supplementary"; value: string }> = {
+  "front-lit-channel-letters":        { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
+  "front-lit-vertical-supports":      { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
+  "halo-illuminated-channel-letters": { category: "metalFaced",     value: "(MF) Reverse (Halo) Lit" },
+  "face-halo-combination":            { category: "acrylicFaced",   value: "(AF) Front/Back Lit Trimmed" },
+  "trimless-channel-letters":         { category: "acrylicFaced",   value: "(AF) Front Lit Trimless" },
+  "fascia-storefront-signs":          { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
+  "interior-hanging-signs":           { category: "specialty",      value: "(SPE) Marquee Letters" },
+  "3d-printed-signs":                 { category: "specialty",      value: "(SPE) Open Faced Letters" },
+  "pylon-ground-signs":               { category: "supplementary",  value: "(SUP) Tenant Panel *" },
+  "push-through-faux-neon":           { category: "metalFaced",     value: "(MF) Push-Thru Letters" },
+  "flat-cut-out-letters":             { category: "supplementary",  value: "(SUP) FCOs - Flat Cut Outs *" },
+  "channel-letters-on-raceways":      { category: "acrylicFaced",   value: "(AF) Front Lit Trimmed" },
+  "tenant-panels":                    { category: "supplementary",  value: "(SUP) Tenant Panel *" },
+  "open-face-channel-letters":        { category: "specialty",      value: "(SPE) Open Faced Letters" },
+  "illuminated-hanging-window-signs": { category: "specialty",      value: "(SPE) Open Faced Letters" },
+};
+
+const SLUG_TO_TITLE: Record<string, string> = {
+  "front-lit-channel-letters":        "Front Lit Channel Letters",
+  "front-lit-vertical-supports":      "Front Lit Channel Letters on Vertical Supports",
+  "halo-illuminated-channel-letters": "Halo Illuminated Channel Letters",
+  "face-halo-combination":            "Face & Halo Combination Lit",
+  "trimless-channel-letters":         "Trimless Channel Letters",
+  "fascia-storefront-signs":          "Fascia & Storefront Signs",
+  "interior-hanging-signs":           "Custom Interior & Hanging Signs",
+  "3d-printed-signs":                 "3D Printed Illuminated Signs",
+  "pylon-ground-signs":               "Pylon & Ground Signs",
+  "push-through-faux-neon":           "Push-Through & Faux Neon",
+  "flat-cut-out-letters":             "Flat Cut Out Letters",
+  "channel-letters-on-raceways":      "Channel Letters on Raceways",
+  "tenant-panels":                    "Tenant Panels",
+  "open-face-channel-letters":        "Open Face Channel Letters",
+  "illuminated-hanging-window-signs": "3D Printed Illuminated Hanging Window Signs",
+};
+
 export default function QuotePage() {
+  const search = useSearch();
+  const prefilledSlug = useMemo(() => new URLSearchParams(search).get("product") ?? "", [search]);
+  const prefilledTitle = prefilledSlug ? (SLUG_TO_TITLE[prefilledSlug] ?? "") : "";
+  const prefilledSignType = prefilledSlug ? (SLUG_TO_SIGN_TYPE[prefilledSlug] ?? null) : null;
+
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
@@ -339,10 +382,18 @@ export default function QuotePage() {
 
   // Step 1 — Product Type
   const [illumination, setIllumination] = useState<string[]>([]);
-  const [acrylicFaced, setAcrylicFaced] = useState<string[]>([]);
-  const [metalFaced, setMetalFaced] = useState<string[]>([]);
-  const [specialty, setSpecialty] = useState<string[]>([]);
-  const [supplementary, setSupplementary] = useState<string[]>([]);
+  const [acrylicFaced, setAcrylicFaced] = useState<string[]>(() =>
+    prefilledSignType?.category === "acrylicFaced" ? [prefilledSignType.value] : []
+  );
+  const [metalFaced, setMetalFaced] = useState<string[]>(() =>
+    prefilledSignType?.category === "metalFaced" ? [prefilledSignType.value] : []
+  );
+  const [specialty, setSpecialty] = useState<string[]>(() =>
+    prefilledSignType?.category === "specialty" ? [prefilledSignType.value] : []
+  );
+  const [supplementary, setSupplementary] = useState<string[]>(() =>
+    prefilledSignType?.category === "supplementary" ? [prefilledSignType.value] : []
+  );
   const [mounting, setMounting] = useState<string[]>([]);
 
   // Step 2 — Sign Details
@@ -426,7 +477,9 @@ export default function QuotePage() {
   const [hangerBar, setHangerBar] = useState("");
   const [racewayLocation, setRacewayLocation] = useState("");
   const [extras, setExtras] = useState<string[]>([]);
-  const [additionalNotes, setAdditionalNotes] = useState("");
+  const [additionalNotes, setAdditionalNotes] = useState(() =>
+    prefilledTitle ? `Interested in: ${prefilledTitle}` : ""
+  );
 
   const validate = () => {
     if (step === 0 && (!companyName || !firstName || !email || !isTradeCustomer)) {
@@ -554,11 +607,18 @@ export default function QuotePage() {
           </div>
         </div>
       </div>
-
       {/* Form */}
       <form onSubmit={e => e.preventDefault()}>
         <div className="max-w-4xl mx-auto px-6 lg:px-10 py-12 space-y-8">
-
+          {/* Pre-fill notice */}
+          {prefilledTitle && (
+            <div className="flex items-center gap-3 bg-sage/10 border border-sage/30 rounded-xl px-5 py-3.5">
+              <span className="text-sage text-lg">&#10003;</span>
+              <p className="text-sm text-forest">
+                Quoting for: <strong>{prefilledTitle}</strong> — sign type pre-selected on Step 2. You can adjust any selections before submitting.
+              </p>
+            </div>
+          )}
           {/* ── Step 0: Your Info ── */}
           {step === 0 && (
             <div className="space-y-8">
