@@ -414,26 +414,72 @@ function generatePDF(
   doc.save(`cmsg-signage-assessment-${safeName}.pdf`);
 }
 
+/* ─── sessionStorage helpers ────────────────────────────────────────────────── */
+const SS_KEY = "cmsg_assessment_state";
+
+function loadSaved(): {
+  step: "quiz" | "contact" | "done";
+  questionIndex: number;
+  answers: Record<string, string>;
+  recommendations: string[];
+  businessName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  city: string;
+  preferredContact: string;
+  showAllProducts: boolean;
+} | null {
+  try {
+    const raw = sessionStorage.getItem(SS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveSS(patch: Partial<ReturnType<typeof loadSaved>>) {
+  try {
+    const current = loadSaved() ?? {};
+    sessionStorage.setItem(SS_KEY, JSON.stringify({ ...current, ...patch }));
+  } catch { /* ignore */ }
+}
+
 /* ─── Component ─────────────────────────────────────────────────────────────── */
 export default function AssessmentPage() {
-  const [step, setStep] = useState<"quiz" | "contact" | "done">("quiz");
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [recommendations, setRecommendations] = useState<string[]>([]);
+  const saved = loadSaved();
+
+  const [step, setStepRaw] = useState<"quiz" | "contact" | "done">(saved?.step ?? "quiz");
+  const [questionIndex, setQuestionIndexRaw] = useState(saved?.questionIndex ?? 0);
+  const [answers, setAnswersRaw] = useState<Record<string, string>>(saved?.answers ?? {});
+  const [recommendations, setRecommendationsRaw] = useState<string[]>(saved?.recommendations ?? []);
 
   // Contact form state
-  const [businessName, setBusinessName] = useState("");
-  const [contactName, setContactName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("");
-  const [preferredContact, setPreferredContact] = useState("email");
+  const [businessName, setBusinessNameRaw] = useState(saved?.businessName ?? "");
+  const [contactName, setContactNameRaw] = useState(saved?.contactName ?? "");
+  const [email, setEmailRaw] = useState(saved?.email ?? "");
+  const [phone, setPhoneRaw] = useState(saved?.phone ?? "");
+  const [city, setCityRaw] = useState(saved?.city ?? "");
+  const [preferredContact, setPreferredContactRaw] = useState(saved?.preferredContact ?? "email");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
   // Explore-all toggle
-  const [showAllProducts, setShowAllProducts] = useState(false);
+  const [showAllProducts, setShowAllProductsRaw] = useState(saved?.showAllProducts ?? false);
   const [activeProductSlug, setActiveProductSlug] = useState<string | null>(null);
+
+  // Wrapped setters that also persist to sessionStorage
+  function setStep(v: "quiz" | "contact" | "done") { setStepRaw(v); saveSS({ step: v }); }
+  function setQuestionIndex(v: number) { setQuestionIndexRaw(v); saveSS({ questionIndex: v }); }
+  function setAnswers(v: Record<string, string>) { setAnswersRaw(v); saveSS({ answers: v }); }
+  function setRecommendations(v: string[]) { setRecommendationsRaw(v); saveSS({ recommendations: v }); }
+  function setBusinessName(v: string) { setBusinessNameRaw(v); saveSS({ businessName: v }); }
+  function setContactName(v: string) { setContactNameRaw(v); saveSS({ contactName: v }); }
+  function setEmail(v: string) { setEmailRaw(v); saveSS({ email: v }); }
+  function setPhone(v: string) { setPhoneRaw(v); saveSS({ phone: v }); }
+  function setCity(v: string) { setCityRaw(v); saveSS({ city: v }); }
+  function setPreferredContact(v: string) { setPreferredContactRaw(v); saveSS({ preferredContact: v }); }
+  function setShowAllProducts(v: boolean) { setShowAllProductsRaw(v); saveSS({ showAllProducts: v }); }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sendAssessment = (trpc.email as any).sendAssessment.useMutation();
@@ -474,7 +520,8 @@ export default function AssessmentPage() {
         city,
         preferredContact,
       });
-      setStep("done");
+      sessionStorage.removeItem(SS_KEY);
+      setStepRaw("done");
     } catch {
       setError("Something went wrong. Please try again or email us directly.");
     } finally {
@@ -771,7 +818,7 @@ export default function AssessmentPage() {
           <p className="text-center mt-6 text-[oklch(0.45_0.03_148)] text-sm">
             <button
               type="button"
-              onClick={() => { setStep("quiz"); setQuestionIndex(0); setAnswers({}); setShowAllProducts(false); setActiveProductSlug(null); }}
+              onClick={() => { sessionStorage.removeItem(SS_KEY); setStepRaw("quiz"); setQuestionIndexRaw(0); setAnswersRaw({}); setRecommendationsRaw([]); setShowAllProductsRaw(false); setActiveProductSlug(null); }}
               className="underline hover:text-[oklch(0.57_0.07_140)] transition-colors"
             >
               Retake the assessment
