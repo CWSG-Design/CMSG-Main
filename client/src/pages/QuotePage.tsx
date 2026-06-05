@@ -333,7 +333,7 @@ export default function QuotePage() {
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
 
   // ── Step 4: Extras & Files ──
-  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string; key: string }[]>([]);
   const [uploadingFiles, setUploadingFiles] = useState(false);
   const uploadArtwork = trpc.email.uploadArtwork.useMutation();
 
@@ -363,7 +363,7 @@ export default function QuotePage() {
         }))
       );
       const result = await uploadArtwork.mutateAsync({ files: encoded });
-      setUploadedFiles(prev => [...prev, ...result.files.map(f => ({ name: f.name, url: f.url }))]);
+      setUploadedFiles(prev => [...prev, ...result.files.map(f => ({ name: f.name, url: f.url, key: f.key }))]);
       toast.success(`${result.files.length} file(s) uploaded successfully.`);
     } catch (err) {
       toast.error("Upload failed. Please try again or email files directly.");
@@ -446,14 +446,20 @@ export default function QuotePage() {
       graphicsColor: [vinylColor, graphicsColor].filter(Boolean).join(", ") || undefined,
       trimCapColor: trimCapColor || undefined,
       returnColor: returnColor || undefined,
-      racewayColo: racewayColor || undefined,
-      hangerBar: extras.includes("Hanger Bar") || undefined,
-      remotePowerSupply: extras.includes("Remote Power Supply") || undefined,
+      racewayColor: racewayColor || undefined,
+      hangerBar: hangerBar || undefined,
+      racewayLocation: racewayLocation || undefined,
+      extras: extras.length > 0 ? extras : undefined,
       additionalInstructions: [
         detailParts.join(" | "),
         additionalNotes,
       ].filter(Boolean).join("\n\n") || undefined,
-      artworkUrls: uploadedFiles.length > 0 ? uploadedFiles : undefined,
+      panelWidth: panelW || undefined,
+      panelHeight: panelH || undefined,
+      printMaterial: printMaterial || undefined,
+      artworkFiles: uploadedFiles.length > 0
+        ? uploadedFiles.map(f => ({ name: f.name, key: f.key }))
+        : undefined,
     });
   };
 
