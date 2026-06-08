@@ -578,14 +578,14 @@ export default function AssessmentPage() {
           <span className="text-[oklch(0.55_0.04_148)] text-sm">Signage Assessment</span>
         </div>
 
-        <div className="max-w-3xl mx-auto px-4 py-12">
+        <div className="max-w-site mx-auto px-4 lg:px-6 py-12">
 
           {/* ── Recommendations ── */}
           {recommendedProducts.length > 0 && (
             <div className="mb-10">
               <p className="text-[oklch(0.57_0.07_140)] text-sm font-medium uppercase tracking-widest mb-2">Based on your answers</p>
               <h2 className="text-2xl font-serif text-[oklch(0.97_0.012_90)] mb-6">We recommend these sign types for you</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {recommendedProducts.map(p => (
                   <Link key={p.slug} href={`/products/${p.slug}`}>
                     <div className="group flex gap-4 items-center bg-[oklch(0.22_0.06_148)] border border-[oklch(0.30_0.05_148)] rounded-xl p-4 hover:border-[oklch(0.57_0.07_140)] transition-all cursor-pointer">
@@ -651,50 +651,52 @@ export default function AssessmentPage() {
             </button>
 
             {showAllProducts && (
-              <div className="mt-3 border border-[oklch(0.28_0.05_148)] rounded-xl overflow-hidden">
-                {/* Section label: Recommended */}
+              <div className="mt-3 space-y-6">
+                {/* Recommended section */}
                 {recommendedProducts.length > 0 && (
-                  <>
-                    <div className="px-4 py-2 bg-[oklch(0.20_0.06_148)] border-b border-[oklch(0.28_0.05_148)]">
-                      <span className="text-[oklch(0.57_0.07_140)] text-xs font-semibold uppercase tracking-widest">
-                        ★ Recommended for you
-                      </span>
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[oklch(0.57_0.07_140)] text-xs font-semibold uppercase tracking-widest">★ Recommended for you</span>
+                      <div className="flex-1 h-px bg-[oklch(0.28_0.05_148)]" />
                     </div>
-                    {recommendedProducts.map(p => (
-                      <ProductRow
-                        key={p.slug}
-                        product={p}
-                        isActive={activeProductSlug === p.slug}
-                        isRecommended
-                        onToggle={() => setActiveProductSlug(activeProductSlug === p.slug ? null : p.slug)}
-                      />
-                    ))}
-                  </>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+                      {recommendedProducts.map(p => (
+                        <ExploreCard
+                          key={p.slug}
+                          product={p}
+                          isActive={activeProductSlug === p.slug}
+                          isRecommended
+                          onToggle={() => setActiveProductSlug(activeProductSlug === p.slug ? null : p.slug)}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 )}
 
-                {/* Section label: Other products */}
+                {/* Other products section */}
                 {otherProducts.length > 0 && (
-                  <>
-                    <div className="px-4 py-2 bg-[oklch(0.20_0.06_148)] border-t border-b border-[oklch(0.28_0.05_148)]">
-                      <span className="text-[oklch(0.45_0.03_148)] text-xs font-semibold uppercase tracking-widest">
-                        Other sign types
-                      </span>
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[oklch(0.45_0.03_148)] text-xs font-semibold uppercase tracking-widest">Other sign types</span>
+                      <div className="flex-1 h-px bg-[oklch(0.28_0.05_148)]" />
                     </div>
-                    {otherProducts.map(p => (
-                      <ProductRow
-                        key={p.slug}
-                        product={p}
-                        isActive={activeProductSlug === p.slug}
-                        isRecommended={false}
-                        onToggle={() => setActiveProductSlug(activeProductSlug === p.slug ? null : p.slug)}
-                      />
-                    ))}
-                  </>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+                      {otherProducts.map(p => (
+                        <ExploreCard
+                          key={p.slug}
+                          product={p}
+                          isActive={activeProductSlug === p.slug}
+                          isRecommended={false}
+                          onToggle={() => setActiveProductSlug(activeProductSlug === p.slug ? null : p.slug)}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 )}
 
                 {/* Expanded product detail panel */}
                 {activeProduct && (
-                  <div className="border-t border-[oklch(0.28_0.05_148)] bg-[oklch(0.19_0.06_148)] p-5">
+                  <div className="border border-[oklch(0.30_0.05_148)] bg-[oklch(0.19_0.06_148)] rounded-xl p-5">
                     <div className="flex gap-5 items-start">
                       <img
                         src={activeProduct.image}
@@ -911,6 +913,50 @@ export default function AssessmentPage() {
 }
 
 /* ─── ProductRow sub-component ───────────────────────────────────────────────── */
+/* ─── ExploreCard ─────────────────────────────────────────────────────────── */
+interface ExploreCardProps {
+  product: { slug: string; title: string; image: string; blurb: string };
+  isActive: boolean;
+  isRecommended: boolean;
+  onToggle: () => void;
+}
+
+function ExploreCard({ product, isActive, isRecommended, onToggle }: ExploreCardProps) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`group w-full text-left rounded-xl border transition-all ${
+        isActive
+          ? "bg-[oklch(0.20_0.06_148)] border-[oklch(0.57_0.07_140)]"
+          : "bg-[oklch(0.22_0.06_148)] border-[oklch(0.30_0.05_148)] hover:border-[oklch(0.57_0.07_140)]"
+      }`}
+    >
+      <div className="relative">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-32 object-cover rounded-t-xl"
+        />
+        {isRecommended && (
+          <span className="absolute top-2 right-2 bg-[oklch(0.57_0.07_140)] text-white text-[10px] font-bold px-2 py-0.5 rounded-full leading-none">
+            ★ Match
+          </span>
+        )}
+      </div>
+      <div className="p-3">
+        <p className={`text-sm font-medium leading-snug mb-1 ${
+          isActive ? "text-[oklch(0.57_0.07_140)]" : "text-[oklch(0.90_0.02_148)] group-hover:text-[oklch(0.57_0.07_140)]"
+        } transition-colors`}>
+          {product.title}
+        </p>
+        <p className="text-[oklch(0.50_0.03_148)] text-xs leading-snug line-clamp-2">{product.blurb}</p>
+      </div>
+    </button>
+  );
+}
+
+/* ─── ProductRow (kept for backwards compat) ───────────────────────────────── */
 interface ProductRowProps {
   product: { slug: string; title: string; image: string; blurb: string };
   isActive: boolean;
