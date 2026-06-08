@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="absolute top-40 -left-32 h-[420px] w-[420px] rounded-full bg-forest/10 blur-3xl" />
       </div>
 
-      <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 lg:pt-24 pb-24 lg:pb-32">
+      <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-24 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 fade-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-forest/20 bg-white/60 backdrop-blur px-3 py-1 text-xs uppercase tracking-[0.18em] text-forest mb-6">

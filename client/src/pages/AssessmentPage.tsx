@@ -578,7 +578,7 @@ export default function AssessmentPage() {
           <span className="text-[oklch(0.55_0.04_148)] text-sm">Signage Assessment</span>
         </div>
 
-        <div className="max-w-site mx-auto px-4 lg:px-6 py-12">
+        <div className="max-w-site mx-auto py-12">
 
           {/* ── Recommendations ── */}
           {recommendedProducts.length > 0 && (

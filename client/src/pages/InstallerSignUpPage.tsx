@@ -90,7 +90,7 @@ export default function InstallerSignUpPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-bone border-b border-stone-200">
         <div className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-sage/15 blur-3xl -z-0" />
-        <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 pb-12 relative">
+        <div className="max-w-site mx-auto pt-16 pb-12 relative">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Join Our Network</div>
           <h1 className="font-serif text-5xl md:text-6xl text-forest leading-tight max-w-2xl">
             Installer <span className="italic text-sage">Sign Up</span>
@@ -119,7 +119,7 @@ export default function InstallerSignUpPage() {
       </section>
 
       {/* Form / Success */}
-      <section className="max-w-site mx-auto px-4 lg:px-6 py-16">
+      <section className="max-w-site mx-auto py-16">
         {submitted ? (
           <div className="max-w-xl mx-auto text-center py-20">
             <CheckCircle2 className="h-16 w-16 text-sage mx-auto mb-6" />

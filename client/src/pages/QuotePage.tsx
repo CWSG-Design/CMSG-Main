@@ -492,7 +492,7 @@ export default function QuotePage() {
 
       {/* Hero */}
       <section className="bg-bone border-b border-stone-200">
-        <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 pb-10">
+        <div className="max-w-site mx-auto pt-16 pb-10">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Free Estimate</div>
           <h1 className="font-serif text-5xl md:text-6xl text-forest leading-tight">
             Request a <span className="italic text-sage">Quote</span>
@@ -505,7 +505,7 @@ export default function QuotePage() {
 
       {/* Progress bar */}
       <div className="bg-white border-b border-stone-200 sticky top-0 z-10">
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto">
           <div className="flex items-center overflow-x-auto py-4 gap-1">
             {STEPS.map((label, i) => (
               <div key={i} className="flex items-center gap-1 shrink-0">

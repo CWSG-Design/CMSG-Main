@@ -47,7 +47,7 @@ export default function GalleryPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute top-20 -right-40 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-12 lg:pb-16">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Project Gallery</div>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest leading-[1.04] max-w-4xl">
             Real projects.<br />
@@ -68,7 +68,7 @@ export default function GalleryPage() {
 
       {/* Filter tabs */}
       <section className="sticky top-0 z-30 bg-cream/95 backdrop-blur border-b border-stone-200 py-3">
-        <div className="max-w-site mx-auto px-4 lg:px-6 flex gap-2 overflow-x-auto no-scrollbar">
+        <div className="max-w-site mx-auto flex gap-2 overflow-x-auto no-scrollbar">
           {filters.map((f) => (
             <button
               key={f.value}
@@ -90,7 +90,7 @@ export default function GalleryPage() {
 
       {/* Gallery grid */}
       <section className="py-12 lg:py-16">
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto">
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             {filtered.map((item, idx) => (
               <div

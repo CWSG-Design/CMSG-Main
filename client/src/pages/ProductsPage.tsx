@@ -48,7 +48,7 @@ export default function ProductsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute top-20 -left-40 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-12 lg:pb-16">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Product Catalogue</div>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest leading-[1.04] max-w-4xl">
             Premium signage,<br />
@@ -69,7 +69,7 @@ export default function ProductsPage() {
 
       {/* Filter tabs */}
       <section className="sticky top-0 z-30 bg-cream/95 backdrop-blur border-b border-stone-200 py-3">
-        <div className="max-w-site mx-auto px-4 lg:px-6 flex gap-2 overflow-x-auto no-scrollbar">
+        <div className="max-w-site mx-auto flex gap-2 overflow-x-auto no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat.value}
@@ -88,7 +88,7 @@ export default function ProductsPage() {
 
       {/* Product grid */}
       <section className="py-14 lg:py-20">
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {filtered.map((product) => (
               <Link

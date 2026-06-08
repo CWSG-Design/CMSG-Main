@@ -123,7 +123,7 @@ export default function Header() {
 
       {/* ── Tier 1: Logo bar ─────────────────────────────────────────────── */}
       <div className={`transition-all duration-300 ${scrolled ? "bg-forest-dark" : "bg-forest-dark"}`}>
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
@@ -181,7 +181,7 @@ export default function Header() {
             : "bg-cream border-b border-stone-200"
         }`}
       >
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto px-2">
           <nav className="flex items-center gap-1" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => {
               const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
@@ -231,7 +231,7 @@ export default function Header() {
       {/* ── Mobile drawer ────────────────────────────────────────────────── */}
       {open && (
         <div className="lg:hidden bg-cream border-t border-stone-200 shadow-lg">
-          <div className="max-w-site mx-auto px-4 py-4">
+          <div className="max-w-site mx-auto py-4">
             {/* Contact strip */}
             <div className="flex items-center gap-4 mb-4 pb-4 border-b border-stone-200">
               <a href={`tel:${brand.phone}`} className="flex items-center gap-1.5 text-sm text-stone-600">

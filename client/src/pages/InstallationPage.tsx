@@ -16,7 +16,7 @@ export default function InstallationPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute top-20 -left-40 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="max-w-site mx-auto px-4 lg:px-6 pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-12 lg:pb-16">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-stone-600 hover:text-forest mb-6">
             <ArrowLeft className="h-4 w-4" /> Back to home
           </Link>
@@ -36,7 +36,7 @@ export default function InstallationPage() {
 
       {/* Videos */}
       <section className="pb-8">
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto">
           <div className="grid md:grid-cols-2 gap-5">
             {installation.videos.map((v) => (
               v.url ? (
@@ -77,7 +77,7 @@ export default function InstallationPage() {
 
       {/* Steps */}
       <section className="py-20 lg:py-28">
-        <div className="max-w-site mx-auto px-4 lg:px-6">
+        <div className="max-w-site mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
             <div>
               <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">The Process</div>
