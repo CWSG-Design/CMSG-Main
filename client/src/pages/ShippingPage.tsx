@@ -18,7 +18,7 @@ export default function ShippingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="w-full pt-16 lg:pt-24 pb-12 lg:pb-16">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Logistics</div>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest leading-[1.04] max-w-4xl">
             Canada-wide <span className="italic text-sage">shipping</span>, one flat rate.
@@ -29,7 +29,7 @@ export default function ShippingPage() {
 
       {/* What's included */}
       <section className="py-16 lg:py-24">
-        <div className="max-w-site mx-auto">
+        <div className="w-full">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <h2 className="font-serif text-3xl md:text-4xl text-forest">What's included</h2>
             <div className="text-sm text-stone-500 max-w-md">Every quote bakes in our packaging, crating, and freight — no add-ons at delivery.</div>
@@ -53,7 +53,7 @@ export default function ShippingPage() {
 
       {/* Transit times */}
       <section className="py-20 lg:py-28 bg-bone">
-        <div className="max-w-site mx-auto">
+        <div className="w-full">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
               <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Transit Map</div>
@@ -113,7 +113,7 @@ export default function ShippingPage() {
 
       {/* Production timeline CTA */}
       <section className="py-20 lg:py-24 bg-cream">
-        <div className="max-w-site mx-auto">
+        <div className="w-full">
           <div className="relative overflow-hidden rounded-3xl bg-forest text-bone p-10 md:p-14 grid md:grid-cols-2 gap-8 items-center">
             <div className="absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-sage/25 blur-3xl" />
             <div className="relative">

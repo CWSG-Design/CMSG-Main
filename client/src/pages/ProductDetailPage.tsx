@@ -406,7 +406,7 @@ export default function ProductDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute top-20 -right-40 h-[500px] w-[500px] rounded-full bg-sage/15 blur-3xl" />
         </div>
-        <div className="max-w-site mx-auto pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="w-full pt-16 lg:pt-24 pb-12 lg:pb-16">
           <Link to="/products" className="inline-flex items-center gap-2 text-sm text-stone-600 hover:text-forest mb-6 transition-colors">
             <ArrowLeft className="h-4 w-4" /> All Products
           </Link>
@@ -455,7 +455,7 @@ export default function ProductDetailPage() {
 
       {/* Specs + Features */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-site mx-auto">
+        <div className="w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Specs table */}
             <div>
@@ -517,7 +517,7 @@ export default function ProductDetailPage() {
 
       {/* Why CWS */}
       <section className="py-16 lg:py-24 bg-forest text-bone">
-        <div className="max-w-site mx-auto">
+        <div className="w-full">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Why CWS</div>
           <h2 className="font-serif text-3xl md:text-4xl text-bone mb-10 max-w-2xl">
             Wholesale quality. Direct pricing. Ships anywhere in Canada.
@@ -542,7 +542,7 @@ export default function ProductDetailPage() {
       {/* Related Products */}
       {related.length > 0 && (
         <section className="py-16 lg:py-24 bg-cream">
-          <div className="max-w-site mx-auto">
+          <div className="w-full">
             <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Related Products</div>
             <h2 className="font-serif text-3xl text-forest mb-10">You may also be interested in</h2>
             <div className="grid sm:grid-cols-3 gap-6">

@@ -221,7 +221,7 @@ export default function InstallationDirectoryPage() {
 
       {/* Hero */}
       <section className="bg-bone border-b border-stone-200">
-        <div className="max-w-site mx-auto pt-16 pb-12">
+        <div className="w-full pt-16 pb-12">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Find an Installer</div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -255,7 +255,7 @@ export default function InstallationDirectoryPage() {
       </section>
 
       {/* Map + Sidebar */}
-      <section className="max-w-site mx-auto py-10">
+      <section className="w-full py-10">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Map */}
           <div className="lg:flex-1 relative rounded-2xl overflow-hidden border border-stone-200 shadow-sm">
@@ -334,7 +334,7 @@ export default function InstallationDirectoryPage() {
 
       {/* Full card grid below map */}
       {!isLoading && filtered.length > 0 && (
-        <section className="max-w-site mx-auto pb-16">
+        <section className="w-full pb-16">
           <h2 className="font-serif text-3xl text-forest mb-6">
             All Installers
             {search && (

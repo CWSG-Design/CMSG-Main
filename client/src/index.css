@@ -43,9 +43,7 @@
   --color-cream:       oklch(0.97 0.012 90);
   --color-bone:        oklch(0.93 0.015 90);
 
-  /* Layout */
-  --width-site: 90rem; /* 1440px — primary content cap */
-  --max-width-site: var(--width-site);
+  /* Layout — no max-width cap, fully edge-to-edge */
 }
 
 :root {
@@ -118,7 +116,7 @@
 
   /* Site-wide layout wrapper — full-width with responsive gutters.
      No hard pixel cap: content fills the viewport on all screen sizes. */
-  .max-w-site {
+  .w-full {
     width: 100%;
   }
 

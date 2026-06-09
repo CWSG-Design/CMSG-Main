@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function InstallerCTA() {
   return (
     <section className="py-16 lg:py-20 bg-bone">
-      <div className="max-w-site mx-auto">
+      <div className="w-full">
         <div className="relative overflow-hidden rounded-3xl border border-stone-200 bg-white p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
           <div className="h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-forest text-bone flex items-center justify-center shrink-0">
             <HardHat className="h-8 w-8" />
