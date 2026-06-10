@@ -8,13 +8,12 @@ import { Button } from "@/components/ui/button";
 const LOGO_LIGHT = "/manus-storage/logo-black-transparent_b82614d3.webp";
 
 /* ─── Nav item definitions ─────────────────────────────────────────────────── */
-// Each item can have an icon, a badge, and an optional accent colour class
 interface NavItem {
   label: string;
   href: string;
   icon: React.ReactNode;
   badge?: string;
-  badgeColor?: string; // tailwind bg class
+  badgeColor?: string;
   description: string;
 }
 
@@ -22,19 +21,19 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Products",
     href: "/products",
-    icon: <Package className="h-4 w-4" />,
+    icon: <Package className="h-5 w-5" />,
     description: "15 sign types",
   },
   {
     label: "Gallery",
     href: "/gallery",
-    icon: <Image className="h-4 w-4" />,
+    icon: <Image className="h-5 w-5" />,
     description: "Real projects",
   },
   {
     label: "Shipping",
     href: "/shipping",
-    icon: <Truck className="h-4 w-4" />,
+    icon: <Truck className="h-5 w-5" />,
     badge: "10-day",
     badgeColor: "bg-sage text-white",
     description: "Coast-to-coast",
@@ -42,25 +41,25 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Installation",
     href: "/installation",
-    icon: <Wrench className="h-4 w-4" />,
+    icon: <Wrench className="h-5 w-5" />,
     description: "Guides & tips",
   },
   {
     label: "Installer Directory",
     href: "/installation-directory",
-    icon: <Users className="h-4 w-4" />,
+    icon: <Users className="h-5 w-5" />,
     description: "Find a pro",
   },
   {
     label: "Resources",
     href: "/resources",
-    icon: <BookOpen className="h-4 w-4" />,
+    icon: <BookOpen className="h-5 w-5" />,
     description: "Specs & docs",
   },
   {
     label: "Sign Assessment",
     href: "/assessment",
-    icon: <ClipboardList className="h-4 w-4" />,
+    icon: <ClipboardList className="h-5 w-5" />,
     badge: "New",
     badgeColor: "bg-forest text-bone",
     description: "Find your sign",
@@ -68,7 +67,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Contact",
     href: "/contact",
-    icon: <MessageSquare className="h-4 w-4" />,
+    icon: <MessageSquare className="h-5 w-5" />,
     description: "Get in touch",
   },
 ];
@@ -123,8 +122,8 @@ export default function Header() {
 
       {/* ── Tier 1: Logo bar ─────────────────────────────────────────────── */}
       <div className={`transition-all duration-300 ${scrolled ? "bg-forest-dark" : "bg-forest-dark"}`}>
-        <div className="w-full px-4">
-          <div className="flex items-center justify-between py-3">
+        <div className="w-full px-6 lg:px-10">
+          <div className="flex items-center justify-between py-3.5">
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
               <img
@@ -153,7 +152,7 @@ export default function Header() {
               <Link to="/quote">
                 <Button
                   size="sm"
-                  className="bg-sage hover:bg-sage/90 text-forest font-semibold rounded-full px-5 h-8 text-sm animate-quote-pulse"
+                  className="bg-sage hover:bg-sage/90 text-forest font-semibold rounded-full px-5 h-9 text-sm animate-quote-pulse"
                 >
                   Get a Quote
                 </Button>
@@ -181,7 +180,7 @@ export default function Header() {
             : "bg-cream border-b border-stone-200"
         }`}
       >
-        <div className="w-full px-2">
+        <div className="w-full px-6 lg:px-10">
           <nav className="flex items-center gap-1" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => {
               const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
@@ -189,7 +188,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`group relative flex flex-col items-center gap-0.5 px-3 py-3 rounded-lg transition-all duration-150 ${
+                  className={`group relative flex flex-col items-center gap-1 px-4 py-3.5 rounded-lg transition-all duration-150 ${
                     isActive
                       ? "text-forest"
                       : "text-stone-600 hover:text-forest hover:bg-stone-50"
@@ -205,7 +204,7 @@ export default function Header() {
                     <span className={`transition-colors ${isActive ? "text-sage" : "text-stone-400 group-hover:text-sage"}`}>
                       {item.icon}
                     </span>
-                    <span className={`text-sm font-semibold leading-none ${isActive ? "text-forest" : ""}`}>
+                    <span className={`text-[15px] font-semibold leading-none ${isActive ? "text-forest" : ""}`}>
                       {item.label}
                     </span>
                     {item.badge && (
@@ -216,7 +215,7 @@ export default function Header() {
                   </div>
 
                   {/* Description sub-label */}
-                  <span className={`text-[10px] leading-none transition-colors ${
+                  <span className={`text-xs leading-none transition-colors ${
                     isActive ? "text-sage" : "text-stone-400 group-hover:text-stone-500"
                   }`}>
                     {item.description}
@@ -231,7 +230,7 @@ export default function Header() {
       {/* ── Mobile drawer ────────────────────────────────────────────────── */}
       {open && (
         <div className="lg:hidden bg-cream border-t border-stone-200 shadow-lg">
-          <div className="w-full py-4">
+          <div className="w-full px-4 py-4">
             {/* Contact strip */}
             <div className="flex items-center gap-4 mb-4 pb-4 border-b border-stone-200">
               <a href={`tel:${brand.phone}`} className="flex items-center gap-1.5 text-sm text-stone-600">

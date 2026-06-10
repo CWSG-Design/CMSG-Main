@@ -49,7 +49,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-forest text-bone">
-      <div className="w-full">
+      <div className="w-full px-6 lg:px-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>

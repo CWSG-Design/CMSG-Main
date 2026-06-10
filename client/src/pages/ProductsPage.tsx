@@ -48,7 +48,7 @@ export default function ProductsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute top-20 -left-40 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="w-full pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <div className="w-full px-6 lg:px-10 pt-16 lg:pt-24 pb-12 lg:pb-16">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Product Catalogue</div>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest leading-[1.04] max-w-4xl">
             Premium signage,<br />
@@ -88,7 +88,7 @@ export default function ProductsPage() {
 
       {/* Product grid */}
       <section className="py-14 lg:py-20">
-        <div className="w-full">
+        <div className="w-full px-6 lg:px-10">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {filtered.map((product) => (
               <Link

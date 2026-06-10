@@ -7,7 +7,7 @@ export default function ResourcesSection() {
   return (
     <section id="resources" className="relative py-24 lg:py-32 bg-bone overflow-hidden">
       <div className="absolute inset-0 grain pointer-events-none" />
-      <div className="relative w-full">
+      <div className="relative w-full px-6 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Resources</div>

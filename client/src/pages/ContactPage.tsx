@@ -12,7 +12,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-bone via-cream to-cream" />
           <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-sage/20 blur-3xl" />
         </div>
-        <div className="w-full pt-16 lg:pt-24 pb-4">
+        <div className="w-full px-6 lg:px-10 pt-16 lg:pt-24 pb-4">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Contact</div>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest leading-[1.04] max-w-3xl">
             We'd love to <span className="italic text-sage">hear from you</span>.

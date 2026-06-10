@@ -492,7 +492,7 @@ export default function QuotePage() {
 
       {/* Hero */}
       <section className="bg-bone border-b border-stone-200">
-        <div className="w-full pt-16 pb-10">
+        <div className="w-full px-6 lg:px-10 pt-16 pb-10">
           <div className="text-xs uppercase tracking-[0.22em] text-sage font-semibold mb-4">Free Estimate</div>
           <h1 className="font-serif text-5xl md:text-6xl text-forest leading-tight">
             Request a <span className="italic text-sage">Quote</span>
@@ -505,7 +505,7 @@ export default function QuotePage() {
 
       {/* Progress bar */}
       <div className="bg-white border-b border-stone-200 sticky top-0 z-10">
-        <div className="w-full">
+        <div className="w-full px-6 lg:px-10">
           <div className="flex items-center overflow-x-auto py-4 gap-1">
             {STEPS.map((label, i) => (
               <div key={i} className="flex items-center gap-1 shrink-0">
@@ -534,7 +534,7 @@ export default function QuotePage() {
 
       {/* Form */}
       <form onSubmit={e => e.preventDefault()}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-6 py-12 space-y-8">
+        <div className="w-full py-12 space-y-8">
 
           {/* ── Step 0: Your Info ── */}
           {step === 0 && (
