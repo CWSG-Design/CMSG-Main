@@ -181,14 +181,14 @@ export default function Header() {
         }`}
       >
         <div className="w-full px-6 lg:px-10">
-          <nav className="flex items-center gap-1" aria-label="Main navigation">
+          <nav className="flex items-center justify-center gap-2" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => {
               const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
               return (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`group relative flex flex-col items-center gap-1 px-4 py-3.5 rounded-lg transition-all duration-150 ${
+                  className={`group relative flex flex-col items-center gap-1 px-5 py-4 rounded-lg transition-all duration-150 ${
                     isActive
                       ? "text-forest"
                       : "text-stone-600 hover:text-forest hover:bg-stone-50"
@@ -204,7 +204,7 @@ export default function Header() {
                     <span className={`transition-colors ${isActive ? "text-sage" : "text-stone-400 group-hover:text-sage"}`}>
                       {item.icon}
                     </span>
-                    <span className={`text-[15px] font-semibold leading-none ${isActive ? "text-forest" : ""}`}>
+                    <span className={`text-base font-bold leading-none tracking-wide ${isActive ? "text-forest" : ""}`}>
                       {item.label}
                     </span>
                     {item.badge && (
@@ -215,7 +215,7 @@ export default function Header() {
                   </div>
 
                   {/* Description sub-label */}
-                  <span className={`text-xs leading-none transition-colors ${
+                  <span className={`text-[11px] font-medium leading-none transition-colors ${
                     isActive ? "text-sage" : "text-stone-400 group-hover:text-stone-500"
                   }`}>
                     {item.description}
